@@ -20,7 +20,6 @@ header {
     width: 100%;
     height: 142px;
     background: url('../images/head_top_line.png') no-repeat;            
-    margin-bottom: 10px;
 }
 
 header > .logo {
@@ -104,41 +103,184 @@ main > div {
     margin-bottom: 10px;
 }
 
-/* 메인 (서브 페이지 공통) */
+/* 서브 페이지 */
 #sub {
     width: 100%;
-    min-height: 500px;
+    min-height: 650px;
 }
 
-/* 서브 상단 타이틀 이미지 영역 */
+/* 서브 상단 이미지 */
 #sub > div {
+    position: relative;
     width: 100%;
-    height: auto; /* 고정 높이 대신 이미지에 맞추거나, 필요시 height: 150px 등으로 고정 가능 */
-    margin-bottom: 25px; /* 타이틀과 아래 본문 사이의 간격 */
+    height: 184px;
+
+    background-image: url('../images/sub_top_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #sub > div > img {
-    display: block;    /* 이미지 하단 미세 공백 제거 */
-    width: 100%;       /* 컨테이너 너비(980px)에 가득 채우기 */
-    height: auto;      /* 이미지 비율 유지 */
+    position: absolute;
+    left: 10px;
+    top: 130px;
 }
 
-/* 본문 레이아웃 (콘텐츠 + 사이드바) */
+/* 본문 전체 */
 #sub > .introduce {
-    width: 100%;
-    margin-top: 30px;
-    overflow: hidden; /* float 해제 */
+    width: 980px;
+    height: 650px;
+    overflow: hidden;
 }
 
-/* 왼쪽 사이드바 */
+/* 왼쪽 사이드 */
 #sub > .introduce > aside {
     float: left;
-    width: 175px;
+    width: 176px;
+    height: 650px;
+    background: url("../images/sub_aside_bg_line.png") no-repeat right top;
 }
-/* 오른쪽 본문 영역 */
+
+#sub > .introduce > aside > img {
+    width: 130px;
+    height: 45px;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+
+#sub > .introduce > aside > ul {
+    width: 175px;
+    height: 233px;
+    margin-top: 20px;
+    background: url("../images/sub_aside_bg_lnb.png") no-repeat;
+    padding-top: 26px;
+    box-sizing: border-box;
+}
+
+#sub > .introduce > aside > ul > li {
+    width: 175px;
+    height: 29px;
+    margin-bottom: 6px;
+}
+
+/* lnb 링크 공통 */
+#sub > .introduce > aside > ul > li > a {
+    display: block;
+    width: 175px;
+    height: 29px;
+    font-size: 0;
+}
+
+/* 기본 이미지 */
+#sub > .introduce > aside > ul > li:nth-child(1) > a {
+    background-image: url('../images/sub_cate1_lnb1.png');
+}
+
+#sub > .introduce > aside > ul > li:nth-child(2) > a {
+    background-image: url('../images/sub_cate1_lnb2.png');
+}
+
+/* hover */
+#sub > .introduce > aside > ul > li:nth-child(1) > a:hover {
+    background-image: url('../images/sub_cate1_lnb1_ov.png');
+}
+
+#sub > .introduce > aside > ul > li:nth-child(2) > a:hover {
+    background-image: url('../images/sub_cate1_lnb2_ov.png');
+}
+
+/* 현재 페이지 */
+#sub > .introduce > aside > ul > li.on:nth-child(1) > a {
+    background-image: url('../images/sub_cate1_lnb1_ov.png');
+}
+
+#sub > .introduce > aside > ul > li.on:nth-child(2) > a {
+    background-image: url('../images/sub_cate1_lnb2_ov.png');
+}
+
+/* 오른쪽 본문 */
 #sub > .introduce > article {
     float: right;
-    width: 750px; /* 980 - 175 - 여백 */
+    width: 802px;
+    height: 650px;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+#sub > .introduce > article > nav {
+    position: relative;
+    width: 762px;
+    height: 72px;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+#sub > .introduce > article > nav > img {
+    position: absolute;
+    left: 0;
+    top: 41px;
+    height: 26px;
+}
+
+#sub > .introduce > article > nav > p {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    color: #666;
+}
+
+#sub > .introduce > article > nav > p img {
+    vertical-align: middle;
+}
+
+#sub > .introduce > article > nav > p strong {
+    font-weight: bold;
+    color: #91ba15;
+}
+
+#sub > .introduce > article > .intro-img {
+    display: block;
+    width: 759px;
+    height: 162px;
+    margin-top: 40px;
+}
+
+#sub > .introduce > article p {
+    color: #666;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 14px;
+}
+
+#sub > .introduce > article p strong {
+    color: #91ba15;
+    font-weight: bold;
+}
+
+#sub > .introduce > article h3 {
+    color: #91ba15;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* direction 전용 */
+#sub > .introduce > article .content {
+    margin-top: 40px;
+}
+
+#sub > .introduce > article .content strong {
+    color: #91ba15;
+    font-weight: bold;
+}
+
+#sub > .introduce > article .map-title {
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+
+#daumRoughmapContainer1668214668575 {
+    width: 760px;
+    height: 400px;
 }
 
 /* 푸터 */

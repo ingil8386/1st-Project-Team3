@@ -41,49 +41,57 @@
         <img src="../images/sub_aside_cate1_tit.png" alt="팜스토리소개">
 
         <ul class="lnb">
-            <li class="on">
+            <li>
                 <a href="./greeting.html">인사말</a>
             </li>
 
-            <li>
+            <li class="on">
                 <a href="./direction.html">찾아오시는 길</a>
             </li>
         </ul>       
     </aside>
 
-<article>
-    <nav>
-        <img src="../images/sub_nav_tit_cate1_tit1.png" alt="인사말">
+    <article>
+        <nav>
+            <img src="../images/sub_nav_tit_cate1_tit2.png" alt="찾아오시는길">
 
-        <p>
-            <img src="../images/sub_page_nav_ico.gif" alt="">
-            HOME > 팜스토리소개 > <strong>인사말</strong>
-        </p>
-    </nav>
+            <p>
+                HOME > 팜스토리소개 >
+                <strong>찾아오시는길</strong>
+            </p>
+        </nav>
 
-    <!-- 내용 시작 -->
-    <img class="intro-img" src="../images/sub_page1_article_txt.png" alt="건강한 먹거리를 위해 노력합니다.">
+        <div class="content">
+            <p>
+                <strong>팜스토리</strong><br>
+                주소 : 경기도 이천시 잘한다구 신난다동 123<br>
+                전화 : 01-234-5678
+            </p>
 
-    <p>
-        항상 저희 팜스토리를 성원해 주시고 관심을 가져주시는 모든 분들께 감사의 인사를 드리며<br>
-        가정에 건강과 행복이 가득하시길 기원합니다.
-    </p>
+            <p class="map-title">
+                <strong>찾아오시는길</strong>
+            </p>
 
-    <p>
-        팜스토리는 신선하고 안전한 먹거리로 건강한 삶 만들기에 기여합니다.<br>
-        보다 좋은 농산품을 공급하기 위해 화학비료를 쓰지 않는 건강한 흙에서 유기농업으로 정성을 다해 지은 농사를 통해 믿고 먹을 수 있는 먹거리 제공에 앞장서겠습니다.
-    </p>
+            <div id="daumRoughmapContainer1668214668575"
+                class="root_daum_roughmap root_daum_roughmap_landing"></div>
 
-    <p>
-        <strong>친환경 농장</strong><br>
-        팜스토리는 경기도 이천에 위치한 10만평 규모의 유기농 재배단지입니다.
-    </p>
+            <script charset="UTF-8"
+                    class="daum_roughmap_loader_script"
+                    src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
 
-    <p>
-        <strong>친환경 캠페인</strong><br>
-        팜스토리는 2차 포장재 사용을 줄임으로써 친환경적인 포장과, 친환경적인 소비문화 정착을 위해 노력합니다.
-    </p>
-</article>
+            <script charset="UTF-8"
+                    src="https://t1.kakaocdn.net/kakaomapweb/roughmap/place/prod/207038f2_1774248312945/roughmapLander.js"></script>
+
+            <script charset="UTF-8">
+                new daum.roughmap.Lander({
+                    "timestamp": "1668214668575",
+                    "key": "2ci7x",
+                    "mapWidth": "760",
+                    "mapHeight": "400"
+                }).render();
+            </script>
+        </div>
+    </article>
 </section>
         </div>
 
