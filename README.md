@@ -99,7 +99,7 @@ farmstory/
 │
 ├── about/
 │   ├── greeting.html                       # 팜스토리 > 인사말
-│   └── location.html                       # 팜스토리 > 찾아오시는 길
+│   └── direction.html                       # 팜스토리 > 찾아오시는 길
 │
 ├── market/
 │   ├── list.html                           # 장보기 > 상품목록
@@ -156,7 +156,7 @@ farmstory/
 │       └── list.html                       # 관리자 > 회원목록
 │
 ├── css/
-│   ├── style.css                           # 공통 스타일
+│   ├── common.css                           # 공통 스타일
 │   ├── main.css                            # 메인 페이지 스타일
 │   ├── sub.css                             # 일반 서브 페이지 스타일
 │   ├── market.css                          # 장보기 페이지 스타일
