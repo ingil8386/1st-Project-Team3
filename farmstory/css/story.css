@@ -1621,7 +1621,7 @@ input[type="number"]::-webkit-outer-spin-button {
   right: 0;
   top: -16px;  
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* 글목록 */
@@ -1629,10 +1629,17 @@ input[type="number"]::-webkit-outer-spin-button {
   position: relative;
   width: 100%;
   height: auto;
+  top: 30px;
+}
+#board > .list > nav > h1 {
+  position: absolute;
+  left: -520px;
+  top: -5px;
 }
 
 #board > .list > nav > form {
-  float: right;
+  position: relative;
+  bottom: 15px;
 }
 
 #board > .list > nav > form > input[name=search]{
