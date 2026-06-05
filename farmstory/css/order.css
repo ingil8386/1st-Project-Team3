@@ -1,0 +1,116 @@
+/* =========================================================
+   1. 초기화 및 공통 레이아웃
+========================================================= */
+* { margin: 0; padding: 0; font: normal 12px '돋움'; box-sizing: border-box; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color: #111; }
+input, textarea { outline: none; }
+
+#container { width: 980px; height: auto; margin: 0 auto; }
+
+/* =========================================================
+   2. 헤더 (Header) - 배경 경로 교정
+========================================================= */
+header { position: relative; width: 100%; height: 142px; background: url('../../images/head_top_line.png') no-repeat; margin-bottom: 10px; }
+header > .logo { position: absolute; left: 50%; top: 20px; margin-left: -95px; }
+header > p { float: right; margin-top: 16px; }
+header > p > a { padding: 0 5px; }
+header > .text { float: right; clear: both; margin-top: 26px; }
+
+header > .gnb { position: absolute; left: 0; bottom: 0; width: 100%; height: 50px; }
+header > .gnb > li { position: relative; float: left; width: 20%; height: 100%; background-image: url('../../images/head_menu_line.png'); background-repeat: no-repeat; background-position: 0 -7px; }
+
+/* 장보기 메뉴 뱃지 이미지 위치 제어 */
+header > .gnb > li:nth-child(2)::after { content: ''; position: absolute; width: 37px; height: 34px; top: -16px; left: 98px; background-image: url('../../images/head_menu_badge.png'); background-size: cover; background-repeat: no-repeat; }
+
+/* GNB 메뉴별 배경 이미지 등록 및 오버 효과 */
+header > .gnb > li > a { display: block; width: 100%; height: 100%; font-size: 0; background-position: 0 8px; background-repeat: no-repeat; }
+header > .gnb > li:nth-child(1) > a { background-image: url('../../images/head_menu1.png'); }
+header > .gnb > li:nth-child(2) > a { background-image: url('../../images/head_menu2.png'); }
+header > .gnb > li:nth-child(3) > a { background-image: url('../../images/head_menu3.png'); }
+header > .gnb > li:nth-child(4) > a { background-image: url('../../images/head_menu4.png'); }
+header > .gnb > li:nth-child(5) > a { background-image: url('../../images/head_menu5.png'); }
+header > .gnb > li:nth-child(1) > a:hover { background-image: url('../../images/head_menu1_ov.png'); }
+header > .gnb > li:nth-child(2) > a:hover { background-image: url('../../images/head_menu2_ov.png'); }
+header > .gnb > li:nth-child(3) > a:hover { background-image: url('../../images/head_menu3_ov.png'); }
+header > .gnb > li:nth-child(4) > a:hover { background-image: url('../../images/head_menu4_ov.png'); }
+header > .gnb > li:nth-child(5) > a:hover { background-image: url('../../images/head_menu5_ov.png'); }
+
+/* =========================================================
+   3. 서브 공통 및 레이아웃 배치
+========================================================= */
+#sub { width: 100%; min-height: 650px; }
+#sub > div:first-child { position: relative; width: 100%; height: 184px; background-image: url('../../images/sub_top_bg.jpg'); background-repeat: no-repeat; background-size: cover; }
+#sub > div:first-child > img { position: absolute; left: 10px; top: 130px; }
+
+/* 본문 영역 구조 매핑 (.market) */
+#sub > .market { width: 980px; min-height: 650px; overflow: hidden; margin-top: 40px; margin-bottom: 40px; }
+
+/* 좌측 사이드 메뉴 (Aside) */
+#sub > .market > aside { float: left; width: 176px; min-height: 650px; background: url("../../images/sub_aside_bg_line.png") no-repeat right top; }
+#sub > .market > aside > img { width: 103px; height: 45px; margin-top: 16px; margin-left: 16px; }
+#sub > .market > aside > .lnb { width: 175px; height: 233px; margin-top: 20px; background: url("../../images/sub_aside_bg_lnb.png") no-repeat; padding-top: 26px; box-sizing: border-box; }
+#sub > .market > aside > .lnb > li { width: 175px; height: 29px; margin-bottom: 6px; }
+#sub > .market > aside > .lnb > li > a { display: block; width: 175px; height: 29px; font-size: 0; background-image: url('../../images/sub_cate2_lnb1.png'); }
+#sub > .market > aside > .lnb > li.on > a, 
+#sub > .market > aside > .lnb > li > a:hover { background-image: url('../../images/sub_cate2_lnb1_ov.png'); }
+
+/* =========================================================
+   4. 우측 주문상품 본문 영역 (.order)
+========================================================= */
+#sub > .market > .order { float: right; width: 802px; min-height: 650px; padding-left: 40px; box-sizing: border-box; }
+
+/* 네비게이션 서브 경로 */
+#sub > .market > .order > nav { position: relative; width: 762px; height: 72px; border-bottom: 1px solid #c2c2c2; margin-bottom: 20px; }
+#sub > .market > .order > nav > img { position: absolute; left: 0; top: 41px; height: 26px; }
+#sub > .market > .order > nav > p { position: absolute; right: 0; top: 30px; color: #666; }
+#sub > .market > .order > nav > p > em { font-weight: bold; color: #91ba15; font-style: normal; }
+
+/* 상단 타이틀 탭 */
+#sub > .market > .order > .sort { text-align: left; margin-bottom: 15px; }
+#sub > .market > .order > .sort > a { display: inline-block; padding: 5px 12px; background: #91ba15; color: #fff; font-weight: bold; border-radius: 3px; }
+
+/* 발주 주문내역 테이블 */
+#sub > .market > .order > table { width: 762px; border-collapse: collapse; border-top: 2px solid #000; border-bottom: 1px solid #ccc; text-align: center; }
+#sub > .market > .order > table th { padding: 12px 0; border-bottom: 1px solid #e9e9e9; background: #f9f9f9; font-weight: bold; color: #333; }
+#sub > .market > .order > table td { padding: 12px 0; border-bottom: 1px solid #e9e9e9; vertical-align: middle; color: #555; }
+#sub > .market > .order > table td .thumb { width: 60px; height: 60px; border: 1px solid #ddd; display: block; margin: 0 auto; }
+#sub > .market > .order > table td strong { color: #eb4f4b; font-weight: bold; }
+
+/* 5. 우측 정렬 최종 대금 정산 정보 피드 구역 */
+#sub > .market > .order > .final { width: 762px; margin-top: 20px; margin-bottom: 40px; display: flex; flex-direction: column; align-items: flex-end; }
+#sub > .market > .order > .final > table { width: 320px; border-collapse: collapse; border: 1px solid #ccc; background: #fff; }
+#sub > .market > .order > .final > table caption { font-size: 14px; font-weight: bold; text-align: left; padding-bottom: 8px; color: #333; border-bottom: 2px solid #91ba15; margin-bottom: 5px; }
+#sub > .market > .order > .final > table th { width: 120px; text-align: left; padding: 8px 15px; background: #f9f9f9; border-bottom: 1px solid #ddd; color: #666; }
+#sub > .market > .order > .final > table td { text-align: right; padding: 8px 15px; border-bottom: 1px solid #ddd; color: #333; font-weight: bold; }
+#sub > .market > .order > .final > table tr:last-child td { color: #d60a0a; font-size: 14px; background: #fff6f6; }
+
+/* 결제하기 대형 버튼 */
+.btnOrder { width: 320px; margin-top: 12px; padding: 13px 0; background: #91ba15; color: #fff; font-size: 15px; font-weight: bold; border: none; cursor: pointer; text-align: center; border-radius: 3px; }
+.btnOrder:hover { background: #7ba20f; }
+
+/* =========================================================
+   6. 배송지 및 주문 정보 입력 폼 (.shipping)
+========================================================= */
+#sub > .market > .order > h3 { color: #444; font-size: 14px; font-weight: bold; padding-bottom: 8px; border-bottom: 1px solid #91ba15; margin-top: 40px; margin-bottom: 15px; width: 762px; text-align: left; }
+
+.shipping { width: 762px; margin-bottom: 60px; }
+.shipping table { width: 100%; border-collapse: collapse; border-bottom: 1px solid #ccc; text-align: left; }
+.shipping tr td:first-child { width: 130px; background: #f9f9f9; padding: 12px 15px; font-weight: bold; color: #505050; border-top: 1px solid #e9e9e9; }
+.shipping tr td:last-child { padding: 10px 15px; border-top: 1px solid #e9e9e9; vertical-align: middle; }
+
+/* 입력 컨트롤 전용 세부 제어 */
+.shipping input[type="text"] { height: 28px; border: 1px solid #ccc; padding: 0 8px; color: #333; }
+.shipping input[readonly] { background: #f5f5f5; border: 1px solid #ddd; color: #666; }
+.shipping button { height: 28px; padding: 0 12px; background: #4f4f4f; color: #fff; border: none; cursor: pointer; font-size: 11px; vertical-align: top; margin-left: 4px; }
+.shipping textarea { width: 100%; height: 80px; border: 1px solid #ccc; padding: 8px; resize: none; }
+.shipping label { display: inline-block; margin-right: 20px; cursor: pointer; }
+.shipping label input { margin-right: 4px; vertical-align: -2px; }
+
+/* =========================
+   7. 푸터 (Footer) - 배경 경로 교정
+========================= */
+footer { position: relative; width: 100%; height: 120px; border-top: 1px solid #D1CAB2; box-sizing: border-box; clear: both; padding-top: 25px; }
+footer > img { float: left; margin-left: 0; width: 174px; height: 64px; }
+footer > p { float: left; margin-left: 70px; color: #585858; font-size: 11px; line-height: 18px; }
+footer > p > em { display: block; margin-top: 10px; color: #888888; font-style: normal; font-size: 10px; }

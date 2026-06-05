@@ -1,0 +1,95 @@
+/* =========================
+   1. 초기화 및 공통
+========================= */
+* { margin: 0; padding: 0; font: normal 12px '돋움'; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color: #111; }
+input, textarea { outline: none; }
+
+#container { width: 980px; height: auto; margin: 0 auto; }
+
+/* =========================
+   2. 헤더 (Header)
+========================= */
+header { position: relative; width: 100%; height: 142px; background: url('../images/head_top_line.png') no-repeat; margin-bottom: 10px; }
+header > .logo { position: absolute; left: 50%; top: 20px; margin-left: -95px; }
+header > p { float: right; margin-top: 16px; }
+header > p > a { padding: 0 5px; }
+header > .text { float: right; clear: both; margin-top: 26px; }
+
+header > .gnb { position: absolute; left: 0; bottom: 0; width: 100%; height: 50px; }
+header > .gnb > li { position: relative; float: left; width: 20%; height: 100%; background-image: url('../images/head_menu_line.png'); background-repeat: no-repeat; background-position: 0 -7px; }
+
+/* 뱃지는 HTML 태그 내 이미지로 처리되었으므로 가상요소 대신 이미지 위치를 잡아줍니다. */
+header > .gnb > li > a > img { position: absolute; top: -16px; left: 98px; width: 37px; }
+
+header > .gnb > li > a { display: block; width: 100%; height: 100%; font-size: 0; background-position: 0 8px; background-repeat: no-repeat; }
+header > .gnb > li:nth-child(1) > a { background-image: url('../images/head_menu1.png'); }
+header > .gnb > li:nth-child(2) > a { background-image: url('../images/head_menu2.png'); }
+header > .gnb > li:nth-child(3) > a { background-image: url('../images/head_menu3.png'); }
+header > .gnb > li:nth-child(4) > a { background-image: url('../images/head_menu4.png'); }
+header > .gnb > li:nth-child(5) > a { background-image: url('../images/head_menu5.png'); }
+header > .gnb > li:nth-child(1) > a:hover { background-image: url('../images/head_menu1_ov.png'); }
+header > .gnb > li:nth-child(2) > a:hover { background-image: url('../images/head_menu2_ov.png'); }
+header > .gnb > li:nth-child(3) > a:hover { background-image: url('../images/head_menu3_ov.png'); }
+header > .gnb > li:nth-child(4) > a:hover { background-image: url('../images/head_menu4_ov.png'); }
+header > .gnb > li:nth-child(5) > a:hover { background-image: url('../images/head_menu5_ov.png'); }
+
+/* =========================
+   3. 서브 공통 및 Layout
+========================= */
+#sub { width: 100%; min-height: 650px; }
+#sub > div:first-child { position: relative; width: 100%; height: 184px; background-image: url('../images/sub_top_bg.jpg'); background-repeat: no-repeat; background-size: cover; }
+#sub > div:first-child > img { position: absolute; left: 10px; top: 130px; }
+
+/* 본문 영역 (.market) */
+#sub > .market { width: 980px; min-height: 650px; overflow: hidden; margin-top: 40px; margin-bottom: 40px; }
+
+/* 좌측 메뉴 (Aside) */
+#sub > .market > aside { float: left; width: 176px; min-height: 650px; background: url("../images/sub_aside_bg_line.png") no-repeat right top; }
+#sub > .market > aside > img { width: 103px; height: 45px; margin-top: 16px; margin-left: 16px; }
+#sub > .market > aside > .lnb { width: 175px; height: 233px; margin-top: 20px; background: url("../images/sub_aside_bg_lnb.png") no-repeat; padding-top: 26px; box-sizing: border-box; }
+#sub > .market > aside > .lnb > li { width: 175px; height: 29px; margin-bottom: 6px; }
+#sub > .market > aside > .lnb > li > a { display: block; width: 175px; height: 29px; font-size: 0; background-image: url('../images/sub_cate2_lnb1.png'); }
+#sub > .market > aside > .lnb > li.on > a, 
+#sub > .market > aside > .lnb > li > a:hover { background-image: url('../images/sub_cate2_lnb1_ov.png'); }
+
+/* =========================
+   4. 우측 본문 (.list)
+========================= */
+#sub > .market > .list { float: right; width: 802px; min-height: 650px; padding-left: 40px; box-sizing: border-box; }
+
+/* 네비게이션 */
+#sub > .market > .list > nav { position: relative; width: 762px; height: 72px; border-bottom: 1px solid #c2c2c2; margin-bottom: 20px; }
+#sub > .market > .list > nav > img { position: absolute; left: 0; top: 41px; height: 26px; }
+#sub > .market > .list > nav > p { position: absolute; right: 0; top: 30px; color: #666; }
+#sub > .market > .list > nav > p > em { font-weight: bold; color: #91ba15; font-style: normal; }
+
+/* 정렬 탭 */
+#sub > .market > .list > .sort { text-align: right; margin-bottom: 10px; color: #666; }
+#sub > .market > .list > .sort > a { color: #666; padding: 0 5px; }
+#sub > .market > .list > .sort > a.on { font-weight: bold; color: #111; }
+
+/* 장보기 테이블 */
+#sub > .market > .list > table { width: 100%; border-top: 2px solid #000; border-bottom: 1px solid #ccc; border-collapse: collapse; text-align: center; }
+#sub > .market > .list > table th { padding: 12px 0; border-bottom: 1px solid #e9e9e9; background: #f9f9f9; font-weight: bold; }
+#sub > .market > .list > table td { padding: 12px 0; border-bottom: 1px solid #e9e9e9; vertical-align: middle; color: #555; }
+#sub > .market > .list > table td .thumbnail { width: 80px; height: 80px; border: 1px solid #ddd; display: block; margin: 0 auto; }
+#sub > .market > .list > table td.title { text-align: left; padding-left: 15px; font-weight: bold; font-size: 13px; }
+#sub > .market > .list > table td.title a:hover { text-decoration: underline; color: #91ba15; }
+#sub > .market > .list > table td.price { text-align: right; padding-right: 20px; }
+#sub > .market > .list > table td.price strong { display: block; color: #eb4f4b; font-size: 15px; margin-bottom: 3px; }
+#sub > .market > .list > table td.price del { color: #999; font-size: 11px; }
+
+/* 페이징 */
+#sub > .market > .list > .paging { text-align: center; margin-top: 40px; margin-bottom: 40px; font-size: 14px; }
+#sub > .market > .list > .paging > a { display: inline-block; margin: 0 3px; color: #666; }
+#sub > .market > .list > .paging > a.on { font-weight: bold; color: #91ba15; text-decoration: underline; }
+
+/* =========================
+   5. 푸터 (Footer)
+========================= */
+footer { position: relative; width: 100%; height: 120px; border-top: 1px solid #D1CAB2; box-sizing: border-box; clear: both; padding-top: 25px; }
+footer > img { float: left; margin-left: 0; width: 174px; height: 64px; }
+footer > p { float: left; margin-left: 70px; color: #585858; font-size: 11px; line-height: 18px; }
+footer > p > em { display: block; margin-top: 10px; color: #888888; font-style: normal; font-size: 10px; }
