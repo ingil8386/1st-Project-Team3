@@ -1,10 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <title>관리자::회원목록</title>
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/admin.css">
 </head>
 
 <body>
@@ -14,12 +15,12 @@
         <!-- 헤더 -->
         <header>
             <div class="header_inner">
-                <a href="../admin.html">
+                <a href="../admin.do">
                     <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
-                    <a href="../admin.html">HOME</a>
+                    <a href="../admin.do">HOME</a>
                     <span>|</span>
                     <a href="#">로그아웃</a>
                     <span>|</span>
@@ -39,22 +40,22 @@
                     <div class="menu">
                         <h4>상품관리</h4>
                         <ul>
-                            <li><a href="../product/product_list.html">상품목록</a></li>
-                            <li><a href="../product/product_register.html">상품등록</a></li>
+                            <li><a href="../product/product_list.do">상품목록</a></li>
+                            <li><a href="../product/product_register.do">상품등록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <h4>주문관리</h4>
                         <ul>
-                            <li><a href="../order/order_list.html">주문목록</a></li>
+                            <li><a href="../order/order_list.do">주문목록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <h4>회원관리</h4>
                         <ul>
-                            <li><a href="../user/user_list.html">회원목록</a></li>
+                            <li><a href="../user/user_list.do">회원목록</a></li>
                         </ul>
                     </div>
                 </aside>
