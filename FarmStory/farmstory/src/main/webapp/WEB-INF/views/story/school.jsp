@@ -3,49 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::텃밭가꾸기</title>
-    <link rel="stylesheet" href="/farmstory//css/story.css">
+    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/story.css">
 </head>
 <body>
     <div id="container">
         <header>
-            <a href="/farmstory/index.html" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고" /></a>
+            <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/index.jsp" class="logo"><img src="/FarmStory/farmstory/src/main/webapp/images/logo.png" alt="메인로고" /></a>
             <p>
-                <a href="/farmstory/index.html">HOME |</a>
+                <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/index.jsp">HOME |</a>
                 <a href="#">로그인 |</a>
                 <a href="#">회원가입 |</a>                
                 <a href="#">나의정보 |</a>
                 <a href="#">로그아웃 |</a>
-                <a href="/farmstory/admin/admin.html">관리자 |</a>
+                <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/admin/admin.jsp">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
-            <img src="/farmstory/images/head_txt_img.png" alt="3만원 이상 무료배송"/>
+            <img src="/FarmStory/farmstory/src/main/webapp/images/head_txt_img.png" alt="3만원 이상 무료배송"/>
             
             <ul class="gnb">
-                <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.html"><img src="/farmstory/images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
-                <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.html">커뮤니티</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/about/greeting.jsp">팜스토리소개</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/market/list.jsp"><img src="/FarmStory/farmstory/src/main/webapp/images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/story/intro.jsp">농작물이야기</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/event/calendar.jsp">이벤트</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/community/notice.jsp">커뮤니티</a></li>
             </ul>
         </header>
+
         <div id="sub">
-            <div><img src="/farmstory/images/sub_top_tit3.png" alt="CROP TALK"></div>
+            <div><img src="/FarmStory/farmstory/src/main/webapp/images/sub_top_tit3.png" alt="CROP TALK"></div>
             <section class="croptalk">
                 <aside>
-                    <img src="/farmstory/images/sub_aside_cate3_tit.png" alt="농작물이야기"/>
+                    <img src="/FarmStory/farmstory/src/main/webapp/images/sub_aside_cate3_tit.png" alt="농작물이야기"/>
 
                     <ul class="lnb">
-                        <li ><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                        <li class="on"><a href="/farmstory/story/garden.html">텃밭가꾸기</a></li>
-                        <li ><a href="/farmstory/story/school.html">귀농학교</a></li>
+                        <li ><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/story/intro.jsp">농작물이야기</a></li>
+                        <li class="on"><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/story/garden.jsp">텃밭가꾸기</a></li>
+                        <li ><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/story/school.jsp">귀농학교</a></li>
                     </ul>
 
                 </aside>
                 <article id="board">
                     <nav>
-                        <img src="/farmstory/images/sub_nav_tit_cate3_tit2.png" alt="텃밭가꾸기"/>
+                        <img src="/FarmStory/farmstory/src/main/webapp/images/sub_nav_tit_cate3_tit3.png" alt="귀농학교"/>
                         <p>
-                            HOME > 농작물이야기 > <em>텃밭가꾸기</em>
+                            HOME > 농작물이야기 > <em>귀농학교</em>
                         </p>
                     </nav>
 
@@ -69,21 +70,21 @@
                             </tr>                    
                             <tr>
                                 <td>3</td>
-                                <td><a href="./view.html">텃밭가꾸기 게시물입니다.[3]</a></td>
+                                <td><a href="./view.html">귀농학교 게시물입니다.[3]</a></td>
                                 <td>길동이</td>
                                 <td>20-05-12</td>
                                 <td>12</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td><a href="./view.html">텃밭가꾸기 게시물입니다.[3]</a></td>
+                                <td><a href="./view.html">귀농학교 게시물입니다.[3]</a></td>
                                 <td>길동이</td>
                                 <td>20-05-12</td>
                                 <td>12</td>
                             </tr>
                             <tr>
                                 <td>1</td>
-                                <td><a href="./view.html">텃밭가꾸기 게시물입니다.[3]</a></td>
+                                <td><a href="./view.html">귀농학교 게시물입니다.[3]</a></td>
                                 <td>길동이</td>
                                 <td>20-05-12</td>
                                 <td>12</td>
@@ -100,8 +101,8 @@
         
                         <a href="./write.html" class="btn btnWrite">글쓰기</a>                        
                     </section>
-
                     <!-- 내용 끝 -->
+
                 </article>
             </section>
 
@@ -109,7 +110,7 @@
         
         
         <footer>
-            <img src="/farmstory/images/footer_logo.png" alt="로고"/>
+            <img src="/FarmStory/farmstory/src/main/webapp/images/footer_logo.png" alt="로고"/>
             <p>
                 (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br />
                 등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br />
