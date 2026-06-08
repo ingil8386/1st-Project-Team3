@@ -46,13 +46,13 @@
                 </aside>
                 <article id="board">
                     <nav>
-                        <img src="/FarmStory/farmstory/src/main/webapp/images/sub_nav_tit_cate3_tit1.png" alt="농작물이야기"/>
+                        <img src="/FarmStory/farmstory/src/main/webapp/images/sub_nav_tit_cate3_tit3.png" alt="귀농학교"/>
                         <p>
-                            HOME > 농작물이야기 > <em>농작물이야기</em>
+                            HOME > 농작물이야기 > <em>귀농학교</em>
                         </p>
                     </nav>
 
-                    <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->                    
+                    <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
                     <section class="list">
                         <nav>
                             <h1>글목록</h1>
@@ -72,21 +72,21 @@
                             </tr>                    
                             <tr>
                                 <td>3</td>
-                                <td><a href="./view.html">농작물 이야기 게시물입니다.[3]</a></td>
+                                <td><a href="./view.html">귀농학교 게시물입니다.[3]</a></td>
                                 <td>길동이</td>
                                 <td>20-05-12</td>
                                 <td>12</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td><a href="./view.html">농작물 이야기 게시물입니다.[3]</a></td>
+                                <td><a href="./view.html">귀농학교 게시물입니다.[3]</a></td>
                                 <td>길동이</td>
                                 <td>20-05-12</td>
                                 <td>12</td>
                             </tr>
                             <tr>
                                 <td>1</td>
-                                <td><a href="./view.html">농작물 이야기 게시물입니다.[3]</a></td>
+                                <td><a href="./view.html">귀농학교 게시물입니다.[3]</a></td>
                                 <td>길동이</td>
                                 <td>20-05-12</td>
                                 <td>12</td>
