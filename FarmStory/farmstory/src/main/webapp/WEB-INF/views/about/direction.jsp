@@ -25,7 +25,7 @@
 
             <!-- 메인 메뉴(GNB) -->
             <ul class="gnb">
-                <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
+                <li><a href="/farmstory/about/greeting.jsp">팜스토리소개</a></li>
                 <li><a href="/farmstory/market/">장보기</a></li>
                 <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
                 <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
