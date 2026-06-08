@@ -1,31 +1,32 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::상품목록</title>
-    <link rel="stylesheet" href="/farmstory/css/list.css">
+    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/list.css">
 </head>
 <body>
     <div id="container">
         <header>
-            <a href="/farmstory/index.html" class="logo"><img src="/farmstory/images/logo.png" alt="로고"></a>
+            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="로고"></a>
             <p>
-                <a href="/farmstory/index.html">HOME |</a>
-                <a href="/farmstory/user/login.html">로그인 |</a>
-                <a href="/farmstory/user/terms.html">회원가입 |</a>       
+                <a href="/farmstory/index.do">HOME |</a>
+                <a href="/farmstory/user/login.do">로그인 |</a>
+                <a href="/farmstory/user/terms.do">회원가입 |</a>       
                 <a href="#">나의정보 |</a>
                 <a href="#">로그아웃 |</a>
-                <a href="/farmstory/admin/admin.html">관리자 |</a>
+                <a href="/farmstory/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
             <img src="/farmstory/images/head_txt_img.png" alt="3만원 이상 무료배송" class="text">
             
             <ul class="gnb">
-               <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/cart.html">장보기</a></li>
-                <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
-                <li><a href="/farmstory//community/notice.html">커뮤니티</a></li>
+               <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
+                <li><a href="/farmstory/market/cart.do">장보기</a></li>
+                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
+                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
+                <li><a href="/farmstory//community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
 
@@ -36,7 +37,7 @@
                 <aside>
                     <img src="/farmstory/images/sub_aside_cate2_tit.png" alt="장보기">
                     <ul class="lnb">
-                        <li class="on"><a href="/farmstory/market/list.html">장보기</a></li>
+                        <li class="on"><a href="/farmstory/market/list.do">장보기</a></li>
                     </ul>
                 </aside>
                 
@@ -69,7 +70,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <a href="/farmstory/market/detail.html"><img src="/farmstory/images/market_item1.jpg" class="thumbnail" alt="사과 500g"></a>
+                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item1.jpg" class="thumbnail" alt="사과 500g"></a>
                                 </td>
                                 <td class="type">과일</td>
                                 <td class="title"><a href="#">사과 500g</a></td>
@@ -82,7 +83,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="/farmstory/market/detail.html"><img src="/farmstory/images/market_item2.jpg" class="thumbnail" alt="배 5kg"></a>
+                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item2.jpg" class="thumbnail" alt="배 5kg"></a>
                                 </td>
                                 <td class="type">과일</td>
                                 <td class="title"><a href="#">전남 완주 배 5kg</a></td>
@@ -95,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="/farmstory/market/detail.html"><img src="/farmstory/images/market_item3.jpg" class="thumbnail" alt="방울토마토"></a>
+                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item3.jpg" class="thumbnail" alt="방울토마토"></a>
                                 </td>
                                 <td class="type">과일</td>
                                 <td class="title"><a href="#">방울 토마토</a></td>
@@ -108,7 +109,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="/farmstory/market/detail.html"><img src="/farmstory/images/market_item6.jpg" class="thumbnail" alt="현미"></a>
+                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item6.jpg" class="thumbnail" alt="현미"></a>
                                 </td>
                                 <td class="type">곡류</td>
                                 <td class="title"><a href="#">무농약 현미</a></td>
@@ -121,7 +122,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="/farmstory/market/detail.html"><img src="/farmstory/images/market_item7.jpg" class="thumbnail" alt="샐러드"></a>
+                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item7.jpg" class="thumbnail" alt="샐러드"></a>
                                 </td>
                                 <td class="type">야채</td>
                                 <td class="title"><a href="#">팜스토리 하루야채 샐러드</a></td>

@@ -1,31 +1,32 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::나도요리사</title>
-    <link rel="stylesheet" href="/farmstory/css/community.css"/>
+    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/community.css"/>
 </head>
 <body>
     <div id="container">
         <header>
-            <a href="/farmstory/index.html" class="logo"><img src="/farmstory/images/logo.png" alt="로고"/></a>
+            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="로고"/></a>
             <p>
-                <a href="/farmstory/index.html">HOME |</a>
-                <a href="/farmstory/user/login.html">로그인</a>|
-                <a href="/farmstory/user/terms.html">회원가입</a>|              
+                <a href="/farmstory/index.do">HOME |</a>
+                <a href="/farmstory/user/login.do">로그인</a>|
+                <a href="/farmstory/user/terms.do">회원가입</a>|              
                 <a href="#">나의정보 |</a>
                 <a href="#">로그아웃 |</a>
-                <a href="/farmstory/admin/admin.html">관리자 |</a>
+                <a href="/farmstory/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
             <img src="/farmstory/images/head_txt_img.png" alt="3만원 이상 무료배송"/>
             
             <ul class="gnb">
-                <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.html"><img src="/farmstory/images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
-                <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.html">커뮤니티</a></li>
+                <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
+                <li><a href="/farmstory/market/list.do"><img src="/farmstory/images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
+                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
+                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
+                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
 
@@ -36,11 +37,11 @@
                     <img src="/farmstory/images/sub_aside_cate5_tit.png" alt="커뮤니티"/>
 
                     <ul class="lnb">
-                        <li><a href="/farmstory/community/notice.html">공지사항</a></li>
-                        <li><a href="/farmstory/community/meal.html">오늘의식단</a></li>
-                        <li class="on"><a href="/farmstory/community/chef.html">나도요리사</a></li>
-                        <li><a href="/farmstory/community/qna.html">1:1고객문의</a></li>
-                        <li><a href="/farmstory/community/faq.html">자주묻는질문</a></li>
+                        <li><a href="/farmstory/community/notice.do">공지사항</a></li>
+                        <li><a href="/farmstory/community/meal.do">오늘의식단</a></li>
+                        <li class="on"><a href="/farmstory/community/chef.do">나도요리사</a></li>
+                        <li><a href="/farmstory/community/qna.do">1:1고객문의</a></li>
+                        <li><a href="/farmstory/community/faq.do">자주묻는질문</a></li>
                     </ul>
 
                 </aside>

@@ -1,10 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <title>관리자::주문목록</title>
-    <link rel="stylesheet" href="/farmstory/css/admin.css">
+    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/admin.css">
 </head>
 
 <body>
@@ -14,12 +15,12 @@
         <!-- 헤더 -->
         <header>
             <div class="header_inner">
-                <a href="/farmstory/admin/admin.html">
-                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
+                <a href="/farmstory/admin/admin.do">
+                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.do" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
-                    <a href="/farmstory/index.html">HOME</a>
+                    <a href="/farmstory/index.do">HOME</a>
                     <span>|</span>
                     <a href="#">로그아웃</a>
                     <span>|</span>
@@ -41,22 +42,22 @@
                     <div class="menu">
                         <strong>상품관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/product/product_list.html">상품목록</a></li>
-                            <li><a href="/farmstory/admin/product/product_register.html">상품등록</a></li>
+                            <li><a href="/farmstory/admin/product/product_list.do">상품목록</a></li>
+                            <li><a href="/farmstory/admin/product/product_register.do">상품등록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <strong>주문관리</strong>
                         <ul>
-                            <li class="active"><a href="/farmstory/admin/order/order_list.html">주문목록</a></li>
+                            <li class="active"><a href="/farmstory/admin/order/order_list.do">주문목록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <strong>회원관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/user/user_list.html">회원목록</a></li>
+                            <li><a href="/farmstory/admin/user/user_list.do">회원목록</a></li>
                         </ul>
                     </div>
                 </aside>
