@@ -1,0 +1,571 @@
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    font: normal 12px '돋움';
+}
+ul, ol {list-style: none;}
+a {text-decoration: none; color: #111;}
+input, textarea {outline: none;}
+
+#container {
+    width: 980px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* 헤더 */
+header {
+    position: relative;
+    width: 100%;
+    height: 142px;
+    background: url('../images/head_top_line.png') no-repeat;            
+    margin-bottom: 10px;
+}
+
+header > .logo {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    margin-left: -95px;
+}
+
+header > p {
+    float: right;
+    margin-top: 16px;
+}
+header > p > a {
+    padding: 0 5px;
+}
+header > .text {
+    float: right;
+    clear: both;
+    margin-top: 26px;
+}
+header > .gnb {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+header > .gnb > li {  
+    position: relative;
+    float: left;      
+    width: 20%;
+    height: 100%;
+    background-image: url('../images/head_menu_line.png');
+    background-repeat: no-repeat;
+    background-position: 0 -7px;
+}
+
+/* 장보기 뱃지 */
+header > .gnb > li:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    width: 37px;
+    height: 34px;
+    top: -16px;
+    left: 98px;
+
+    background-image: url('../images/head_menu_badge.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header > .gnb > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    background-position: 0 8px;
+    background-repeat: no-repeat;
+}
+header > .gnb > li:nth-child(1) > a { background-image: url('../images/head_menu1.png'); }
+header > .gnb > li:nth-child(2) > a { background-image: url('../images/head_menu2.png'); }
+header > .gnb > li:nth-child(3) > a { background-image: url('../images/head_menu3.png'); }
+header > .gnb > li:nth-child(4) > a { background-image: url('../images/head_menu4.png'); }
+header > .gnb > li:nth-child(5) > a { background-image: url('../images/head_menu5.png'); }
+header > .gnb > li:nth-child(1) > a:hover { background-image: url('../images/head_menu1_ov.png'); }
+header > .gnb > li:nth-child(2) > a:hover { background-image: url('../images/head_menu2_ov.png'); }
+header > .gnb > li:nth-child(3) > a:hover { background-image: url('../images/head_menu3_ov.png'); }
+header > .gnb > li:nth-child(4) > a:hover { background-image: url('../images/head_menu4_ov.png'); }
+header > .gnb > li:nth-child(5) > a:hover { background-image: url('../images/head_menu5_ov.png'); }
+
+
+/* 메인 */
+main {
+    width: 100%;
+    min-height: 500px;
+}
+
+main > div {
+    width: 100%;
+    margin-bottom: 10px;
+}
+main > div:nth-child(1) {height: 312px;}
+main > div:nth-child(2) {height: 286px;}
+main > div:nth-child(3) {height:  74px;}
+main > div:nth-child(4) {height: 186px;}
+main > div:nth-child(5) {height: 154px;}
+
+/* 슬라이더 */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 312px;
+    overflow: hidden;
+}
+
+.slider > .slide-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 980px;
+    height: 312px;
+}
+
+.slider > .slide-tit {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    width: 330px;
+    height: 63px;
+}
+
+.slider > .banner {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 230px;
+    height: 312px;
+}
+
+.slider > .banner > .banner-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 230px;
+    height: 312px;
+}
+
+.slider > .banner > .banner-img {
+    position: absolute;
+    left: 10px;
+    top: 175px;
+    width: 197px;
+    height: 129px;
+}
+
+.slider > .banner > .banner-tit {
+    position: absolute;
+    left: 10px;
+    top: 31px;
+    width: 200px;
+    height: 140px;
+}
+
+.slider > .banner > .banner-txt {
+    position: absolute;
+    left: 165px;
+    top: 10px;
+    width: 55px;
+    height: 31px;
+}
+
+/* 장보기 */
+.market {
+    position: relative;
+    width: 100%;
+    height: 225px;
+}
+
+.market > .market-tit {
+    position: absolute;
+    left: 0;
+    margin: 1Opx 0;
+    width: 131px;
+    height: 38px;
+}
+
+/* 상품 목록 */
+.market > section {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 980px;
+    height: 236px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.market > section > article {
+    position: relative;
+    width: 160px;
+    height: 236px;
+    border: 1px solid #eeeeee;
+    background: #ffffff;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.market > section > article:hover {
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+
+/* 상품 이미지 */
+.market > section > article > a {
+    position: absolute;
+    left: 20px;
+    top: 11px;
+    width: 120px;
+    height: 120px;
+}
+
+.market > section > article > a > img {
+    width: 120px;
+    height: 120px;
+}
+
+/* 과일 */
+.market > section > article > h4 {
+    position: absolute;
+    left: 0;
+    top: 142px;
+    width: 100%;
+    height: 14px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    text-align: center;
+}
+
+/* 사과 500g */
+.market > section > article > h3 {
+    position: absolute;
+    left: 0;
+    top: 165px;
+    width: 100%;
+    height: 14px;
+    color: #000000;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    text-align: center;
+}
+
+/* 4,000 10%↓ */
+.market > section > article > p {
+    position: absolute;
+    left: 0;
+    top: 181px;
+    width: 100%;
+    height: 14px;
+    color: #000000;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+}
+
+.market > section > article > p > del {
+    color: #000000;
+    font-size: 10px;
+}
+
+.market > section > article > p > span {
+    color: red;
+    font-size: 10px;
+}
+
+/* 3,600원 */
+.market > section > article > strong {
+    position: absolute;
+    left: 0;
+    top: 202px;
+    width: 100%;
+    height: 17px;
+    color: #0000aa;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 17px;
+    text-align: center;
+}
+
+/* 바로가기  */
+.quick {
+    display: flex;
+}
+.quick > a {
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.quick > a:nth-child(1) { background-image: url('../images/main_banner_sub1_bg.jpg'); }
+.quick > a:nth-child(2) { background-image: url('../images/main_banner_sub2_bg.jpg'); }        
+
+/* 최신글 목록  */
+.latest {
+    display: flex;
+}
+.latest > article {
+    position: relative;
+    width: 100%;
+}
+
+.latest > article > a {
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+.latest > article > img {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+}
+.latest > article > table {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    color: #6a6a6a;
+}
+
+.latest > article > table tr {
+    
+}
+
+.latest > article > table tr > td {            
+}
+.latest > article > table tr > td:nth-child(2) {
+    display: block;
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 18px;
+}
+
+
+/* 기타 정보 안내 */
+.info {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 154px;
+    border-top: 2px solid #756C65;
+    border-bottom: 1px solid #D1CAB2;
+    box-sizing: border-box;
+}
+
+.info > article {
+    position: relative;
+    height: 132px;
+    box-sizing: border-box;
+    margin-top: 12px;
+}
+
+/* 고객센터 */
+.info > .cs {
+    width: 386px;
+}
+
+.info > .cs > .tit {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 74px;
+    height: 14px;
+}
+
+.info > .cs > .tel-img {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 45px;
+    height: 42px;
+}
+
+.info > .cs > .tel-txt {
+    position: absolute;
+    left: 61px;
+    top: 40px;
+    width: 121px;
+    height: 40px;
+}
+
+.info > .cs > p {
+    position: absolute;
+    left: 198px;
+    top: 40px;
+    width: 145px;
+    height: 50px;
+    color: #666;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.info > .cs > a {
+    position: absolute;
+    top: 100px;
+    width: 123px;
+    height: 24px;
+}
+
+.info > .cs > a:nth-of-type(1) {
+    left: 0;자귀
+}
+
+.info > .cs > a:nth-of-type(2) {
+    left: 126px;
+}
+
+.info > .cs > a:nth-of-type(3) {
+    left: 252px;
+}
+
+.info > .cs > a > img {
+    width: 123px;
+    height: 24px;
+}
+
+/* 계좌안내 */
+.info > .account {
+    width: 230px;
+    border-left: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
+}
+
+.info > .account > .tit {
+    position: absolute;
+    left: 17px;
+    top: 6px;
+    width: 49px;
+    height: 14px;
+}
+
+.info > .account > p {
+    position: absolute;
+    left: 17px;
+    top: 38px;
+    width: 170px;
+    height: 86px;
+    color: #666;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+/* 공지사항 */
+.info > .notice {
+    width: 364px;
+}
+
+.info > .notice > .tit {
+    position: absolute;
+    left: 17px;
+    top: 6px;
+    width: 49px;
+    height: 14px;
+}
+
+.info > .notice > table {
+    position: absolute;
+    left: 8px;
+    top: 40px;
+    width: 305px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.info > .notice > table td > a {
+    color: #6A6A6A;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+/* 점 */
+.info > .notice > table td:nth-child(1) {
+    width: 10px;
+}
+
+/* 제목 */
+.info > .notice > table td:nth-child(2) {
+    width: 210px;
+}
+
+.info > .notice > table td:nth-child(2) > a {
+    display: block;
+    width: 210px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 날짜 */
+.info > .notice > table td:nth-child(3) {
+    padding: 0;
+    color: #6A6A6A;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: right;
+}
+/* 푸터 */
+footer {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-top: 1px solid #D1CAB2;
+    box-sizing: border-box;
+}
+
+footer > img {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 174px;
+    height: 64px;
+}
+
+footer > div {
+    position: absolute;
+    left: 254px;
+    top: 27px;
+    width: 710px;
+    height: 71px;
+}
+
+footer > div > p {
+    position: absolute;
+    left: -20px;
+    top: 0px;
+    width: 710px;
+    height: 48px;
+    color: #585858;
+    font-size: 10px;
+    line-height: 18px;
+}
+
+footer .copyright {
+    position: absolute;
+    left: 0;
+    top: 55px;
+    width: 273px;
+    height: 14px;
+    color: #888888;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+footer .version {
+    position: absolute;
+    left: 620px;
+    top: 54px;
+    width: 90px;
+    height: 14px;
+    color: #888888;
+    font-size: 10px;
+    line-height: 14px;
+}

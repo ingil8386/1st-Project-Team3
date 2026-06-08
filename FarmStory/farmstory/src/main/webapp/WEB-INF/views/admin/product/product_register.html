@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자::상품등록</title>
+    <link rel="stylesheet" href="/farmstory/css/admin.css">
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- 헤더 -->
+        <header>
+            <div class="header_inner">
+                <a href="/farmstory/index.html">
+                <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
+                </a>
+
+                <div class="top_menu">
+                    <a href="/farmstory/index.html">HOME</a>
+                    <span>|</span>
+                    <a href="#">로그아웃</a>
+                    <span>|</span>
+                    <a href="#">고객센터</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 -->
+        <main>
+            <div class="main_inner">
+
+                <!-- 좌측 메뉴 -->
+                <aside>
+                    <h3>주요기능</h3>
+
+                    <div class="menu">
+                        <strong>상품관리</strong>
+                        <ul>
+                            <li><a href="/farmstory/admin/product/product_list.html">상품목록</a></li>
+                            <li><a href="/farmstory/admin/product/product_register.html">상품등록</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu">
+                        <strong>주문관리</strong>
+                        <ul>
+                            <li><a href="/farmstory/admin/order/order_list.html">주문목록</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu">
+                        <strong>회원관리</strong>
+                        <ul>
+                            <li><a href="/farmstory/admin/user/user_list.html">회원목록</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 콘텐츠 -->
+                <section class="content">
+                    <h3>상품등록</h3>
+
+                    <form action="#" method="post" enctype="multipart/form-data">
+
+                        <table class="register_table">
+                            <tr>
+                                <th>상품명</th>
+                                <td>
+                                    <input type="text" name="productName">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>종류</th>
+                                <td>
+                                    <select name="category">
+                                        <option value="">종류</option>
+                                        <option value="fruit">과일</option>
+                                        <option value="vegetable">야채</option>
+                                        <option value="grain">곡류</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>가격</th>
+                                <td>
+                                    <input type="text" name="price">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>포인트</th>
+                                <td>
+                                    <input type="text" name="point">
+                                    <span class="desc">포인트는 가격의 1%</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>할인</th>
+                                <td>
+                                    <select name="discount">
+                                        <option value="5">5%</option>
+                                        <option value="12">12%</option>
+                                        <option value="15">15%</option>
+                                        <option value="18">18%</option>
+                                        <option value="20">20%</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>배송비</th>
+                                <td>
+                                    <label>
+                                        <input type="radio" name="delivery" value="2000" checked>
+                                        2,000원
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="delivery" value="3000">
+                                        3,000원
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="delivery" value="5000">
+                                        5,000원
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="delivery" value="0">
+                                        무료
+                                    </label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>재고</th>
+                                <td>
+                                    <input type="text" name="stock">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="3">상품이미지</th>
+                                <td>
+                                    <div class="file_row">
+                                        <span>상품목록 이미지(약 120 × 120)</span>
+                                        <input type="file" name="thumb120">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="file_row">
+                                        <span>기본정보 이미지(약 240 × 240)</span>
+                                        <input type="file" name="thumb240">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="file_row">
+                                        <span>상품설명 이미지(약 750 × Auto)</span>
+                                        <input type="file" name="descriptionImage">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>기타</th>
+                                <td>
+                                    <textarea name="etc"></textarea>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                                <div class="register_buttons">
+                                  <a href="" class="cancel_btn">취소</a>
+                                    <button type="submit" class="submit_btn">상품등록</button>
+                                </div>
+                    </form>
+
+                  
+                </section>
+
+            </div>
+        </main>
+
+        <!-- 푸터 -->
+        <footer>
+            <p>Copyright(C)Farmstory All rights reserved.</p>
+            <p>FARMSTORY ADMINISTRATOR Version 1.0.1</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

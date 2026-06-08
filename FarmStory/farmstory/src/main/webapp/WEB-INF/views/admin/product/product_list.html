@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>관리자::상품목록</title>
+    <link rel="stylesheet" href="/farmstory/css/admin.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- 헤더 -->
+        <header>
+            <div class="header_inner">
+                <a href="/farmstory/admin/admin.html">
+                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
+                </a>
+
+                <div class="top_menu">
+                    <a href="/farmstory/index.html">HOME</a>
+                    <span>|</span>
+                    <a href="#">로그아웃</a>
+                    <span>|</span>
+                    <a href="#">고객센터</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 -->
+        <main>
+            <div class="main_inner">
+
+                <!-- 왼쪽 메뉴 -->
+                <aside>
+                    <h3>주요기능</h3>
+
+                    <div class="menu">
+                        <h4>상품관리</h4>
+                        <ul>
+                            <li><a href="/farmstory/admin/product/product_list.html">상품목록</a></li>
+                            <li><a href="/farmstory/admin/product/product_register.html">상품등록</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu">
+                        <h4>주문관리</h4>
+                        <ul>
+                            <li><a href="/farmstory/admin/order/order_list.html">주문목록</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu">
+                        <h4>회원관리</h4>
+                        <ul>
+                            <li><a href="/farmstory/admin/user/user_list.html">회원목록</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 오른쪽 콘텐츠 -->
+                <section class="content">
+                    <h3>상품목록</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox">
+
+                                </th>
+                                <th>사진</th>
+                                <th>상품번호</th>
+                                <th>상품명</th>
+                                <th>구분</th>
+                                <th>가격</th>
+                                <th>재고</th>
+                                <th>등록일</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <input type="checkbox">
+
+                                </th>
+                                <td>
+                                    <img src="/farmstory/images/market_item1.jpg" alt="샘플 상품 이미지">
+                                </td>
+                                <td>1011</td>
+                                <td>사과 500g</td>
+                                <td>과일</td>
+                                <td>4,000원</td>
+                                <td>100</td>
+                                <td>2023-01-01</td>
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <input type="checkbox">
+
+                                </th>
+                                <td>
+                                    <img src="/farmstory/images/market_item1.jpg" alt="샘플 상품 이미지">
+                                </td>
+                                <td>1011</td>
+                                <td>사과 500g</td>
+                                <td>과일</td>
+                                <td>4,000원</td>
+                                <td>100</td>
+                                <td>2023-01-01</td>
+                            </tr>
+                                        <tr>
+                                <th>
+                                    <input type="checkbox">
+
+                                </th>
+                                <td>
+                                    <img src="/farmstory/images/market_item1.jpg" alt="샘플 상품 이미지">
+                                </td>
+                                <td>1011</td>
+                                <td>사과 500g</td>
+                                <td>과일</td>
+                                <td>4,000원</td>
+                                <td>100</td>
+                                <td>2023-01-01</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="btn_area">
+                        <button type="button">선택삭제</button>
+                        <a href="./register.html">상품등록</a>
+                    </div>
+
+                    <div class="paging">
+                        <a href="#">&lt;</a>
+                        <a href="#" class="on">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">&gt;</a>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- 푸터 -->
+        <footer>
+            <p>Copyright(C)Farmstory All rights reserved.</p>
+            <p>FARMSTORY ADMINISTRATOR Version 1.0.1</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

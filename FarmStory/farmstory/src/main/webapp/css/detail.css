@@ -1,0 +1,420 @@
+/* ==========================================================================
+   1. 초기화 (Reset) - main.css 기준 100% 일치
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    font: normal 12px '돋움';
+}
+ul, ol { list-style: none; }
+a { text-decoration: none; color: #111; }
+input, textarea { outline: none; }
+
+#container {
+    width: 980px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. 헤더 영역 (Header & GNB) - main.css 기준 100% 일치
+   ========================================================================== */
+header {
+    position: relative;
+    width: 100%;
+    height: 142px;
+    background: url('/farmstory/images/head_top_line.png') no-repeat;            
+    margin-bottom: 10px;
+}
+
+header > .logo {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    margin-left: -95px;
+}
+
+header > p {
+    float: right;
+    margin-top: 16px;
+}
+header > p > a {
+    padding: 0 5px;
+}
+header > .text {
+    float: right;
+    clear: both;
+    margin-top: 26px;
+}
+header > .gnb {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+header > .gnb > li {  
+    position: relative;
+    float: left;      
+    width: 20%;
+    height: 100%;
+    background-image: url('/farmstory/images/head_menu_line.png');
+    background-repeat: no-repeat;
+    background-position: 0 -7px;
+}
+
+/* 장보기 뱃지 (head_menu_badge.png 적용) */
+header > .gnb > li:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    width: 37px;
+    height: 34px;
+    top: -16px;
+    left: 98px;
+    background-image: url('/farmstory/images/head_menu_badge.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header > .gnb > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    background-position: 0 8px;
+    background-repeat: no-repeat;
+}
+header > .gnb > li:nth-child(1) > a { background-image: url('/farmstory/images/head_menu1.png'); }
+header > .gnb > li:nth-child(2) > a { background-image: url('/farmstory/images/head_menu2.png'); }
+header > .gnb > li:nth-child(3) > a { background-image: url('/farmstory/images/head_menu3.png'); }
+header > .gnb > li:nth-child(4) > a { background-image: url('/farmstory/images/head_menu4.png'); }
+header > .gnb > li:nth-child(5) > a { background-image: url('/farmstory/images/head_menu5.png'); }
+
+header > .gnb > li:nth-child(1) > a:hover { background-image: url('/farmstory/images/head_menu1_ov.png'); }
+header > .gnb > li:nth-child(2) > a:hover { background-image: url('/farmstory/images/head_menu2_ov.png'); }
+header > .gnb > li:nth-child(3) > a:hover { background-image: url('/farmstory/images/head_menu3_ov.png'); }
+header > .gnb > li:nth-child(4) > a:hover { background-image: url('/farmstory/images/head_menu4_ov.png'); }
+header > .gnb > li:nth-child(5) > a:hover { background-image: url('/farmstory/images/head_menu5_ov.png'); }
+
+
+/* ==========================================================================
+   3. 서브 페이지 레이아웃 (Sub Page Layout)
+   ========================================================================== */
+#sub {
+    width: 100%;
+    min-height: 650px;
+    position: relative; /* 우측 플로팅 배너 배치를 위한 기준점 */
+}
+
+/* 서브 상단 배너 영역 */
+#sub > div {
+    position: relative;
+    width: 100%;
+    height: 184px;
+    background-image: url('/farmstory/images/sub_top_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#sub > div > img {
+    position: absolute;
+    left: 10px;
+    top: 130px;
+}
+
+/* 장보기 레이아웃 컨테이너 */
+.market {
+    width: 980px;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* 좌측 사이드 메뉴 (LNB) */
+.market > aside {
+    float: left;
+    width: 176px;
+    min-height: 650px;
+    background: url("/farmstory/images/sub_aside_bg_line.png") no-repeat right top;
+}
+.market > aside > img {
+    width: 103px;
+    height: 45px;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+.market > aside > .lnb {
+    width: 175px;
+    height: 233px;
+    margin-top: 20px;
+    background: url("/farmstory/images/sub_aside_bg_lnb.png") no-repeat;
+    padding-top: 26px;
+}
+.market > aside > .lnb > li {
+    width: 175px;
+    height: 29px;
+    margin-bottom: 6px;
+}
+.market > aside > .lnb > li > a {
+    display: block;
+    width: 175px;
+    height: 29px;
+    font-size: 0;
+}
+.market > aside > .lnb > li:nth-child(1) > a { background-image: url('/farmstory/images/sub_cate2_lnb1.png'); }
+.market > aside > .lnb > li:nth-child(1) > a:hover,
+.market > aside > .lnb > li.on:nth-child(1) > a { background-image: url('/farmstory/images/sub_cate2_lnb1_ov.png'); }
+
+
+/* ==========================================================================
+   4. 상품 상세 본문 영역 (.view)
+   ========================================================================== */
+.market > .article, 
+.market > .view {
+    float: right;
+    width: 802px;
+    min-height: 650px;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+/* 상단 현재 네비게이션 경로 */
+.market > .view > nav {
+    position: relative;
+    width: 762px;
+    height: 72px;
+    border-bottom: 1px solid #c2c2c2;
+    margin-bottom: 20px;
+}
+.market > .view > nav > img {
+    position: absolute;
+    left: 0;
+    top: 41px;
+    height: 26px;
+}
+.market > .view > nav > p {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    color: #666;
+}
+.market > .view > nav > p em {
+    font-weight: bold;
+    color: #91ba15;
+    font-style: normal;
+}
+
+/* 콘텐츠 영역 서브 타이틀 (h3) */
+.market > .view h3 {
+    color: #91ba15;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #91ba15;
+    padding-bottom: 6px;
+    width: 762px;
+}
+
+/* ------------------------------------------
+   A. 기본정보 (.basic) 테이블 및 버튼
+   ------------------------------------------ */
+.market > .view > .basic {
+    width: 762px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.market > .view > .basic > img {
+    float: left;
+    width: 280px;
+    height: 280px;
+    border: 1px solid #eeeeee;
+    padding: 8px;
+    background: #ffffff;
+}
+.market > .view > .basic > table {
+    float: right;
+    width: 454px;
+    border-collapse: collapse;
+}
+.market > .view > .basic > table tr {
+    border-bottom: 1px solid #eeeeee;
+}
+.market > .view > .basic > table td {
+    padding: 11px 10px;
+    font-size: 12px;
+}
+.market > .view > .basic > table td:nth-child(1) {
+    width: 110px;
+    color: #555555;
+    font-weight: bold;
+    background: #fafafa;
+}
+.market > .view > .basic > table td:nth-child(2) {
+    color: #111111;
+}
+
+/* 배송비 강조 및 3만원 이상 안내 수식 */
+.market > .view > .basic > table td span { font-weight: bold; }
+.market > .view > .basic > table td em { color: #888888; font-size: 11px; margin-left: 8px; font-style: normal; }
+
+/* 수량조절 인풋박스 스타일 */
+.market > .view > .basic > table td input[type="number"] {
+    width: 55px;
+    height: 24px;
+    padding-left: 5px;
+    border: 1px solid #cccccc;
+    text-align: center;
+}
+/* 합계 금액 도드라짐 효과 */
+.market > .view > .basic > table td.total {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ff3333;
+}
+
+/* 구매 관련 조작 버튼셋 */
+.market > .view > .basic .btn {
+    display: inline-block;
+    padding: 9px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.market > .view > .basic .btnCart {
+    background: #555555;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+.market > .view > .basic .btnOrder {
+    background: #91ba15;
+    color: #ffffff;
+    border: 1px solid #7da210;
+}
+
+/* ------------------------------------------
+   B. 상품설명 (.detail)
+   ------------------------------------------ */
+.market > .view > .detail {
+    width: 762px;
+    text-align: center;
+    margin-top: 10px;
+}
+.market > .view > .detail > img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ------------------------------------------
+   C. 배송정보 (.delivery)
+   ------------------------------------------ */
+.market > .view > .delivery {
+    width: 762px;
+    padding: 15px;
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    box-sizing: border-box;
+}
+.market > .view > .delivery > p {
+    color: #666666;
+    line-height: 18px;
+}
+
+/* ------------------------------------------
+   D. 교환/반품 (.exchange)
+   ------------------------------------------ */
+.market > .view > .exchange {
+    width: 762px;
+    margin-bottom: 20px;
+}
+.market > .view > .exchange > table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #91ba15;
+}
+.market > .view > .exchange > table tr {
+    border-bottom: 1px solid #eeeeee;
+}
+.market > .view > .exchange > table td {
+    padding: 12px;
+    vertical-align: top;
+    line-height: 18px;
+}
+.market > .view > .exchange > table td:nth-child(1) {
+    width: 150px;
+    background: #fafafa;
+    font-weight: bold;
+    color: #333333;
+}
+.market > .view > .exchange > table td:nth-child(2) {
+    color: #555555;
+}
+/* 리스트 초기화 덮어쓰고 도트형 글머리기호 노출 */
+.market > .view > .exchange > table td ul li {
+    list-style-type: disc;
+    margin-left: 15px;
+    margin-bottom: 3px;
+}
+
+
+/* ==========================================================================
+   5. 푸터 영역 (Footer) - main.css 기준 100% 일치 (footer_top_line.png 반영)
+   ========================================================================== */
+footer {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-top: 1px solid #D1CAB2; /* 구조적 상단 라인 유지 */
+    background: url('/farmstory/images/footer_top_line.png') repeat-x left top; /* 업로드된 구분선 대응 */
+    box-sizing: border-box;
+}
+
+footer > img {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 174px;
+    height: 64px;
+}
+
+footer > div {
+    position: absolute;
+    left: 254px;
+    top: 27px;
+    width: 710px;
+    height: 71px;
+}
+
+footer > div > p {
+    position: absolute;
+    left: -20px;
+    top: 0px;
+    width: 710px;
+    height: 48px;
+    color: #585858;
+    font-size: 10px;
+    line-height: 18px;
+}
+
+footer .copyright {
+    position: absolute;
+    left: 0;
+    top: 55px;
+    width: 273px;
+    height: 14px;
+    color: #888888;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+footer .version {
+    position: absolute;
+    left: 620px;
+    top: 54px;
+    width: 90px;
+    height: 14px;
+    color: #888888;
+    font-size: 10px;
+    line-height: 14px;
+}
