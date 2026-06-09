@@ -4,16 +4,14 @@ public class CartDTO {
 
     private int cartno;
     private String memberid;
+    private String membername;
     private int productno;
-    private int cartcount;
-    private String rdate;
-
-    // product 조인 출력용
-    private String productcate;
     private String productname;
+    private String productcate;
     private int productprice;
-    private String productimg;
-    private int productstock;
+    private int cartcount;
+    private int totalprice;
+    private String rdate;
 
     public int getCartno() {
         return cartno;
@@ -31,36 +29,20 @@ public class CartDTO {
         this.memberid = memberid;
     }
 
+    public String getMembername() {
+        return membername;
+    }
+
+    public void setMembername(String membername) {
+        this.membername = membername;
+    }
+
     public int getProductno() {
         return productno;
     }
 
     public void setProductno(int productno) {
         this.productno = productno;
-    }
-
-    public int getCartcount() {
-        return cartcount;
-    }
-
-    public void setCartcount(int cartcount) {
-        this.cartcount = cartcount;
-    }
-
-    public String getRdate() {
-        return rdate;
-    }
-
-    public void setRdate(String rdate) {
-        this.rdate = rdate;
-    }
-
-    public String getProductcate() {
-        return productcate;
-    }
-
-    public void setProductcate(String productcate) {
-        this.productcate = productcate;
     }
 
     public String getProductname() {
@@ -71,6 +53,14 @@ public class CartDTO {
         this.productname = productname;
     }
 
+    public String getProductcate() {
+        return productcate;
+    }
+
+    public void setProductcate(String productcate) {
+        this.productcate = productcate;
+    }
+
     public int getProductprice() {
         return productprice;
     }
@@ -79,23 +69,27 @@ public class CartDTO {
         this.productprice = productprice;
     }
 
-    public String getProductimg() {
-        return productimg;
+    public int getCartcount() {
+        return cartcount;
     }
 
-    public void setProductimg(String productimg) {
-        this.productimg = productimg;
+    public void setCartcount(int cartcount) {
+        this.cartcount = cartcount;
     }
 
-    public int getProductstock() {
-        return productstock;
+    public int getTotalprice() {
+        return totalprice;
     }
 
-    public void setProductstock(int productstock) {
-        this.productstock = productstock;
+    public void setTotalprice(int totalprice) {
+        this.totalprice = totalprice;
     }
 
-    public int getTotal() {
-        return productprice * cartcount;
+    public String getRdate() {
+        return rdate;
+    }
+
+    public void setRdate(String rdate) {
+        this.rdate = rdate;
     }
 }

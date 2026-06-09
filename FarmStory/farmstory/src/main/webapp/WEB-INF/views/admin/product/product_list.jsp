@@ -1,11 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="DTO.ProductDTO" %>
+<%@ page import="java.text.DecimalFormat" %>
+
+<%
+    List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
+    DecimalFormat df = new DecimalFormat("#,###");
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <title>관리자::상품목록</title>
-    <link rel="stylesheet" href="/farmstory/css/admin.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin.css">
+
+    <script>
+        function toggleAll(source) {
+            const checkboxes = document.querySelectorAll('input[name="productno"]');
+
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = source.checked;
+            });
+        }
+
+        function checkDelete() {
+            const checked = document.querySelectorAll('input[name="productno"]:checked');
+
+            if (checked.length === 0) {
+                alert('삭제할 상품을 선택하세요.');
+                return false;
+            }
+
+            return confirm('선택한 상품을 삭제하시겠습니까?');
+        }
+    </script>
 </head>
 
 <body>
@@ -15,12 +45,12 @@
         <!-- 헤더 -->
         <header>
             <div class="header_inner">
-                <a href="/farmstory/admin/admin.do">
+                <a href="<%= request.getContextPath() %>/index.do">
                     <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
-                    <a href="/farmstory/index.do">HOME</a>
+                    <a href="<%= request.getContextPath() %>/index.do">HOME</a>
                     <span>|</span>
                     <a href="#">로그아웃</a>
                     <span>|</span>
@@ -33,111 +63,110 @@
         <main>
             <div class="main_inner">
 
-                <!-- 왼쪽 메뉴 -->
+                <!-- 좌측 메뉴 -->
                 <aside>
                     <h3>주요기능</h3>
 
                     <div class="menu">
-                        <h4>상품관리</h4>
+                        <strong>상품관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/product/product_list.do">상품목록</a></li>
-                            <li><a href="/farmstory/admin/product/product_register.do">상품등록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/product/product_list.do">상품목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/product/product_register.do">상품등록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
-                        <h4>주문관리</h4>
+                        <strong>주문관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/order/order_list.do">주문목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/order/order_list.do">주문목록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
-                        <h4>회원관리</h4>
+                        <strong>회원관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/user/user_list.do">회원목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
                         </ul>
                     </div>
                 </aside>
 
-                <!-- 오른쪽 콘텐츠 -->
+                <!-- 콘텐츠 -->
                 <section class="content">
                     <h3>상품목록</h3>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
+                    <form action="<%= request.getContextPath() %>/admin/product/product_list.do"
+                          method="post"
+                          onsubmit="return checkDelete();">
 
-                                </th>
-                                <th>사진</th>
-                                <th>상품번호</th>
-                                <th>상품명</th>
-                                <th>구분</th>
-                                <th>가격</th>
-                                <th>재고</th>
-                                <th>등록일</th>
-                            </tr>
-                        </thead>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" onclick="toggleAll(this)">
+                                    </th>
+                                    <th>사진</th>
+                                    <th>상품번호</th>
+                                    <th>상품명</th>
+                                    <th>구분</th>
+                                    <th>가격</th>
+                                    <th>재고</th>
+                                    <th>등록일</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
+                            <tbody>
+                            <%
+                                if (products != null && !products.isEmpty()) {
+                                    for (ProductDTO product : products) {
 
-                                </th>
-                                <td>
-                                    <img src="/farmstory/images/market_item1.jpg" alt="샘플 상품 이미지">
-                                </td>
-                                <td>1011</td>
-                                <td>사과 500g</td>
-                                <td>과일</td>
-                                <td>4,000원</td>
-                                <td>100</td>
-                                <td>2023-01-01</td>
-                            </tr>
+                                        String img = product.getProductimg();
 
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
-
-                                </th>
-                                <td>
-                                    <img src="/farmstory/images/market_item1.jpg" alt="샘플 상품 이미지">
-                                </td>
-                                <td>1011</td>
-                                <td>사과 500g</td>
-                                <td>과일</td>
-                                <td>4,000원</td>
-                                <td>100</td>
-                                <td>2023-01-01</td>
-                            </tr>
+                                        if (img == null || img.trim().isEmpty()) {
+                                            img = request.getContextPath() + "/images/market_item1.jpg";
+                                        } else {
+                                            img = request.getContextPath() + img;
+                                        }
+                            %>
                                         <tr>
-                                <th>
-                                    <input type="checkbox">
+                                            <td>
+                                                <input type="checkbox" name="productno" value="<%= product.getProductno() %>">
+                                            </td>
 
-                                </th>
-                                <td>
-                                    <img src="/farmstory/images/market_item1.jpg" alt="샘플 상품 이미지">
-                                </td>
-                                <td>1011</td>
-                                <td>사과 500g</td>
-                                <td>과일</td>
-                                <td>4,000원</td>
-                                <td>100</td>
-                                <td>2023-01-01</td>
-                            </tr>
+                                            <td>
+                                                <img src="<%= img %>"
+                                                     alt="<%= product.getProductname() %>"
+                                                     style="width:60px; height:60px; object-fit:cover;">
+                                            </td>
 
-                        </tbody>
-                    </table>
+                                            <td><%= product.getProductno() %></td>
+                                            <td><%= product.getProductname() %></td>
+                                            <td><%= product.getProductcate() %></td>
+                                            <td><%= df.format(product.getProductprice()) %>원</td>
+                                            <td><%= product.getProductstock() %></td>
+                                            <td><%= product.getRdate() %></td>
+                                        </tr>
+                            <%
+                                    }
+                                } else {
+                            %>
+                                    <tr>
+                                        <td colspan="8">등록된 상품이 없습니다.</td>
+                                    </tr>
+                            <%
+                                }
+                            %>
+                            </tbody>
+                        </table>
 
-                    <div class="btn_area">
-                        <button type="button">선택삭제</button>
-                        <a href="./register.do">상품등록</a>
-                    </div>
+                        <div class="register_buttons">
+                            <button type="submit" class="cancel_btn">선택삭제</button>
+                            <a href="<%= request.getContextPath() %>/admin/product/product_register.do" class="submit_btn">상품등록</a>
+                        </div>
 
-                    <div class="paging">
+                    </form>
+
+                    <!-- 페이지 번호 -->
+                    <div class="pagination">
                         <a href="#">&lt;</a>
                         <a href="#" class="on">1</a>
                         <a href="#">2</a>

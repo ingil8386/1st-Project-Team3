@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="DTO.MemberDTO" %>
+
+<%
+    List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,12 +22,12 @@
         <!-- 헤더 -->
         <header>
             <div class="header_inner">
-                <a href="../admin.do">
+                <a href="/farmstory/admin/admin.do">
                     <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
-                    <a href="../admin.do">HOME</a>
+                    <a href="/farmstory/admin/admin.do">HOME</a>
                     <span>|</span>
                     <a href="#">로그아웃</a>
                     <span>|</span>
@@ -40,22 +47,22 @@
                     <div class="menu">
                         <h4>상품관리</h4>
                         <ul>
-                            <li><a href="../product/product_list.do">상품목록</a></li>
-                            <li><a href="../product/product_register.do">상품등록</a></li>
+                            <li><a href="/farmstory/admin/product/product_list.do">상품목록</a></li>
+                            <li><a href="/farmstory/admin/product/product_register.do">상품등록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <h4>주문관리</h4>
                         <ul>
-                            <li><a href="../order/order_list.do">주문목록</a></li>
+                            <li><a href="/farmstory/admin/order/order_list.do">주문목록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <h4>회원관리</h4>
                         <ul>
-                            <li><a href="../user/user_list.do">회원목록</a></li>
+                            <li><a href="/farmstory/admin/user/user_list.do">회원목록</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -67,10 +74,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>
-                                    <input type="checkbox">
-                                </th>
-
+                                <th><input type="checkbox"></th>
                                 <th>아이디</th>
                                 <th>이름</th>
                                 <th>별명</th>
@@ -83,79 +87,41 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
+                        <%
+                            if (members != null && !members.isEmpty()) {
+                                for (MemberDTO member : members) {
+                        %>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="memberid" value="<%= member.getMemberid() %>">
+                                        </td>
 
-                                </th>
+                                        <td><%= member.getMemberid() %></td>
+                                        <td><%= member.getMembername() %></td>
+                                        <td><%= member.getMembernick() %></td>
+                                        <td><%= member.getMemberemail() %></td>
+                                        <td><%= member.getMemberhp() %></td>
 
-                                <td>a101</td>
-                                <td>김유신</td>
-                                <td>유신101</td>
-                                <td>yusin101@naver.com</td>
-                                <td>010-1234-1001</td>
-                                <td>
-                                    <select>
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </td>
+                                        <td>
+                                            <select name="memberrole">
+                                                <option value="member" <%= "member".equals(member.getMemberrole()) ? "selected" : "" %>>member</option>
+                                                <option value="admin" <%= "admin".equals(member.getMemberrole()) ? "selected" : "" %>>admin</option>
+                                            </select>
+                                        </td>
 
-                                <td>2023-01-01 13:06:14</td>
-                                <td><a href="#">[상세확인]</a></td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
-
-                                </th>
-
-                                <td>a102</td>
-                                <td>김춘추</td>
-                                <td>춘추102</td>
-                                <td>chunchu102@naver.com</td>
-                                <td>010-1234-1002</td>
-
-                                <td> <select>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select></td>
-
-                                <td>2023-01-02 13:06:14</td>
-                                <td><a href="#">[상세확인]</a></td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
-
-                                </th>
-
-                                <td>a103</td>
-                                <td>장보고</td>
-                                <td>보고103</td>
-                                <td>bogo103@naver.com</td>
-                                <td>010-1234-1003</td>
-                                <td>
-                                    <select>
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </td>
-
-                                <td>2023-01-03 13:06:14</td>
-                                <td><a href="#">[상세확인]</a></td>
-                            </tr>
+                                        <td><%= member.getRdate() %></td>
+                                        <td><a href="#">[상세확인]</a></td>
+                                    </tr>
+                        <%
+                                }
+                            } else {
+                        %>
+                                <tr>
+                                    <td colspan="9">등록된 회원이 없습니다.</td>
+                                </tr>
+                        <%
+                            }
+                        %>
                         </tbody>
                     </table>
 

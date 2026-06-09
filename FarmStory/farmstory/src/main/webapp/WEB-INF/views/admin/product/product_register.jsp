@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>관리자::상품등록</title>
-    <link rel="stylesheet" href="/farmstory/css/admin.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin.css">
 </head>
 <body>
 
@@ -13,12 +13,12 @@
         <!-- 헤더 -->
         <header>
             <div class="header_inner">
-                <a href="/farmstory/index.do">
-                <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
+                <a href="<%= request.getContextPath() %>/index.do">
+                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
-                    <a href="/farmstory/index.do">HOME</a>
+                    <a href="<%= request.getContextPath() %>/index.do">HOME</a>
                     <span>|</span>
                     <a href="#">로그아웃</a>
                     <span>|</span>
@@ -38,22 +38,22 @@
                     <div class="menu">
                         <strong>상품관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/product/product_list.do">상품목록</a></li>
-                            <li><a href="/farmstory/admin/product/product_register.do">상품등록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/product/product_list.do">상품목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/product/product_register.do">상품등록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <strong>주문관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/order/order_list.do">주문목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/order/order_list.do">주문목록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <strong>회원관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/user/user_list.do">회원목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -62,24 +62,26 @@
                 <section class="content">
                     <h3>상품등록</h3>
 
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="<%= request.getContextPath() %>/admin/product/product_register.do"
+                          method="post"
+                          enctype="multipart/form-data">
 
                         <table class="register_table">
                             <tr>
                                 <th>상품명</th>
                                 <td>
-                                    <input type="text" name="productName">
+                                    <input type="text" name="productname" required>
                                 </td>
                             </tr>
 
                             <tr>
                                 <th>종류</th>
                                 <td>
-                                    <select name="category">
+                                    <select name="productcate" required>
                                         <option value="">종류</option>
-                                        <option value="fruit">과일</option>
-                                        <option value="vegetable">야채</option>
-                                        <option value="grain">곡류</option>
+                                        <option value="과일">과일</option>
+                                        <option value="야채">야채</option>
+                                        <option value="곡류">곡류</option>
                                     </select>
                                 </td>
                             </tr>
@@ -87,7 +89,7 @@
                             <tr>
                                 <th>가격</th>
                                 <td>
-                                    <input type="text" name="price">
+                                    <input type="text" name="productprice" required>
                                 </td>
                             </tr>
 
@@ -140,7 +142,7 @@
                             <tr>
                                 <th>재고</th>
                                 <td>
-                                    <input type="text" name="stock">
+                                    <input type="text" name="productstock" required>
                                 </td>
                             </tr>
 
@@ -149,7 +151,7 @@
                                 <td>
                                     <div class="file_row">
                                         <span>상품목록 이미지(약 120 × 120)</span>
-                                        <input type="file" name="thumb120">
+                                        <input type="file" name="thumb120" accept="image/*">
                                     </div>
                                 </td>
                             </tr>
@@ -158,7 +160,7 @@
                                 <td>
                                     <div class="file_row">
                                         <span>기본정보 이미지(약 240 × 240)</span>
-                                        <input type="file" name="thumb240">
+                                        <input type="file" name="thumb240" accept="image/*">
                                     </div>
                                 </td>
                             </tr>
@@ -167,7 +169,7 @@
                                 <td>
                                     <div class="file_row">
                                         <span>상품설명 이미지(약 750 × Auto)</span>
-                                        <input type="file" name="descriptionImage">
+                                        <input type="file" name="descriptionImage" accept="image/*">
                                     </div>
                                 </td>
                             </tr>
@@ -175,18 +177,16 @@
                             <tr>
                                 <th>기타</th>
                                 <td>
-                                    <textarea name="etc"></textarea>
+                                    <textarea name="productcontent"></textarea>
                                 </td>
                             </tr>
-                            
                         </table>
-                                <div class="register_buttons">
-                                  <a href="" class="cancel_btn">취소</a>
-                                    <button type="submit" class="submit_btn">상품등록</button>
-                                </div>
-                    </form>
 
-                  
+                        <div class="register_buttons">
+                            <a href="<%= request.getContextPath() %>/admin/product/product_list.do" class="cancel_btn">취소</a>
+                            <button type="submit" class="submit_btn">상품등록</button>
+                        </div>
+                    </form>
                 </section>
 
             </div>
