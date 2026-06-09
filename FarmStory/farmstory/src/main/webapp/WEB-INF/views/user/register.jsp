@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/farmstory/css/common.css">
     <script src="//t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/farmstory/js/daumPostcode.js"></script>
-	<script src="//farmstory/js/validation.js"></script>
+	<script src="/farmstory/js/validation.js"></script>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
                             <td>
                                 <input type="text" name="memberid" placeholder="아이디 입력"/>
                                 <button type="button"><img src="/farmstory/images/user/chk_id.gif" alt="중복확인"></button>
-                            	<span class="useridResult"></span>
+                            	<span class="memberidResult"></span>
                             </td>
                         </tr>
                         <tr>
@@ -88,7 +88,7 @@
                                 <input type="email" name="memberemail" placeholder="이메일 입력"/>
                                 <button><img src="/farmstory/images/user/chk_auth.gif" alt="인증번호 받기"></button>
                                 <div class="auth">
-                                    <input type="text" name="auth" id="인증번호 입력"/>
+                                    <input type="text" name="code" id="인증번호 입력"/>
                                     <button type="button" id="btnConfirm"><img src="/farmstory/images/user/chk_confirm.gif" alt="확인"></button>
                                 </div>
                             </td>

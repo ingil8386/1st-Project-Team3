@@ -46,7 +46,7 @@ public enum Memberservice {
 			// Gmail SMTP 세션 생성
 			Session sess = Session.getInstance(props, new Authenticator(){
 				protected PasswordAuthentication getPasswordAuthentication(){			
-					final String APP_PASS = "rsjlbynqtsbxkkub";			
+					final String APP_PASS = "gxxxabqbkpafulbs";			
 					return new PasswordAuthentication(sender, APP_PASS);
 				}
 			});
