@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>팜스토리::텃밭가꾸기</title>
+    <title>팜스토리::농작물이야기</title>
     <link rel="stylesheet" href="/farmstory/css/story.css">
 </head>
 <body>
@@ -13,10 +12,10 @@
             <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고" /></a>
             <p>
                 <a href="/farmstory/index.do">HOME |</a>
-                <a href="#">로그인 |</a>
-                <a href="#">회원가입 |</a>                
-                <a href="#">나의정보 |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="/farmstory/user/login.do">로그인</a>|
+                <a href="/farmstory/user/terms.do">회원가입</a>|               
+                <a href="#">나의정보 </a>|
+                <a href="#">로그아웃 </a>|
                 <a href="/farmstory/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
@@ -38,8 +37,8 @@
                     <img src="/farmstory/images/sub_aside_cate3_tit.png" alt="농작물이야기"/>
 
                     <ul class="lnb">
-                        <li ><a href="/farmstory/story/intro.do">농작물이야기</a></li>
-                        <li class="on"><a href="/farmstory/story/garden.do">텃밭가꾸기</a></li>
+                        <li class="on"><a href="/farmstory/story/intro.do">농작물이야기</a></li>
+                        <li ><a href="/farmstory/story/garden.do">텃밭가꾸기</a></li>
                         <li ><a href="/farmstory/story/school.do">귀농학교</a></li>
                     </ul>
 

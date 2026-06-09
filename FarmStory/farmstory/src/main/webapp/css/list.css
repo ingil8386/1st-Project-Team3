@@ -20,8 +20,18 @@ header > .text { float: right; clear: both; margin-top: 26px; }
 header > .gnb { position: absolute; left: 0; bottom: 0; width: 100%; height: 50px; }
 header > .gnb > li { position: relative; float: left; width: 20%; height: 100%; background-image: url('/farmstory/images/head_menu_line.png'); background-repeat: no-repeat; background-position: 0 -7px; }
 
-/* 뱃지는 HTML 태그 내 이미지로 처리되었으므로 가상요소 대신 이미지 위치를 잡아줍니다. */
-header > .gnb > li > a > img { position: absolute; top: -16px; left: 98px; width: 37px; }
+/* 장보기 뱃지 (head_menu_badge.png 적용) */
+header > .gnb > li:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    width: 37px;
+    height: 34px;
+    top: -16px;
+    left: 98px;
+    background-image: url('/farmstory/images/head_menu_badge.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 header > .gnb > li > a { display: block; width: 100%; height: 100%; font-size: 0; background-position: 0 8px; background-repeat: no-repeat; }
 header > .gnb > li:nth-child(1) > a { background-image: url('/farmstory/images/head_menu1.png'); }

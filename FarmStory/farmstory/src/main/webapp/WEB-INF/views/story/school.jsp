@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +12,10 @@
             <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고" /></a>
             <p>
                 <a href="/farmstory/index.do">HOME |</a>
-                <a href="#">로그인 |</a>
-                <a href="#">회원가입 |</a>                
-                <a href="#">나의정보 |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="/farmstory/user/login.do">로그인</a>|
+                <a href="/farmstory/user/terms.do">회원가입</a>|               
+                <a href="#">나의정보 </a>|
+                <a href="#">로그아웃 </a>|
                 <a href="/farmstory/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
@@ -27,7 +26,7 @@
                 <li><a href="/farmstory/market/list.do"><img src="/farmstory/images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
                 <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
                 <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
-                <li><a href="\/farmstory/community/notice.do">커뮤니티</a></li>
+                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
 
@@ -39,8 +38,8 @@
 
                     <ul class="lnb">
                         <li ><a href="/farmstory/story/intro.do">농작물이야기</a></li>
-                        <li class="on"><a href="/farmstory/story/garden.do">텃밭가꾸기</a></li>
-                        <li ><a href="/farmstory/story/school.do">귀농학교</a></li>
+                        <li ><a href="/farmstory/story/garden.do">텃밭가꾸기</a></li>
+                        <li class="on"><a href="/farmstory/story/school.do">귀농학교</a></li>
                     </ul>
 
                 </aside>
