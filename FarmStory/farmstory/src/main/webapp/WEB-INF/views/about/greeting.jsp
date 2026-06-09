@@ -14,9 +14,11 @@
             
             <!-- 오른쪽 상단 메뉴 -->
             <p>
-                <a href="/farmstory/index.do">HOME</a>|
+                <a href="/farmstory/index.do">HOME |</a>
                 <a href="/farmstory/user/login.do">로그인</a>|
-                <a href="/farmstory/user/terms.do">회원가입</a>|
+                <a href="/farmstory/user/terms.do">회원가입</a>|               
+                <a href="#">나의정보 </a>|
+                <a href="#">로그아웃 </a>|
                 <a href="/farmstory/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
@@ -30,7 +32,7 @@
                 <li><a href="/farmstory/market/list.do">장보기</a></li>
                 <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
                 <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
-                <li><a href="/farmstory//community/notice.do">커뮤니티</a></li>
+                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
         <div id="sub">

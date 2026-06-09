@@ -13,9 +13,9 @@
             <p>
                 <a href="/farmstory/index.do">HOME |</a>
                 <a href="/farmstory/user/login.do">로그인</a>|
-                <a href="/farmstory/user/terms.do">회원가입</a>|              
-                <a href="#">나의정보 |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="/farmstory/user/terms.do">회원가입</a>|               
+                <a href="#">나의정보 </a>|
+                <a href="#">로그아웃 </a>|
                 <a href="/farmstory/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>

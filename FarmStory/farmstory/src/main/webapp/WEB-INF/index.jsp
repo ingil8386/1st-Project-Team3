@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,8 @@
                 <a href="/farmstory/index.do">HOME</a>|
                 <a href="/farmstory/user/login.do">로그인</a>|
                 <a href="/farmstory/user/terms.do">회원가입</a>|
+                <a href="#">나의정보 </a>|
+                <a href="#">로그아웃 </a>|
                 <a href="/farmstory/admin/admin.do">관리자</a>|
                 <a href="#">고객센터</a>
             </p>
@@ -53,7 +54,7 @@
 
                 <section>
                     <article>
-                        <a href="#"><img src="/farmstory/images/market_item1.jpg" alt="사과"></a>
+                        <a href="/farmstory/market/list.do"><img src="/farmstory/images/market_item1.jpg" alt="사과"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -61,7 +62,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/images/market_item2.jpg" alt="배"></a>
+                        <a href="/farmstory/market/list.do"><img src="/farmstory/images/market_item2.jpg" alt="배"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -69,7 +70,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/images/market_item3.jpg" alt="방울토마토"></a>
+                        <a href="/farmstory/market/list.do"><img src="/farmstory/images/market_item3.jpg" alt="방울토마토"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -77,7 +78,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/images/market_item4.jpg" alt="딸기"></a>
+                        <a href="/farmstory/market/list.do"><img src="/farmstory/images/market_item4.jpg" alt="딸기"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -85,7 +86,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/images/market_item5.jpg" alt="오렌지"></a>
+                        <a href="/farmstory/market/list.do"><img src="/farmstory/images/market_item5.jpg" alt="오렌지"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -93,7 +94,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/images/market_item6.jpg" alt="곡물"></a>
+                        <a href="/farmstory/market/list.do"><img src="/farmstory/images/market_item6.jpg" alt="곡물"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -103,46 +104,46 @@
             </div>
 
             <div class="quick">
-                <a href="#"><img src="/farmstory/images/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
-                <a href="#"><img src="/farmstory/images/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
+                <a href="/farmstory/community/meal.do"><img src="/farmstory/images/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
+                <a href="/farmstory/community/chef.do"><img src="/farmstory/images/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
             </div>
             <div class="latest">
                 <article>
-                    <a href="#"><img src="/farmstory/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
+                    <a href="/farmstory/story/garden.do"><img src="/farmstory/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
                     <img src="/farmstory/images/main_latest1_img.jpg" alt="텃밭가꾸기">
                     <table border="0">
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/garden.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/garden.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/garden.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/garden.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/garden.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
@@ -150,41 +151,41 @@
 
                 </article>
                 <article>
-                    <a href="#"><img src="/farmstory/images/main_latest2_tit.png" alt="귀농학교"></a>
+                    <a href="/farmstory/story/school.do"><img src="/farmstory/images/main_latest2_tit.png" alt="귀농학교"></a>
                     <img src="/farmstory/images/main_latest2_img.jpg" alt="귀농학교">
                     <table border="0">
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/school.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/school.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/school.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/school.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/school.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
@@ -192,41 +193,41 @@
 
                 </article>
                 <article>
-                    <a href="#"><img src="/farmstory/images/main_latest3_tit.png" alt="농작물이야기"></a>
+                    <a href="/farmstory/story/intro.do"><img src="/farmstory/images/main_latest3_tit.png" alt="농작물이야기"></a>
                     <img src="/farmstory/images/main_latest3_img.jpg" alt="농작물이야기">
                     <table border="0">
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/intro.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/intro.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/intro.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/intro.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
                         <tr>
                             <td>></td>
                             <td>
-                                <a href="#">토마토! 건강하게 길러서 맛있게 드세요.</a>
+                                <a href="/farmstory/story/intro.do">토마토! 건강하게 길러서 맛있게 드세요.</a>
                             </td>
                             <td>26-11-05</td>
                         </tr>
@@ -247,8 +248,8 @@
             토, 일요일, 공휴일 휴무
         </p>
 
-        <a href="#"><img src="/farmstory/images/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
-        <a href="#"><img src="/farmstory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
+        <a href="/farmstory/community/qna.do"><img src="/farmstory/images/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
+        <a href="/farmstory/community/faq.do"><img src="/farmstory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
         <a href="#"><img src="/farmstory/images/main_sub2_cs_bt3.png" alt="배송 조회"></a>
     </article>
 
