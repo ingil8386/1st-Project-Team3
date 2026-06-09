@@ -5,55 +5,55 @@
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/farmstory/src/main/webapp/css/common.css">
+    <link rel="stylesheet" href="/farmstory/css/common.css">
 </head>
 <body>
     <div id="container">
         <header>
             <!-- 로고 -->
-            <a href="/farmstory/index.html" class="logo"><img src="/farmstory/src/main/webapp/images/logo.png" alt="메인로고"/></a>
+            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고"/></a>
             
             <!-- 오른쪽 상단 메뉴 -->
             <p>
-                <a href="/farmstory/index.html">HOME</a>|
-                <a href="/farmstory/user/login.html">로그인</a>|
-                <a href="/farmstory/user/terms.html">회원가입</a>|
-                <a href="/farmstory/admin/admin.html">관리자</a>|
+                <a href="/farmstory/index.do">HOME</a>|
+                <a href="/farmstory/user/login.do">로그인</a>|
+                <a href="/farmstory/user/terms.do">회원가입</a>|
+                <a href="/farmstory/admin/admin.do">관리자</a>|
                 <a href="#">고객센터</a>
             </p>
 
             <!-- 오른쪽 텍스트 배너 -->
-            <img class="text" src="/farmstory/src/main/webapp/images/head_txt_img.png" alt="3만원이상 무료배송">
+            <img class="text" src="/farmstory/images/head_txt_img.png" alt="3만원이상 무료배송">
 
             <!-- 메인 메뉴(GNB) -->
             <ul class="gnb">
-                <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.html">장보기</a></li>
-                <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.html">커뮤니티</a></li>
+                <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
+                <li><a href="/farmstory/market/list.do">장보기</a></li>
+                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
+                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
+                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
         <main>
             <div class="slider">
-                <img class="slide-img" src="/farmstory/src/main/webapp/images/main_slide_img1.jpg" alt="메인 슬라이드 이미지">
+                <img class="slide-img" src="/farmstory/images/main_slide_img1.jpg" alt="메인 슬라이드 이미지">
 
-                <img class="slide-tit" src="/farmstory/src/main/webapp/images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리">
+                <img class="slide-tit" src="/farmstory/images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리">
 
                 <div class="banner">
-                    <img class="banner-bg" src="/farmstory/src/main/webapp/images/main_banner_bg.jpg" alt="오픈기념 이벤트 배경">
-                    <img class="banner-img" src="/farmstory/src/main/webapp/images/main_banner_img.png" alt="과일 이미지">
-                    <img class="banner-tit" src="/farmstory/src/main/webapp/images/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트">
-                    <img class="banner-txt" src="/farmstory/src/main/webapp/images/main_banner_txt.png" alt="그랜드 오픈">
+                    <img class="banner-bg" src="/farmstory/images/main_banner_bg.jpg" alt="오픈기념 이벤트 배경">
+                    <img class="banner-img" src="/farmstory/images/main_banner_img.png" alt="과일 이미지">
+                    <img class="banner-tit" src="/farmstory/images/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트">
+                    <img class="banner-txt" src="/farmstory/images/main_banner_txt.png" alt="그랜드 오픈">
                 </div>
             </div>
 
             <div class="market">
-                <img class="market-tit" src="/farmstory/src/main/webapp/images/main_market_tit.png" alt="장보기">
+                <img class="market-tit" src="/farmstory/images/main_market_tit.png" alt="장보기">
 
                 <section>
                     <article>
-                        <a href="#"><img src="/farmstory/src/main/webapp/images/market_item1.jpg" alt="사과"></a>
+                        <a href="#"><img src="/farmstory/images/market_item1.jpg" alt="사과"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -61,7 +61,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/src/main/webapp/images/market_item2.jpg" alt="배"></a>
+                        <a href="#"><img src="/farmstory/images/market_item2.jpg" alt="배"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -69,7 +69,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/src/main/webapp/images/market_item3.jpg" alt="방울토마토"></a>
+                        <a href="#"><img src="/farmstory/images/market_item3.jpg" alt="방울토마토"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -77,7 +77,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/src/main/webapp/images/market_item4.jpg" alt="딸기"></a>
+                        <a href="#"><img src="/farmstory/images/market_item4.jpg" alt="딸기"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -85,7 +85,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/src/main/webapp/images/market_item5.jpg" alt="오렌지"></a>
+                        <a href="#"><img src="/farmstory/images/market_item5.jpg" alt="오렌지"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -93,7 +93,7 @@
                     </article>
 
                     <article>
-                        <a href="#"><img src="/farmstory/src/main/webapp/images/market_item6.jpg" alt="곡물"></a>
+                        <a href="#"><img src="/farmstory/images/market_item6.jpg" alt="곡물"></a>
                         <h4>과일</h4>
                         <h3>사과 500g</h3>
                         <p><del>4,000</del> <span>10%↓</span></p>
@@ -103,13 +103,13 @@
             </div>
 
             <div class="quick">
-                <a href="#"><img src="/farmstory/src/main/webapp/images/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
-                <a href="#"><img src="/farmstory/src/main/webapp/images/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
+                <a href="#"><img src="/farmstory/images/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
+                <a href="#"><img src="/farmstory/images/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
             </div>
             <div class="latest">
                 <article>
-                    <a href="#"><img src="/farmstory/src/main/webapp/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
-                    <img src="/farmstory/src/main/webapp/images/main_latest1_img.jpg" alt="텃밭가꾸기">
+                    <a href="#"><img src="/farmstory/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
+                    <img src="/farmstory/images/main_latest1_img.jpg" alt="텃밭가꾸기">
                     <table border="0">
                         <tr>
                             <td>></td>
@@ -150,8 +150,8 @@
 
                 </article>
                 <article>
-                    <a href="#"><img src="/farmstory/src/main/webapp/images/main_latest2_tit.png" alt="귀농학교"></a>
-                    <img src="/farmstory/src/main/webapp/images/main_latest2_img.jpg" alt="귀농학교">
+                    <a href="#"><img src="/farmstory/images/main_latest2_tit.png" alt="귀농학교"></a>
+                    <img src="/farmstory/images/main_latest2_img.jpg" alt="귀농학교">
                     <table border="0">
                         <tr>
                             <td>></td>
@@ -192,8 +192,8 @@
 
                 </article>
                 <article>
-                    <a href="#"><img src="/farmstory/src/main/webapp/images/main_latest3_tit.png" alt="농작물이야기"></a>
-                    <img src="/farmstory/src/main/webapp/images/main_latest3_img.jpg" alt="농작물이야기">
+                    <a href="#"><img src="/farmstory/images/main_latest3_tit.png" alt="농작물이야기"></a>
+                    <img src="/farmstory/images/main_latest3_img.jpg" alt="농작물이야기">
                     <table border="0">
                         <tr>
                             <td>></td>
@@ -237,9 +237,9 @@
             </div>
 <div class="info">
     <article class="cs">
-        <img class="tit" src="/farmstory/src/main/webapp/images/main_sub2_cs_tit.png" alt="고객센터안내">
-        <img class="tel-img" src="/farmstory/src/main/webapp/images/main_sub2_cs_img.png" alt="전화기">
-        <img class="tel-txt" src="/farmstory/src/main/webapp/images/main_sub2_cs_txt.png" alt="1666-777">
+        <img class="tit" src="/farmstory/images/main_sub2_cs_tit.png" alt="고객센터안내">
+        <img class="tel-img" src="/farmstory/images/main_sub2_cs_img.png" alt="전화기">
+        <img class="tel-txt" src="/farmstory/images/main_sub2_cs_txt.png" alt="1666-777">
 
         <p>
             평일: AM 09:00 ~ PM 06:00<br>
@@ -247,13 +247,13 @@
             토, 일요일, 공휴일 휴무
         </p>
 
-        <a href="#"><img src="/farmstory/src/main/webapp/images/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
-        <a href="#"><img src="/farmstory/src/main/webapp/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
-        <a href="#"><img src="/farmstory/src/main/webapp/images/main_sub2_cs_bt3.png" alt="배송 조회"></a>
+        <a href="#"><img src="/farmstory/images/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
+        <a href="#"><img src="/farmstory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
+        <a href="#"><img src="/farmstory/images/main_sub2_cs_bt3.png" alt="배송 조회"></a>
     </article>
 
     <article class="account">
-        <img class="tit" src="/farmstory/src/main/webapp/images/main_sub2_account_tit.png" alt="계좌안내">
+        <img class="tit" src="/farmstory/images/main_sub2_account_tit.png" alt="계좌안내">
 
         <p>
             기업은행 123-456789-01-01-012<br>
@@ -265,7 +265,7 @@
     </article>
 
     <article class="notice">
-        <img class="tit" src="/farmstory/src/main/webapp/images/main_sub2_notice_tit.png" alt="공지사항">
+        <img class="tit" src="/farmstory/images/main_sub2_notice_tit.png" alt="공지사항">
 
         <table>
             <tr>
@@ -298,7 +298,7 @@
 </div>
         </main>
 <footer>
-    <img src="/farmstory/src/main/webapp/images/footer_logo.png" alt="팜스토리 로고">
+    <img src="/farmstory/images/footer_logo.png" alt="팜스토리 로고">
 
     <div>
         <p>

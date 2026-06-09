@@ -1,26 +1,28 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/farmstory//css/common.css">
+    <link rel="stylesheet" href="/farmstory/css/common.css">
 </head>
 
 <body>
     <div id="container">
         <header>
             <!-- 로고 -->
-            <a href="/farmstory/index.html" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고" /></a>
+            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고" /></a>
 
             <!-- 오른쪽 상단 메뉴 -->
             <p>
-                <a href="/farmstory/index.html">HOME</a>|
-                <a href="/farmstory/user/login.html">로그인</a>|
-                <a href="/farmstory/user/terms.html">회원가입</a>|
+                <a href="/farmstory/index.do">HOME</a>|
+                <a href="/farmstory/user/login.do">로그인</a>|
+                <a href="/farmstory/user/terms.do">회원가입</a>|
                 <a href="#">나의 정보</a> |
                 <a href="#">로그아웃</a> |
-                <a href="/farmstory//admin//admin.html">관리자</a>|
+                <a href="/farmstory//admin/admin.do">관리자</a>|
                 <a href="#">고객센터</a>
             </p>
 
@@ -29,11 +31,11 @@
 
             <!-- 메인 메뉴(GNB) -->
             <ul class="gnb">
-               <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/">장보기</a></li>
-                <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
-                <li><a href="/farmstory//community/notice.html">커뮤니티</a></li>
+               <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
+                <li><a href="/farmstory/market/list.do">장보기</a></li>
+                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
+                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
+                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
         <div id="user">
@@ -59,7 +61,7 @@
                     <div style="text-align: right;">
                         <a href="#">아이디 |</a>
                         <a href="#">비밀번호찾기 |</a>
-                        <a href="/farmstory/user/terms.html">회원가입</a>|
+                        <a href="/farmstory/user/terms.do">회원가입</a>|
                     </div>
                 </div>
             </section>
