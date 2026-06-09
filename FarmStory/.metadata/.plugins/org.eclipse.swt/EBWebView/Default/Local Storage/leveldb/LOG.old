@@ -1,2 +1,3 @@
-2026/06/08-11:19:40.797 13b0 Creating DB C:\Users\GGG\Desktop\FarmStory\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb since it was missing.
-2026/06/08-11:19:40.831 13b0 Reusing MANIFEST C:\Users\GGG\Desktop\FarmStory\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2026/06/08-14:45:10.519 3fd0 Reusing MANIFEST C:\Users\GGG\Desktop\workspace\1st-Project-Team3\FarmStory\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2026/06/08-14:45:10.532 3fd0 Recovering log #3
+2026/06/08-14:45:10.535 3fd0 Reusing old log C:\Users\GGG\Desktop\workspace\1st-Project-Team3\FarmStory\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
