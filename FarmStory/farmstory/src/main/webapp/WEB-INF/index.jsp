@@ -267,35 +267,35 @@
     <article class="notice">
         <img class="tit" src="/farmstory/src/main/webapp/images/main_sub2_notice_tit.png" alt="공지사항">
 
-        <table>
-            <tr>
-                <td>·</td>
-                <td><a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
-                <td>20-12-22</td>
-            </tr>
-            <tr>
-                <td>·</td>
-                <td><a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
-                <td>20-12-22</td>
-            </tr>
-            <tr>
-                <td>·</td>
-                <td><a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
-                <td>20-12-22</td>
-            </tr>
-            <tr>
-                <td>·</td>
-                <td><a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
-                <td>20-12-22</td>
-            </tr>
-            <tr>
-                <td>·</td>
-                <td><a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
-                <td>20-12-22</td>
-            </tr>
-        </table>
-    </article>
-</div>
+                    <table>
+                        <tr>
+                            <td>·</td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td>20-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>·</td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td>20-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>·</td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td>20-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>·</td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td>20-12-22</td>
+                        </tr>
+                        <tr>
+                            <td>·</td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td>20-12-22</td>
+                        </tr>
+                    </table>
+                </article>
+            </div>
         </main>
 <footer>
     <img src="/farmstory/src/main/webapp/images/footer_logo.png" alt="팜스토리 로고">
