@@ -87,8 +87,8 @@
                         </table>
 
                         <div class="btn-group">
-                            <a href="/farmstory/market/cart.jsp" id="btnCart" class="btn btnCart">장바구니</a>
-                            <a href="/farmstory/market/order.jsp" id="btnOrder" class="btn btnOrder">바로구매</a>
+                            <a href="/farmstory/market/cart.do" id="btnCart" class="btn btnCart">장바구니</a>
+                            <a href="/farmstory/market/order.do" id="btnOrder" class="btn btnOrder">바로구매</a>
                         </div>
                     </div>
 
