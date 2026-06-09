@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/common.css">
+    <link rel="stylesheet" href="/farmstory/css/common.css">
 </head>
 
 <body>
