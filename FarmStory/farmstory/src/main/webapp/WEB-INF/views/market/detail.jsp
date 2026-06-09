@@ -1,10 +1,10 @@
-<%@ page contentType="text/jsp;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::상품상세</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/detail.css">
+    <link rel="stylesheet" href="/farmstory/css/detail.css">
 </head>
 <body>
     <div id="container">
@@ -87,8 +87,8 @@
                         </table>
 
                         <div class="btn-group">
-                            <a href="/farmstory/market/cart.jsp" id="btnCart" class="btn btnCart">장바구니</a>
-                            <a href="/farmstory/market/order.jsp" id="btnOrder" class="btn btnOrder">바로구매</a>
+                            <a href="/farmstory/market/cart.do" id="btnCart" class="btn btnCart">장바구니</a>
+                            <a href="/farmstory/market/order.do" id="btnOrder" class="btn btnOrder">바로구매</a>
                         </div>
                     </div>
 

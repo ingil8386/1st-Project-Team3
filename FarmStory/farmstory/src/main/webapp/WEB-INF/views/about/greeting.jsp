@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/greeting.css">
+    <link rel="stylesheet" href="/farmstory/css/greeting.css">
 </head>
 <body>
     <div id="container">

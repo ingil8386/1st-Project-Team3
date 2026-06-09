@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::고객센터</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/community.css"/>
+    <link rel="stylesheet" href="/farmstory/css/community.css"/>
 </head>
 <body>
     <div id="container">

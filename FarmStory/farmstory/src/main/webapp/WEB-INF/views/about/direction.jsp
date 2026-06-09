@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/greeting.css">
+    <link rel="stylesheet" href="/farmstory/css/greeting.css">
 </head>
 <body>
     <div id="container">
@@ -27,7 +27,7 @@
             <!-- 메인 메뉴(GNB) -->
             <ul class="gnb">
                 <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/">장보기</a></li>
+                <li><a href="/farmstory/market/list.do">장보기</a></li>
                 <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
                 <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
                 <li><a href="/farmstory//community/notice.do">커뮤니티</a></li>
