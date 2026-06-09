@@ -273,27 +273,27 @@
                     <table>
                         <tr>
                             <td>·</td>
-                            <td><a href="/farmstory/community/view.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
                             <td>20-12-22</td>
                         </tr>
                         <tr>
                             <td>·</td>
-                            <td><a href="/farmstory/community/view.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
                             <td>20-12-22</td>
                         </tr>
                         <tr>
                             <td>·</td>
-                            <td><a href="/farmstory/community/view.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
                             <td>20-12-22</td>
                         </tr>
                         <tr>
                             <td>·</td>
-                            <td><a href="/farmstory/community/view.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
                             <td>20-12-22</td>
                         </tr>
                         <tr>
                             <td>·</td>
-                            <td><a href="/farmstory/community/view.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
+                            <td><a href="/farmstory/community/notice.do">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a></td>
                             <td>20-12-22</td>
                         </tr>
                     </table>
