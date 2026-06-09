@@ -14,7 +14,7 @@ public class SQL {
 	public static final String WHERE_MEMBERID = "WHERE memberid=?";
 	public static final String WHERE_NICK = "WHERE membernick=?";
 	public static final String WHERE_EMAIL = "WHERE memberemail=?";
-	public static final String WHERE_HP = "WHERE hp=?";
+	public static final String WHERE_HP = "WHERE memberhp=?";
 
 	// ==========================================
 	// Community (게시판 공통 - 농작물, 텃밭, 공지사항 등)
