@@ -1,39 +1,41 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/farmstory//css/common.css">
+    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/common.css">
 </head>
 
 <body>
     <div id="container">
         <header>
             <!-- 로고 -->
-            <a href="/farmstory/index.html" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고" /></a>
+            <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/index.jsp" class="logo"><img src="/FarmStory/farmstory/src/main/webapp/images/logo.png" alt="메인로고" /></a>
 
             <!-- 오른쪽 상단 메뉴 -->
             <p>
-                <a href="/farmstory/index.html">HOME</a>|
-                <a href="/farmstory/user/login.html">로그인</a>|
-                <a href="/farmstory/user/terms.html">회원가입</a>|
+                <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/index.jsp">HOME</a>|
+                <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/user/login.jsp">로그인</a>|
+                <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/user/terms.jsp">회원가입</a>|
                 <a href="#">나의 정보</a> |
                 <a href="#">로그아웃</a> |
-                <a href="/farmstory//admin//admin.html">관리자</a>|
+                <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/admin/admin.jsp">관리자</a>|
                 <a href="#">고객센터</a>
             </p>
 
             <!-- 오른쪽 텍스트 배너 -->
-            <img class="text" src="/farmstory/images/head_txt_img.png" alt="3만원이상 무료배송">
+            <img class="text" src="/FarmStory/farmstory/src/main/webapp/images/head_txt_img.png" alt="3만원이상 무료배송">
 
             <!-- 메인 메뉴(GNB) -->
             <ul class="gnb">
-          <li><a href="/farmstory/about/greeting.html">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/">장보기</a></li>
-                <li><a href="/farmstory/story/intro.html">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.html">이벤트</a></li>
-                <li><a href="/farmstory//community/notice.html">커뮤니티</a></li>
+               <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/about/greeting.html">팜스토리소개</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/market/list.jsp">장보기</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/story/intro.jsp">농작물이야기</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/event/calendar.jsp">이벤트</a></li>
+                <li><a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/community/notice.jsp">커뮤니티</a></li>
             </ul>
         </header>
         <div id="user">
@@ -45,7 +47,7 @@
                             <td>아이디</td>
                             <td>
                                 <input type="text" name="uid" placeholder="아이디 입력"/>
-                                <button type="button"><img src="/farmstory/images/user/chk_id.gif" alt="중복확인"></button>
+                                <button type="button"><img src="/FarmStory/farmstory/src/main/webapp/images/user/chk_id.gif" alt="중복확인"></button>
                                 <span class="uidResult"></span>
                             </td>
                         </tr>
@@ -71,7 +73,7 @@
                             <td>
                                 <p class="nickInfo">공백없는 한글, 영문, 숫자 입력</p>
                                 <input type="text" name="nick" placeholder="별명 입력"/>
-                                <button><img src="/farmstory/images/user/chk_id.gif" alt="중복확인"></button>
+                                <button><img src="/FarmStory/farmstory/src/main/webapp/images/user/chk_id.gif" alt="중복확인"></button>
                                 <span class="nickResult"></span>
                             </td>
                         </tr>
@@ -79,7 +81,7 @@
                             <td>이메일</td>
                             <td>
                                 <input type="email" name="email" placeholder="이메일 입력"/>
-                                <button><img src="/farmstory/images/user/chk_auth.gif" alt="인증번호 받기"></button>
+                                <button><img src="/FarmStory/farmstory/src/main/webapp/images/user/chk_auth.gif" alt="인증번호 받기"></button>
                                 <div class="auth">
                                     <input type="text" name="auth" id="인증번호 입력"/>
                                     <button><img src="/farmstory/images/user/chk_confirm.gif" alt="확인"></button>
@@ -94,7 +96,7 @@
                             <td>주소</td>
                             <td>
                                 <input type="text" name="zip" placeholder="우편번호"/>
-                                <button><img src="/farmstory/images/user/chk_post.gif" alt="우편번호찾기"></button>
+                                <button><img src="/FarmStory/farmstory/src/main/webapp/images/user/chk_post.gif alt="우편번호찾기"></button>
                                 <input type="text" name="addr1" placeholder="주소 검색"/>
                                 <input type="text" name="addr2" placeholder="상세주소 입력"/>
                             </td>
@@ -102,7 +104,7 @@
                     </table>
 
                     <div>
-                        <a href="./login.html" class="btn btnCancel">취소</a>
+                        <a href="/FarmStory/farmstory/src/main/webapp/WEB-INF/views/user/login.jsp" class="btn btnCancel">취소</a>
                         <input type="submit" value="회원가입" class="btn btnRegister"/>
                     </div>
                 </form>
@@ -116,7 +118,7 @@
             <!-- 여기부터 페이지별 section -->
 
             <footer>
-                <img src="/farmstory/images/footer_logo.png" alt="팜스토리 로고">
+                <img src="/FarmStory/farmstory/src/main/webapp/images/footer_logo.png" alt="팜스토리 로고">
 
                 <div>
                     <p>
