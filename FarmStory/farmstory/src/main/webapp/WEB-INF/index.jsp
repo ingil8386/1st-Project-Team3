@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
-    <link rel="stylesheet" href="/farmstory/css/common.css">
+    <link rel="stylesheet" href="/farmstory/css/main.css">
 </head>
 <body>
     <div id="container">
