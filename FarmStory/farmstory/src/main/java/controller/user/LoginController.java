@@ -37,23 +37,20 @@ public class LoginController extends HttpServlet {
         String ctxPath = req.getContextPath();
 
         // login.jsp name 기준
-        String memberid = req.getParameter("userid");
-        String memberpass = req.getParameter("pass");
+        String memberid = req.getParameter("memberid");
+        String memberpass = req.getParameter("memberpass");
 
-        MemberDTO member = service.login(memberid, memberpass);
+        MemberDTO memberDTO = service.login(memberid, memberpass);
         
-
-        // 로그인 실패
-        if (member == null) {
-            resp.sendRedirect(ctxPath + "/user/login.do?login=fail");
-            return;
-        }
-
-        // 로그인 성공
-        HttpSession session = req.getSession();
-        session.setAttribute("sessMember", member);
-        session.setMaxInactiveInterval(60 * 30);
-
-        resp.sendRedirect(ctxPath + "/index.do");
+		if(memberDTO != null) {
+			// 회원 맞음 -> 세션 저장 후 글목록 이동
+			HttpSession session = req.getSession(); // request 객체로 현재 사용자(session) 구하기
+			session.setAttribute("sessUser", memberDTO);
+			
+			resp.sendRedirect("/farmstory/index.do");			
+		}else {
+			// 회원 아님 -> 로그인 이동
+			resp.sendRedirect("/farmstory/user/login.do?login=fail");			
+		}
     }
 }

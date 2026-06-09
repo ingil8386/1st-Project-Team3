@@ -19,7 +19,7 @@ public class MemberDAO extends DBHelper {
 
     private MemberDAO() {}
 
-    public void insertMember(MemberDTO dto) throws SQLException {
+    public void insertMember(MemberDTO dto) {
         try {
             conn = getConnection();
             psmt = conn.prepareStatement(SQL.INSERT_MEMBER);
@@ -36,20 +36,40 @@ public class MemberDAO extends DBHelper {
             psmt.setString(10, dto.getRegip());
 
             psmt.executeUpdate();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll();
-        }
-    }
+			closeAll();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public MemberDTO selectMember(String memberid) {
+		
+		// 반환용 DTO
+		MemberDTO dto = null;
+		
+		try {
+			conn = getConnection();						
+			psmt = conn.prepareStatement(SQL2.SELECT_MEMBER);
+			psmt.setString(1, memberid);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new MemberDTO();
+				
+			}			
+			closeAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
 
     public MemberDTO selectMember(String memberid, String memberpass) {
         MemberDTO dto = null;
 
         try {
             conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.SELECT_MEMBER);
+            psmt = conn.prepareStatement(SQL.SELECT_MEMBER_WITH_PASS);
             psmt.setString(1, memberid);
             psmt.setString(2, memberpass);
 
@@ -57,7 +77,6 @@ public class MemberDAO extends DBHelper {
 
             if (rs.next()) {
                 dto = new MemberDTO();
-
                 dto.setMemberid(rs.getString("memberid"));
                 dto.setMemberpass(rs.getString("memberpass"));
                 dto.setMembername(rs.getString("membername"));
@@ -71,12 +90,13 @@ public class MemberDAO extends DBHelper {
                 dto.setRegip(rs.getString("regip"));
                 dto.setRdate(rs.getString("rdate"));
                 dto.setLeavedate(rs.getString("leavedate"));
+                closeAll();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            closeAll();
+			
         }
 
         return dto;
@@ -98,9 +118,21 @@ public class MemberDAO extends DBHelper {
         return selectCount(SQL2.SELECT_COUNT_HP, memberhp);
     }
 
-    private int selectCount(String sql, String value) {
+    public int selectCount(String type, String value) {
         int count = 0;
+        
+        String sql = SQL.SELECT_COUNT_MEMBER;
 
+		if(type.equals("memberid")) {
+			sql += SQL.WHERE_MEMBERID;
+		}else if(type.equals("nick")) {
+			sql += SQL.WHERE_NICK;
+		}else if(type.equals("email")) {
+			sql += SQL.WHERE_EMAIL;
+		}else if(type.equals("hp")) {
+			sql += SQL.WHERE_HP;
+		}
+		
         try {
             conn = getConnection();
             psmt = conn.prepareStatement(sql);
@@ -111,11 +143,9 @@ public class MemberDAO extends DBHelper {
             if (rs.next()) {
                 count = rs.getInt(1);
             }
-
+            closeAll();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            closeAll();
         }
 
         return count;
@@ -133,7 +163,6 @@ public class MemberDAO extends DBHelper {
                 MemberDTO dto = new MemberDTO();
 
                 dto.setMemberid(rs.getString("memberid"));
-                dto.setMemberpass(rs.getString("memberpass"));
                 dto.setMembername(rs.getString("membername"));
                 dto.setMembernick(rs.getString("membernick"));
                 dto.setMemberemail(rs.getString("memberemail"));
@@ -147,12 +176,11 @@ public class MemberDAO extends DBHelper {
                 dto.setLeavedate(rs.getString("leavedate"));
 
                 members.add(dto);
+                closeAll();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            closeAll();
         }
 
         return members;
@@ -173,11 +201,10 @@ public class MemberDAO extends DBHelper {
             psmt.setString(8, dto.getMemberid());
 
             psmt.executeUpdate();
+            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            closeAll();
         }
     }
 
@@ -188,11 +215,10 @@ public class MemberDAO extends DBHelper {
             psmt.setString(1, memberid);
 
             psmt.executeUpdate();
+            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            closeAll();
-        }
+        } 
     }
 }

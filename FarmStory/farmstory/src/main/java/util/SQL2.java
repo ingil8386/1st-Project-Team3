@@ -204,23 +204,4 @@ public class SQL2 {
 
     public static final String DELETE_FILE =
             "DELETE FROM `file` WHERE fileno=?";
-    
-    
-    public static final String SELECT_CART_LIST =
-            "SELECT " +
-            "c.cartno, " +
-            "c.memberid, " +
-            "m.membername, " +
-            "c.productno, " +
-            "p.productname, " +
-            "p.productcate, " +
-            "p.productprice, " +
-            "c.cartcount, " +
-            "(p.productprice * c.cartcount) AS totalprice, " +
-            "c.rdate " +
-            "FROM cart c " +
-            "JOIN member m ON c.memberid = m.memberid " +
-            "JOIN product p ON c.productno = p.productno " +
-            "ORDER BY c.cartno DESC";
-    
 }
