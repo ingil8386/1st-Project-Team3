@@ -57,6 +57,7 @@ public class MemberDAO extends DBHelper {
 
             if (rs.next()) {
                 dto = new MemberDTO();
+
                 dto.setMemberid(rs.getString("memberid"));
                 dto.setMemberpass(rs.getString("memberpass"));
                 dto.setMembername(rs.getString("membername"));
@@ -70,13 +71,12 @@ public class MemberDAO extends DBHelper {
                 dto.setRegip(rs.getString("regip"));
                 dto.setRdate(rs.getString("rdate"));
                 dto.setLeavedate(rs.getString("leavedate"));
-                closeAll();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-			
+            closeAll();
         }
 
         return dto;
@@ -110,11 +110,12 @@ public class MemberDAO extends DBHelper {
 
             if (rs.next()) {
                 count = rs.getInt(1);
-                closeAll();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
 
         return count;
@@ -132,6 +133,7 @@ public class MemberDAO extends DBHelper {
                 MemberDTO dto = new MemberDTO();
 
                 dto.setMemberid(rs.getString("memberid"));
+                dto.setMemberpass(rs.getString("memberpass"));
                 dto.setMembername(rs.getString("membername"));
                 dto.setMembernick(rs.getString("membernick"));
                 dto.setMemberemail(rs.getString("memberemail"));
@@ -145,11 +147,12 @@ public class MemberDAO extends DBHelper {
                 dto.setLeavedate(rs.getString("leavedate"));
 
                 members.add(dto);
-                closeAll();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
 
         return members;
@@ -170,10 +173,11 @@ public class MemberDAO extends DBHelper {
             psmt.setString(8, dto.getMemberid());
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
     }
 
@@ -184,10 +188,11 @@ public class MemberDAO extends DBHelper {
             psmt.setString(1, memberid);
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        } finally {
+            closeAll();
+        }
     }
 }

@@ -1,12 +1,13 @@
 package service;
 
+import java.util.List;
+
 import DAO.MemberDAO;
 import DTO.MemberDTO;
 
 public enum Memberservice {
 
-	INSTANCE;
-    
+    INSTANCE;
 
     private MemberDAO dao = MemberDAO.getInstance();
 
@@ -23,5 +24,9 @@ public enum Memberservice {
         }
 
         return dao.selectMember(memberid.trim(), memberpass);
+    }
+
+    public List<MemberDTO> selectAllMembers() {
+        return dao.selectAllMembers();
     }
 }

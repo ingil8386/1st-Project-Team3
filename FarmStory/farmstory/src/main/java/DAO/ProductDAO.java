@@ -31,10 +31,11 @@ public class ProductDAO extends DBHelper {
             psmt.setInt(6, dto.getProductstock());
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
     }
 
@@ -60,10 +61,11 @@ public class ProductDAO extends DBHelper {
                 dto.setProductstock(rs.getInt("productstock"));
                 dto.setRdate(rs.getString("rdate"));
             }
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
 
         return dto;
@@ -75,7 +77,7 @@ public class ProductDAO extends DBHelper {
         try {
             conn = getConnection();
 
-            if (productcate == null || productcate.equals("")) {
+            if (productcate == null || productcate.trim().isEmpty()) {
                 psmt = conn.prepareStatement(SQL2.SELECT_PRODUCTS);
             } else {
                 psmt = conn.prepareStatement(SQL2.SELECT_PRODUCTS_BY_CATE);
@@ -98,10 +100,11 @@ public class ProductDAO extends DBHelper {
 
                 products.add(dto);
             }
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
 
         return products;
@@ -121,10 +124,11 @@ public class ProductDAO extends DBHelper {
             psmt.setInt(7, dto.getProductno());
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
     }
 
@@ -135,10 +139,11 @@ public class ProductDAO extends DBHelper {
             psmt.setInt(1, productno);
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeAll();
         }
     }
 }

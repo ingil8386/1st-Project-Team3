@@ -1,11 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="DTO.CartDTO" %>
+<%@ page import="java.text.DecimalFormat" %>
+
+<%
+    List<CartDTO> carts = (List<CartDTO>) request.getAttribute("carts");
+    DecimalFormat df = new DecimalFormat("#,###");
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <title>관리자::주문목록</title>
-    <link rel="stylesheet" href="/farmstory/css/admin.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin.css">
 </head>
 
 <body>
@@ -15,12 +24,12 @@
         <!-- 헤더 -->
         <header>
             <div class="header_inner">
-                <a href="/farmstory/admin/admin.do">
+                <a href="<%= request.getContextPath() %>/index.do">
                     <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
-                    <a href="/farmstory/index.do">HOME</a>
+                    <a href="<%= request.getContextPath() %>/index.do">HOME</a>
                     <span>|</span>
                     <a href="#">로그아웃</a>
                     <span>|</span>
@@ -28,8 +37,6 @@
                 </div>
             </div>
         </header>
-
-
 
         <!-- 메인 -->
         <main>
@@ -42,22 +49,22 @@
                     <div class="menu">
                         <strong>상품관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/product/product_list.do">상품목록</a></li>
-                            <li><a href="/farmstory/admin/product/product_register.do">상품등록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/product/product_list.do">상품목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/product/product_register.do">상품등록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <strong>주문관리</strong>
                         <ul>
-                            <li class="active"><a href="/farmstory/admin/order/order_list.do">주문목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/order/order_list.do">주문목록</a></li>
                         </ul>
                     </div>
 
                     <div class="menu">
                         <strong>회원관리</strong>
                         <ul>
-                            <li><a href="/farmstory/admin/user/user_list.do">회원목록</a></li>
+                            <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -65,50 +72,54 @@
                 <!-- 콘텐츠 -->
                 <section class="content">
                     <h3>주문목록</h3>
-                    <table class="order_table">
+
+                    <table>
                         <thead>
                             <tr>
-                                <th>
-                                    <input type="checkbox">
-
-                                </th>
-
-                                <th>주문번호</th>
+                                <th>장바구니번호</th>
+                                <th>회원아이디</th>
+                                <th>회원명</th>
+                                <th>상품번호</th>
                                 <th>상품명</th>
-                                <th>판매가격</th>
+                                <th>구분</th>
+                                <th>가격</th>
                                 <th>수량</th>
-                                <th>배송비</th>
                                 <th>합계</th>
-                                <th>주문자</th>
-                                <th>주문일</th>
-                                <th>확인</th>
+                                <th>등록일</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <th>
-                                    <input type="checkbox">
-
-                                </th>
-
-                                <td>1001</td>
-                                <td>사과 500g</td>
-                                <td>4,000원</td>
-                                <td>2</td>
-                                <td>3,000원</td>
-                                <td>11,000원</td>
-                                <td>김유신</td>
-                                <td>2023-01-01 13:06:14</td>
-                                <td><a href="#" class="detail_btn">[상세확인]</a></td>
-                            </tr>
+                        <%
+                            if (carts != null && !carts.isEmpty()) {
+                                for (CartDTO cart : carts) {
+                        %>
+                                    <tr>
+                                        <td><%= cart.getCartno() %></td>
+                                        <td><%= cart.getMemberid() %></td>
+                                        <td><%= cart.getMembername() %></td>
+                                        <td><%= cart.getProductno() %></td>
+                                        <td><%= cart.getProductname() %></td>
+                                        <td><%= cart.getProductcate() %></td>
+                                        <td><%= df.format(cart.getProductprice()) %>원</td>
+                                        <td><%= cart.getCartcount() %></td>
+                                        <td><%= df.format(cart.getTotalprice()) %>원</td>
+                                        <td><%= cart.getRdate() %></td>
+                                    </tr>
+                        <%
+                                }
+                            } else {
+                        %>
+                                <tr>
+                                    <td colspan="10">등록된 장바구니 데이터가 없습니다.</td>
+                                </tr>
+                        <%
+                            }
+                        %>
                         </tbody>
                     </table>
 
-                    <div class="bottom_area">
-                        <button type="button" class="delete_btn">선택삭제</button>
-                    </div>
-
+                    <!-- 페이지 번호 -->
                     <div class="pagination">
                         <a href="#">&lt;</a>
                         <a href="#" class="on">1</a>
@@ -119,6 +130,7 @@
                         <a href="#">&gt;</a>
                     </div>
                 </section>
+
             </div>
         </main>
 
