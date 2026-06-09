@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/index.do")
-public class IndexController extends HttpServlet {
+@WebServlet("/admin/user/user_list.do")
+public class UserListController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,6 +20,6 @@ public class IndexController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
 
-        req.getRequestDispatcher("/WEB-INF/views/admin/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/admin/user/user_list.jsp").forward(req, resp);
     }
 }

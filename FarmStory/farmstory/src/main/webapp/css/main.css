@@ -105,7 +105,7 @@ main > div {
 }
 main > div:nth-child(1) {height: 312px;}
 main > div:nth-child(2) {height: 286px;}
-main > div:nth-child(3) {height:  74px;}
+main > div:nth-child(3) {height: 74px;}
 main > div:nth-child(4) {height: 186px;}
 main > div:nth-child(5) {height: 154px;}
 
@@ -183,7 +183,7 @@ main > div:nth-child(5) {height: 154px;}
 .market > .market-tit {
     position: absolute;
     left: 0;
-    margin: 1Opx 0;
+    margin: 10px 0;
     width: 131px;
     height: 38px;
 }
@@ -293,7 +293,7 @@ main > div:nth-child(5) {height: 154px;}
     text-align: center;
 }
 
-/* 바로가기  */
+/* 바로가기 */
 .quick {
     display: flex;
 }
@@ -308,7 +308,7 @@ main > div:nth-child(5) {height: 154px;}
 .quick > a:nth-child(1) { background-image: url('../images/main_banner_sub1_bg.jpg'); }
 .quick > a:nth-child(2) { background-image: url('../images/main_banner_sub2_bg.jpg'); }        
 
-/* 최신글 목록  */
+/* 최신글 목록 */
 .latest {
     display: flex;
 }
@@ -334,12 +334,6 @@ main > div:nth-child(5) {height: 154px;}
     color: #6a6a6a;
 }
 
-.latest > article > table tr {
-    
-}
-
-.latest > article > table tr > td {            
-}
 .latest > article > table tr > td:nth-child(2) {
     display: block;
     width: 140px;
@@ -348,7 +342,6 @@ main > div:nth-child(5) {height: 154px;}
     text-overflow: ellipsis;
     line-height: 18px;
 }
-
 
 /* 기타 정보 안내 */
 .info {
@@ -512,6 +505,7 @@ main > div:nth-child(5) {height: 154px;}
     line-height: 16px;
     text-align: right;
 }
+
 /* 푸터 */
 footer {
     position: relative;
