@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리 :: 장바구니</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/cart.css">
+    <link rel="stylesheet" href="/farmstory/css/cart.css">
 </head>
 <body>
     <div id="container">

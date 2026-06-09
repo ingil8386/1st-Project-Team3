@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::이벤트</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/event.css"/>
+    <link rel="stylesheet" href="/farmstory/css/event.css"/>
     <style>
         .calendar {
             margin-bottom: 16px;

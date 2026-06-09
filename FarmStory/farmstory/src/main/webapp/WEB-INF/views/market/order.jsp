@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리 :: 상품주문</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/order.css">
+    <link rel="stylesheet" href="/farmstory/css/order.css">
 </head>
 <body>
     <div id="container">
