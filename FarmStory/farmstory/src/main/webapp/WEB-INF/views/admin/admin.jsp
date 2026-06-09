@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>관리자::메인</title>
-    <link rel="stylesheet" href="/FarmStory/farmstory/src/main/webapp/css/admin.css">
+    <link rel="stylesheet" href="/farmstory/css/admin.css">
 </head>
 
 <body>
