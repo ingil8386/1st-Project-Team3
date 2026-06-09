@@ -16,7 +16,7 @@
         <header>
             <div class="header_inner">
                 <a href="/farmstory/admin/admin.do">
-                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.do" alt="관리자 로고">
+                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
                 </a>
 
                 <div class="top_menu">
