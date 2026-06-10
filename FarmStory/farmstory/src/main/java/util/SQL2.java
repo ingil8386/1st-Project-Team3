@@ -54,14 +54,10 @@ public class SQL2 {
 
     // product
     public static final String INSERT_PRODUCT =
-            "INSERT INTO product SET "
-            + "productcate=?, "
-            + "productname=?, "
-            + "productprice=?, "
-            + "productcontent=?, "
-            + "productimg=?, "
-            + "productstock=?";
-
+            "INSERT INTO product "
+          + "(productcate, productname, productprice, productdiscount, productpoint, productfinalprice, productcontent, productimg, productstock) "
+          + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
     public static final String SELECT_PRODUCT =
             "SELECT * FROM product WHERE productno=?";
 
@@ -86,12 +82,24 @@ public class SQL2 {
 
 
     // cart
-    public static final String INSERT_CART =
-            "INSERT INTO cart SET "
-            + "memberid=?, "
-            + "productno=?, "
-            + "cartcount=?";
-
+ // MySQL
+    public static final String INSERT_CART = "INSERT INTO cart (memberid, productno, cartcount, rdate) " +
+                         "VALUES (?, ?, ?, NOW()) " +
+                         "ON DUPLICATE KEY UPDATE cartcount = VALUES(cartcount), rdate = VALUES(rdate)";
+    
+    public static final String SELECT_CART_LIST =
+    	    "SELECT " +
+    	    "p.productimg AS 상품이미지, " +
+    	    "p.productcate AS 상품종류, " +
+    	    "p.productname AS 상품명, " +
+    	    "c.cartcount AS 주문수량, " +
+    	    "(c.cartcount * p.productprice) AS 가격합계, " +
+    	    "SUM(c.cartcount) OVER() AS 전체물건수량, " +
+    	    "c.rdate " +
+    	    "FROM cart c " +
+    	    "JOIN product p " +
+    	    "ON c.productno = p.productno " +
+    	    "WHERE c.memberid = ?";
     public static final String SELECT_CARTS =
             "SELECT "
             + "c.cartno, "
@@ -204,4 +212,26 @@ public class SQL2 {
 
     public static final String DELETE_FILE =
             "DELETE FROM `file` WHERE fileno=?";
+    
+    public static final String SELECT_CART_LIST =
+            "SELECT "
+            + "c.cartno, "
+            + "c.memberid, "
+            + "m.membername, "
+            + "c.productno, "
+            + "p.productname, "
+            + "p.productcate, "
+            + "p.productprice, "
+            + "c.cartcount, "
+            + "(p.productprice * c.cartcount) AS totalprice, "
+            + "c.rdate "
+            + "FROM cart AS c "
+            + "JOIN product AS p ON c.productno = p.productno "
+            + "JOIN member AS m ON c.memberid = m.memberid "
+            + "ORDER BY c.cartno DESC";
+    
+    public static final String UPDATE_MEMBER_ROLE =
+            "UPDATE member SET memberrole = ? WHERE memberid = ?";
+    
+    
 }

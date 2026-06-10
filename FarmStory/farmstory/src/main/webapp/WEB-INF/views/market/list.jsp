@@ -1,56 +1,51 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="DTO.ProductDTO" %>
+<%@ page import="java.text.DecimalFormat" %>
+
+<%
+    List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
+    DecimalFormat df = new DecimalFormat("#,###");
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
+<jsp:include page="/WEB-INF/views/common/_head.jsp" />
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::상품목록</title>
-    <link rel="stylesheet" href="/farmstory/css/list.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/list.css">
 </head>
 <body>
     <div id="container">
-        <header>
-            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="로고"></a>
-            <p>
-                <a href="/farmstory/index.do">HOME |</a>
-                <a href="/farmstory/user/login.do">로그인</a>|
-                <a href="/farmstory/user/terms.do">회원가입</a>|               
-                <a href="#">나의정보 </a>|
-                <a href="#">로그아웃 </a>|
-                <a href="/farmstory/admin/admin.do">관리자 |</a>
-                <a href="#">고객센터</a>
-            </p>
-            <img src="/farmstory/images/head_txt_img.png" alt="3만원 이상 무료배송" class="text">
-            
-            <ul class="gnb">
-               <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.do">장보기</a></li>
-                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
-            </ul>
-        </header>
-
         <div id="sub">
-            <div><img src="/farmstory/images/sub_top_tit2.png" alt="MARKET"></div>
+            <div>
+                <img src="<%= request.getContextPath() %>/images/sub_top_tit2.png" alt="MARKET">
+            </div>
             
             <section class="market">
                 <aside>
-                    <img src="/farmstory/images/sub_aside_cate2_tit.png" alt="장보기">
+                    <img src="<%= request.getContextPath() %>/images/sub_aside_cate2_tit.png" alt="장보기">
+
                     <ul class="lnb">
-                        <li class="on"><a href="/farmstory/market/list.do">장보기</a></li>
+                        <li class="on">
+                            <a href="<%= request.getContextPath() %>/market/list.do">장보기</a>
+                        </li>
                     </ul>
                 </aside>
                 
                 <article class="list">
                     <nav>
-                        <img src="/farmstory/images/sub_nav_tit_cate2_tit1.png" alt="장보기">
+                        <img src="<%= request.getContextPath() %>/images/sub_nav_tit_cate2_tit1.png" alt="장보기">
                         <p>
                             HOME &gt; 장보기 &gt; <em>장보기</em>
                         </p>
                     </nav>
 
                     <p class="sort">
-                        <a href="#" class="on">전체(10) |</a>
+                        <a href="<%= request.getContextPath() %>/market/list.do" class="on">
+                            전체(<%= products == null ? 0 : products.size() %>) |
+                        </a>
                         <a href="#">과일 |</a>
                         <a href="#">야채 |</a>
                         <a href="#">곡류</a>
@@ -67,72 +62,62 @@
                                 <th>판매가격</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item1.jpg" class="thumbnail" alt="사과 500g"></a>
-                                </td>
-                                <td class="type">과일</td>
-                                <td class="title"><a href="#">사과 500g</a></td>
-                                <td class="discount">10%</td>
-                                <td class="point">400P</td>
-                                <td class="price">
-                                    <strong>3,600</strong>
-                                    <del>4,000</del>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item2.jpg" class="thumbnail" alt="배 5kg"></a>
-                                </td>
-                                <td class="type">과일</td>
-                                <td class="title"><a href="#">전남 완주 배 5kg</a></td>
-                                <td class="discount">10%</td>
-                                <td class="point">400P</td>
-                                <td class="price">
-                                    <strong>3,600</strong>
-                                    <del>4,000</del>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item3.jpg" class="thumbnail" alt="방울토마토"></a>
-                                </td>
-                                <td class="type">과일</td>
-                                <td class="title"><a href="#">방울 토마토</a></td>
-                                <td class="discount">10%</td>
-                                <td class="point">400P</td>
-                                <td class="price">
-                                    <strong>3,600</strong>
-                                    <del>4,000</del>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item6.jpg" class="thumbnail" alt="현미"></a>
-                                </td>
-                                <td class="type">곡류</td>
-                                <td class="title"><a href="#">무농약 현미</a></td>
-                                <td class="discount">10%</td>
-                                <td class="point">400P</td>
-                                <td class="price">
-                                    <strong>3,600</strong>
-                                    <del>4,000</del>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item7.jpg" class="thumbnail" alt="샐러드"></a>
-                                </td>
-                                <td class="type">야채</td>
-                                <td class="title"><a href="#">팜스토리 하루야채 샐러드</a></td>
-                                <td class="discount">10%</td>
-                                <td class="point">400P</td>
-                                <td class="price">
-                                    <strong>3,600</strong>
-                                    <del>4,000</del>
-                                </td>
-                            </tr>
+                        <%
+                            if (products != null && !products.isEmpty()) {
+                                for (ProductDTO product : products) {
+
+                                    String img = product.getProductimg();
+
+                                    if (img == null || img.trim().isEmpty()) {
+                                        img = request.getContextPath() + "/images/market_item1.jpg";
+                                    } else {
+                                        img = request.getContextPath() + img;
+                                    }
+                        %>
+                                    <tr>
+                                        <td>
+                                            <a href="<%= request.getContextPath() %>/market/detail.do?productno=<%= product.getProductno() %>">
+                                                <img src="<%= img %>"
+                                                     class="thumbnail"
+                                                     alt="<%= product.getProductname() %>">
+                                            </a>
+                                        </td>
+
+                                        <td class="type">
+                                            <%= product.getProductcate() %>
+                                        </td>
+
+                                        <td class="title">
+                                            <a href="<%= request.getContextPath() %>/market/detail.do?productno=<%= product.getProductno() %>">
+                                                <%= product.getProductname() %>
+                                            </a>
+                                        </td>
+
+                                        <td class="discount">
+                                            <%= product.getProductdiscount() %>%
+                                        </td>
+
+                                        <td class="point">
+                                            <%= df.format(product.getProductpoint()) %>P
+                                        </td>
+
+                                        <td class="price">
+                                            <strong><%= df.format(product.getProductfinalprice()) %></strong>
+                                            <del><%= df.format(product.getProductprice()) %></del>
+                                        </td>
+                                    </tr>
+                        <%
+                                }
+                            } else {
+                        %>
+                                <tr>
+                                    <td colspan="6">등록된 상품이 없습니다.</td>
+                                </tr>
+                        <%
+                            }
+                        %>
                         </tbody>
                     </table>
 
@@ -145,19 +130,10 @@
                         <a href="#">[5]</a>
                         <a href="#">&gt;</a>
                     </p>
-                    </article>
+                </article>
             </section>
         </div>
-        
-        <footer>
-            <img src="/farmstory/images/footer_logo.png" alt="로고">
-            <p>
-                (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br>
-                대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345<br>
-                <em>Copyright(C)홍길동 All rights reserved.</em>
-            </p>
-        </footer>
+		<jsp:include page="/WEB-INF/views/common/_tail.jsp" />
     </div>    
 </body>
 </html>

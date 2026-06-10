@@ -44,13 +44,6 @@
                     </div>
 
                     <div class="menu">
-                        <strong>주문관리</strong>
-                        <ul>
-                            <li><a href="<%= request.getContextPath() %>/admin/order/order_list.do">주문목록</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="menu">
                         <strong>회원관리</strong>
                         <ul>
                             <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
@@ -94,17 +87,10 @@
                             </tr>
 
                             <tr>
-                                <th>포인트</th>
-                                <td>
-                                    <input type="text" name="point">
-                                    <span class="desc">포인트는 가격의 1%</span>
-                                </td>
-                            </tr>
-
-                            <tr>
                                 <th>할인</th>
                                 <td>
-                                    <select name="discount">
+                                    <select name="productdiscount">
+                                        <option value="0">0%</option>
                                         <option value="5">5%</option>
                                         <option value="12">12%</option>
                                         <option value="15">15%</option>
@@ -115,27 +101,10 @@
                             </tr>
 
                             <tr>
-                                <th>배송비</th>
+                                <th>포인트</th>
                                 <td>
-                                    <label>
-                                        <input type="radio" name="delivery" value="2000" checked>
-                                        2,000원
-                                    </label>
-
-                                    <label>
-                                        <input type="radio" name="delivery" value="3000">
-                                        3,000원
-                                    </label>
-
-                                    <label>
-                                        <input type="radio" name="delivery" value="5000">
-                                        5,000원
-                                    </label>
-
-                                    <label>
-                                        <input type="radio" name="delivery" value="0">
-                                        무료
-                                    </label>
+                                    <input type="text" name="productpoint" value="0">
+                                    <span class="desc">포인트 입력</span>
                                 </td>
                             </tr>
 
@@ -147,29 +116,11 @@
                             </tr>
 
                             <tr>
-                                <th rowspan="3">상품이미지</th>
+                                <th>상품이미지</th>
                                 <td>
                                     <div class="file_row">
-                                        <span>상품목록 이미지(약 120 × 120)</span>
+                                        <span>상품 이미지</span>
                                         <input type="file" name="thumb120" accept="image/*">
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="file_row">
-                                        <span>기본정보 이미지(약 240 × 240)</span>
-                                        <input type="file" name="thumb240" accept="image/*">
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="file_row">
-                                        <span>상품설명 이미지(약 750 × Auto)</span>
-                                        <input type="file" name="descriptionImage" accept="image/*">
                                     </div>
                                 </td>
                             </tr>

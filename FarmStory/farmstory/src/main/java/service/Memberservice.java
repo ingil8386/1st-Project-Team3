@@ -46,7 +46,7 @@ public enum Memberservice {
 			// Gmail SMTP 세션 생성
 			Session sess = Session.getInstance(props, new Authenticator(){
 				protected PasswordAuthentication getPasswordAuthentication(){			
-					final String APP_PASS = "rsjlbynqtsbxkkub";			
+					final String APP_PASS = "gxxxabqbkpafulbs";			
 					return new PasswordAuthentication(sender, APP_PASS);
 				}
 			});
@@ -71,16 +71,7 @@ public enum Memberservice {
 		}
 
     public MemberDTO login(String memberid, String memberpass) {
-
-        if (memberid == null || memberid.trim().isEmpty()) {
-            return null;
-        }
-
-        if (memberpass == null || memberpass.trim().isEmpty()) {
-            return null;
-        }
-
-        return dao.selectMember(memberid.trim(), memberpass);
+        return dao.selectMember(memberid, memberpass);
     }
     
 	public int getCount(String type, String value) {
@@ -105,4 +96,10 @@ public enum Memberservice {
 	public void remove(String memeberid) {
 		dao.deleteMember(memeberid);
 	}
+	
+	public void updateMemberRole(String memberid, String memberrole) {
+	    dao.updateMemberRole(memberid, memberrole);
+	}
+	
+	
 }

@@ -76,13 +76,6 @@
                     </div>
 
                     <div class="menu">
-                        <strong>주문관리</strong>
-                        <ul>
-                            <li><a href="<%= request.getContextPath() %>/admin/order/order_list.do">주문목록</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="menu">
                         <strong>회원관리</strong>
                         <ul>
                             <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
@@ -109,6 +102,9 @@
                                     <th>상품명</th>
                                     <th>구분</th>
                                     <th>가격</th>
+                                    <th>할인</th>
+                                    <th>포인트</th>
+                                    <th>최종가격</th>
                                     <th>재고</th>
                                     <th>등록일</th>
                                 </tr>
@@ -142,6 +138,9 @@
                                             <td><%= product.getProductname() %></td>
                                             <td><%= product.getProductcate() %></td>
                                             <td><%= df.format(product.getProductprice()) %>원</td>
+                                            <td><%= product.getProductdiscount() %>%</td>
+                                            <td><%= df.format(product.getProductpoint()) %>P</td>
+                                            <td><%= df.format(product.getProductfinalprice()) %>원</td>
                                             <td><%= product.getProductstock() %></td>
                                             <td><%= product.getRdate() %></td>
                                         </tr>
@@ -150,7 +149,7 @@
                                 } else {
                             %>
                                     <tr>
-                                        <td colspan="8">등록된 상품이 없습니다.</td>
+                                        <td colspan="11">등록된 상품이 없습니다.</td>
                                     </tr>
                             <%
                                 }

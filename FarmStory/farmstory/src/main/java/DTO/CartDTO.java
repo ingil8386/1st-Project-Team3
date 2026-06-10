@@ -6,6 +6,7 @@ public class CartDTO {
     private String memberid;
     private String membername;
     private int productno;
+    private String productimg;
     private String productname;
     private String productcate;
     private int productprice;
@@ -92,4 +93,13 @@ public class CartDTO {
     public void setRdate(String rdate) {
         this.rdate = rdate;
     }
+
+	public String getProductimg() {
+		return productimg;
+	}
+
+	public void setProductimg(String productimg) {
+		this.productimg = productimg;
+	}
+    
 }

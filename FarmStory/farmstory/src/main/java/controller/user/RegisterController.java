@@ -43,11 +43,6 @@ public class RegisterController extends HttpServlet {
 		String addr1 = req.getParameter("memberaddr1");
 		String addr2 = req.getParameter("memberaddr2");
 		String regip = req.getRemoteAddr(); // 사용자 IP주소
-		
-		// 디버깅: 값이 제대로 들어오는지 확인
-	    System.out.println("디버깅 - ID: " + memberid);
-	    System.out.println("디버깅 - PW: " + pass);
-	    System.out.println("디버깅 - NAME: " + name);
 	    
 		// DTO 생성
 		MemberDTO dto = new MemberDTO();
@@ -66,6 +61,6 @@ public class RegisterController extends HttpServlet {
 		service.register(dto);
 		
 		// 로그인 이동
-		resp.sendRedirect("/user/login.do?register=success");
+		resp.sendRedirect("/farmstory/user/login.do?register=success");
     }
 }
