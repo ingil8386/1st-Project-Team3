@@ -1,103 +1,211 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page import="DTO.ProductDTO" %>
+<%@ page import="java.text.DecimalFormat" %>
+
+<%
+    ProductDTO product = (ProductDTO) request.getAttribute("product");
+    DecimalFormat df = new DecimalFormat("#,###");
+
+    if (product == null) {
+        response.sendRedirect(request.getContextPath() + "/market/list.do");
+        return;
+    }
+
+    String img = product.getProductimg();
+
+    if (img == null || img.trim().isEmpty()) {
+        img = request.getContextPath() + "/images/market_item1.jpg";
+    } else {
+        img = request.getContextPath() + img;
+    }
+
+    int finalPrice = product.getProductfinalprice();
+
+    if (finalPrice <= 0) {
+        finalPrice = product.getProductprice() - (product.getProductprice() * product.getProductdiscount() / 100);
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::상품상세</title>
-    <link rel="stylesheet" href="/farmstory/css/detail.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/detail.css">
+
+    <script>
+        function updateTotal() {
+            const countInput = document.querySelector('input[name="count"]');
+            const totalEl = document.querySelector('.total');
+
+            const price = <%= finalPrice %>;
+            let count = parseInt(countInput.value);
+
+            if (isNaN(count) || count < 1) {
+                count = 1;
+                countInput.value = 1;
+            }
+
+            const total = price * count;
+            totalEl.innerText = total.toLocaleString() + '원';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const countInput = document.querySelector('input[name="count"]');
+
+            if (countInput) {
+                countInput.addEventListener('input', updateTotal);
+                countInput.addEventListener('change', updateTotal);
+            }
+        });
+    </script>
 </head>
 <body>
     <div id="container">
         <header>
-            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="로고"></a>
+            <a href="<%= request.getContextPath() %>/index.do" class="logo">
+                <img src="<%= request.getContextPath() %>/images/logo.png" alt="로고">
+            </a>
+
             <p>
-                <a href="/farmstory/index.do">HOME |</a>
-                <a href="/farmstory/user/login.do">로그인</a>|
-                <a href="/farmstory/user/terms.do">회원가입</a>|               
+                <a href="<%= request.getContextPath() %>/index.do">HOME |</a>
+                <a href="<%= request.getContextPath() %>/user/login.do">로그인</a>|
+                <a href="<%= request.getContextPath() %>/user/terms.do">회원가입</a>|               
                 <a href="#">나의정보 </a>|
                 <a href="#">로그아웃 </a>|
-                <a href="/farmstory/admin/admin.do">관리자 |</a>
+                <a href="<%= request.getContextPath() %>/admin/admin.do">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
-            <img src="/farmstory/images/head_txt_img.png" alt="3만원 이상 무료배송" class="text">
+
+            <img src="<%= request.getContextPath() %>/images/head_txt_img.png" alt="3만원 이상 무료배송" class="text">
             
             <ul class="gnb">
-               <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.do">장보기</a></li>
-                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
+                <li><a href="<%= request.getContextPath() %>/about/greeting.do">팜스토리소개</a></li>
+                <li><a href="<%= request.getContextPath() %>/market/list.do">장보기</a></li>
+                <li><a href="<%= request.getContextPath() %>/story/intro.do">농작물이야기</a></li>
+                <li><a href="<%= request.getContextPath() %>/event/calendar.do">이벤트</a></li>
+                <li><a href="<%= request.getContextPath() %>/community/notice.do">커뮤니티</a></li>
             </ul>
         </header>
 
         <div id="sub">
-            <div><img src="/farmstory/images/sub_top_tit2.png" alt="MARKET"></div>
+            <div>
+                <img src="<%= request.getContextPath() %>/images/sub_top_tit2.png" alt="MARKET">
+            </div>
+
             <section class="market">
                 <aside>
-                    <img src="/farmstory/images/sub_aside_cate2_tit.png" alt="장보기">
+                    <img src="<%= request.getContextPath() %>/images/sub_aside_cate2_tit.png" alt="장보기">
+
                     <ul class="lnb">
-                        <li class="on"><a href="/farmstory/market/list.do">장보기</a></li>
+                        <li class="on">
+                            <a href="<%= request.getContextPath() %>/market/list.do">장보기</a>
+                        </li>
                     </ul>
                 </aside>
 
                 <article class="view">
                     <nav>
-                        <img src="/farmstory/images/sub_nav_tit_cate2_tit1.png" alt="장보기">
+                        <img src="<%= request.getContextPath() %>/images/sub_nav_tit_cate2_tit1.png" alt="장보기">
                         <p>
                             HOME &gt; 장보기 &gt; <em>장보기</em>
                         </p>
                     </nav>
 
                     <h3>기본정보</h3>
+
                     <div class="basic">
-                        <img src="/farmstory/images/market_item_thumb.jpg" alt="딸기 500g">
+                        <img src="<%= img %>" alt="<%= product.getProductname() %>">
 
                         <table border="0">                            
                             <tbody>
                                 <tr>
                                     <td>상품명</td>
-                                    <td>딸기 500g</td>
+                                    <td><%= product.getProductname() %></td>
                                 </tr>
+
                                 <tr>
                                     <td>상품코드</td>
-                                    <td>01</td>
+                                    <td><%= product.getProductno() %></td>
                                 </tr>
+
+                                <tr>
+                                    <td>상품종류</td>
+                                    <td><%= product.getProductcate() %></td>
+                                </tr>
+
                                 <tr>
                                     <td>배송비</td>
                                     <td>
-                                        <span>5,000</span>원
+                                        <span>무료</span>
                                         <em>3만원 이상 무료배송</em>
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td>정상가격</td>
+                                    <td>
+                                        <del><%= df.format(product.getProductprice()) %>원</del>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>할인율</td>
+                                    <td><%= product.getProductdiscount() %>%</td>
+                                </tr>
+
+                                <tr>
+                                    <td>포인트</td>
+                                    <td><%= df.format(product.getProductpoint()) %>P</td>
+                                </tr>
+
                                 <tr>
                                     <td>판매가격</td>
-                                    <td>4,000원</td>
+                                    <td><%= df.format(finalPrice) %>원</td>
                                 </tr>
+
+                                <tr>
+                                    <td>재고</td>
+                                    <td><%= product.getProductstock() %>개</td>
+                                </tr>
+
                                 <tr>
                                     <td>구매수량</td>
                                     <td>
                                         <input type="number" name="count" min="1" value="1">
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <td>합계</td>
-                                    <td class="total">4,000원</td>
+                                    <td class="total"><%= df.format(finalPrice) %>원</td>
                                 </tr>
                             </tbody>
                         </table>
 
                         <div class="btn-group">
-                            <a href="/farmstory/market/cart.do" id="btnCart" class="btn btnCart">장바구니</a>
-                            <a href="/farmstory/market/order.do" id="btnOrder" class="btn btnOrder">바로구매</a>
+                            <a href="<%= request.getContextPath() %>/market/cart.do?productno=<%= product.getProductno() %>" 
+                               id="btnCart" 
+                               class="btn btnCart">장바구니</a>
+
+                            <a href="<%= request.getContextPath() %>/market/order.do?productno=<%= product.getProductno() %>" 
+                               id="btnOrder" 
+                               class="btn btnOrder">바로구매</a>
                         </div>
                     </div>
 
                     <h3>상품설명</h3>
+
                     <div class="detail">
-                        <img src="/farmstory/images/market_detail_sample.jpg" alt="상품 상세 설명">
+                        <p style="line-height: 1.8;">
+                            <%= product.getProductcontent() == null || product.getProductcontent().trim().isEmpty()
+                                    ? "등록된 상품설명이 없습니다."
+                                    : product.getProductcontent().replace("\n", "<br>") %>
+                        </p>
                     </div>
 
                     <h3>배송정보</h3>
+
                     <div class="delivery">
                         <p>
                             입금하신 이후 택배송장번호는 SMS(문자서비스)를 통해 고객님께 안내해드립니다.
@@ -105,6 +213,7 @@
                     </div>
 
                     <h3>교환/반품</h3>                  
+
                     <div class="exchange">
                         <table border="0">
                             <tbody>
@@ -119,6 +228,7 @@
                                         </ul>
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <td>교환 반품이 불가능한 경우</td>
                                     <td>
@@ -131,18 +241,19 @@
                             </tbody>
                         </table>
                     </div>
-                    </article>
+                </article>
             </section>
         </div>
         
         <footer>
-            <img src="/farmstory/images/footer_logo.png" alt="로고">
+            <img src="<%= request.getContextPath() %>/images/footer_logo.png" alt="로고">
             <div>
                 <p>
                     (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
                     등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br>
                     대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345
                 </p>
+
                 <span class="copyright">Copyright(C)홍길동 All rights reserved.</span>
             </div>
         </footer>
