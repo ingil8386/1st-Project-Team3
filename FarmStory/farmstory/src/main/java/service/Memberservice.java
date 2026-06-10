@@ -88,6 +88,20 @@ public enum Memberservice {
 	public List<MemberDTO> findAll() {
 		return dao.selectAllMembers();
 	}
+	// 아이디 찾기 서비스
+    public String selectMemberId(String name, String email) {
+        return dao.selectMemberId(name, email);
+    }
+
+    // 비밀번호 찾기 1단계 서비스
+    public int selectMemberForPass(String id, String email) {
+        return dao.selectMemberForPass(id, email);
+    }
+
+    // 비밀번호 업데이트 서비스
+    public int updatePass(String id, String pass) {
+        return dao.updatePass(id, pass);
+    }
 	
 	public void modify(MemberDTO dto) {
 		dao.updateMember(dto);

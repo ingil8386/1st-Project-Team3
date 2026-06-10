@@ -46,12 +46,6 @@ public class LoginController extends HttpServlet {
 			// 회원 맞음 -> 세션 저장 후 글목록 이동
 			HttpSession session = req.getSession(); // request 객체로 현재 사용자(session) 구하기
 			session.setAttribute("sessMember", memberDTO);
-			
-			// 💥 [추가] 세션에 잘 들어갔는지 자바 콘솔에 찍어보기
-		    System.out.println("======= 로그인 세션 디버깅 =======");
-		    System.out.println("세션 ID: " + session.getId());
-		    System.out.println("세션 객체 확인: " + session.getAttribute("sessMember"));
-		    System.out.println("=================================");
 		    
 			resp.sendRedirect("/farmstory/index.do");			
 		}else {

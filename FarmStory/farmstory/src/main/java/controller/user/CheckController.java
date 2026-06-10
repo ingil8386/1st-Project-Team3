@@ -52,12 +52,10 @@ public class CheckController extends HttpServlet{
 				
 				// 인증코드 수신
 				String code = req.getParameter("code");
-				System.out.println("사용자 입력 코드: " + code);
 				
 				// 세션에 저장한 인증코드 가져오기
 				HttpSession session = req.getSession();
 		        String sessCode = (String) session.getAttribute("sessCode");
-		        System.out.println("세션에 저장된 코드: " + sessCode);
 				
 		  		// 인증코드 일치여부 검사
 		  		JsonObject json = new JsonObject();

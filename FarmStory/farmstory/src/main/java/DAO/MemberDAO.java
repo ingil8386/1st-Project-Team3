@@ -192,7 +192,60 @@ public class MemberDAO extends DBHelper {
 
 		return members;
 	}
+	
+	// 1. 아이디 찾기 (이름과 이메일로 아이디 조회)
+	public String selectMemberId(String name, String email) {
+	    String memberid = null;
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL.SELECT_MEMBER_ID); // SQL 클래스에 정의된 쿼리 사용
+	        psmt.setString(1, name);
+	        psmt.setString(2, email);
+	        rs = psmt.executeQuery();
+	        if (rs.next()) {
+	            memberid = rs.getString(1);
+	        }
+	        closeAll();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return memberid;
+	}
 
+	// 2. 비밀번호 찾기 1단계 (아이디와 이메일로 존재 여부 확인)
+	public int selectMemberForPass(String id, String email) {
+	    int count = 0;
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL.SELECT_MEMBER_FOR_PASS);
+	        psmt.setString(1, id);
+	        psmt.setString(2, email);
+	        rs = psmt.executeQuery();
+	        if (rs.next()) {
+	            count = rs.getInt(1);
+	        }
+	        closeAll();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return count;
+	}
+
+	// 3. 비밀번호 찾기 2단계 (새 비밀번호 업데이트)
+	public int updatePass(String id, String pass) {
+	    int result = 0;
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL.UPDATE_MEMBER_PASS);
+	        psmt.setString(1, pass); // SHA2 암호화는 SQL 쿼리에서 수행
+	        psmt.setString(2, id);
+	        result = psmt.executeUpdate();
+	        closeAll();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return result;
+	}
 	public void updateMember(MemberDTO dto) {
 		try {
 			conn = getConnection();
