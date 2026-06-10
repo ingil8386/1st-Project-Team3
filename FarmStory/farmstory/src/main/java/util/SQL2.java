@@ -204,4 +204,26 @@ public class SQL2 {
 
     public static final String DELETE_FILE =
             "DELETE FROM `file` WHERE fileno=?";
+    
+    public static final String SELECT_CART_LIST =
+            "SELECT "
+            + "c.cartno, "
+            + "c.memberid, "
+            + "m.membername, "
+            + "c.productno, "
+            + "p.productname, "
+            + "p.productcate, "
+            + "p.productprice, "
+            + "c.cartcount, "
+            + "(p.productprice * c.cartcount) AS totalprice, "
+            + "c.rdate "
+            + "FROM cart AS c "
+            + "JOIN product AS p ON c.productno = p.productno "
+            + "JOIN member AS m ON c.memberid = m.memberid "
+            + "ORDER BY c.cartno DESC";
+    
+    public static final String UPDATE_MEMBER_ROLE =
+            "UPDATE member SET memberrole = ? WHERE memberid = ?";
+    
+    
 }

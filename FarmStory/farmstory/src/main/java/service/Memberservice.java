@@ -96,4 +96,10 @@ public enum Memberservice {
 	public void remove(String memeberid) {
 		dao.deleteMember(memeberid);
 	}
+	
+	public void updateMemberRole(String memberid, String memberrole) {
+	    dao.updateMemberRole(memberid, memberrole);
+	}
+	
+	
 }
