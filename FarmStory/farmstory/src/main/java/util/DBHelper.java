@@ -34,7 +34,7 @@ public class DBHelper {
 		}
 		
 		if(psmtEtc2 != null) {
-			psmtEtc1.close();
+			psmtEtc2.close();
 		}
 		
 		if(psmtEtc1 != null) {
