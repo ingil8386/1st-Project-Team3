@@ -221,5 +221,17 @@ public class SQL2 {
     public static final String UPDATE_MEMBER_ROLE =
             "UPDATE member SET memberrole = ? WHERE memberid = ?";
     
+    public static final String INSERT_EVENT =
+            "INSERT INTO event_calendar (title, startdate) VALUES (?, ?)";
+
+    public static final String SELECT_EVENTS =
+            "SELECT * FROM event_calendar ORDER BY startdate ASC, eventno ASC";
+    
+    
+    public static final String DELETE_EVENT =
+            "DELETE FROM event_calendar WHERE eventno = ?";
+    
+    
+    
     
 }
