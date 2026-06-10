@@ -18,7 +18,7 @@
                     <c:when test="${empty sessionScope.sessMember}">
                         <a href="/farmstory/user/login.do">로그인</a> | 
                         <a href="/farmstory/user/terms.do">회원가입</a> | 
-                        <a href="/farmstory/community/list.do">고객센터</a>
+                        <a href="/farmstory/community/qna.do">고객센터</a>
                     </c:when>
                     
                     <%-- 2. 로그인 완료 상태 (sessMember가 존재할 때) --%>

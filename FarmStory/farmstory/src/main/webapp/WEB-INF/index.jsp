@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>farmstory::main</title>
@@ -10,7 +9,7 @@
 <body>  
     <div id="container">
 	<%-- 분리해둔 Header 불러오기 --%>
-	<%@ include file="/WEB-INF/views/user/_head.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/_head.jsp" />
         <main>
             <div class="slider">
                 <img class="slide-img" src="/farmstory/images/main_slide_img1.jpg" alt="메인 슬라이드 이미지">
@@ -275,7 +274,7 @@
             </div>
         </main>
 	<%-- 분리해둔 Footer 불러오기 --%>
-	<%@ include file="/WEB-INF/views/user/_tail.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/_tail.jsp" />
     </div>
     
 </body>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
+<jsp:include page="/WEB-INF/views/common/_head.jsp" />
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::상품목록</title>
@@ -8,28 +9,6 @@
 </head>
 <body>
     <div id="container">
-        <header>
-            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="로고"></a>
-            <p>
-                <a href="/farmstory/index.do">HOME |</a>
-                <a href="/farmstory/user/login.do">로그인</a>|
-                <a href="/farmstory/user/terms.do">회원가입</a>|               
-                <a href="#">나의정보 </a>|
-                <a href="#">로그아웃 </a>|
-                <a href="/farmstory/admin/admin.do">관리자 |</a>
-                <a href="#">고객센터</a>
-            </p>
-            <img src="/farmstory/images/head_txt_img.png" alt="3만원 이상 무료배송" class="text">
-            
-            <ul class="gnb">
-               <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.do">장보기</a></li>
-                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
-            </ul>
-        </header>
-
         <div id="sub">
             <div><img src="/farmstory/images/sub_top_tit2.png" alt="MARKET"></div>
             
@@ -148,16 +127,7 @@
                     </article>
             </section>
         </div>
-        
-        <footer>
-            <img src="/farmstory/images/footer_logo.png" alt="로고">
-            <p>
-                (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br>
-                대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345<br>
-                <em>Copyright(C)홍길동 All rights reserved.</em>
-            </p>
-        </footer>
+		<jsp:include page="/WEB-INF/views/common/_tail.jsp" />
     </div>    
 </body>
 </html>
