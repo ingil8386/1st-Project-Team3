@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         
         // 아이디 중복 여부 요청하기
-        const response = await fetch('/farmstory/user/check.do?type=id&value=' + value);
+        const response = await fetch('/farmstory/user/check.do?type=memberid&value=' + value);
         const data = await response.json();             
         console.log(data);
         

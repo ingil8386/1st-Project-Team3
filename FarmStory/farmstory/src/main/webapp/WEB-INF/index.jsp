@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,35 +7,10 @@
     <title>farmstory::main</title>
     <link rel="stylesheet" href="/farmstory/css/main.css">
 </head>
-<body>
+<body>  
     <div id="container">
-        <header>
-            <!-- 로고 -->
-            <a href="/farmstory/index.do" class="logo"><img src="/farmstory/images/logo.png" alt="메인로고"/></a>
-            
-            <!-- 오른쪽 상단 메뉴 -->
-            <p>
-                <a href="/farmstory/index.do">HOME</a>|
-                <a href="/farmstory/user/login.do">로그인</a>|
-                <a href="/farmstory/user/terms.do">회원가입</a>|
-                <a href="#">나의정보 </a>|
-                <a href="#">로그아웃 </a>|
-                <a href="/farmstory/admin/admin.do">관리자</a>|
-                <a href="#">고객센터</a>
-            </p>
-
-            <!-- 오른쪽 텍스트 배너 -->
-            <img class="text" src="/farmstory/images/head_txt_img.png" alt="3만원이상 무료배송">
-
-            <!-- 메인 메뉴(GNB) -->
-            <ul class="gnb">
-                <li><a href="/farmstory/about/greeting.do">팜스토리소개</a></li>
-                <li><a href="/farmstory/market/list.do">장보기</a></li>
-                <li><a href="/farmstory/story/intro.do">농작물이야기</a></li>
-                <li><a href="/farmstory/event/calendar.do">이벤트</a></li>
-                <li><a href="/farmstory/community/notice.do">커뮤니티</a></li>
-            </ul>
-        </header>
+	<%-- 분리해둔 Header 불러오기 --%>
+	<%@ include file="/WEB-INF/views/user/_head.jsp" %>
         <main>
             <div class="slider">
                 <img class="slide-img" src="/farmstory/images/main_slide_img1.jpg" alt="메인 슬라이드 이미지">
@@ -298,23 +274,8 @@
                 </article>
             </div>
         </main>
-<footer>
-    <img src="/farmstory/images/footer_logo.png" alt="팜스토리 로고">
-
-    <div>
-        <p>
-            (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-부산진구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-            등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br>
-            대표 : 김철학 / 이메일 : chhak0503@gmail.com / 전화 : 01) 234-5678 / 부산광역시 부산진구 부전동 123
-            <span class="copyright">
-                copyrightⓒ 김철학(개발에반하다) All rights reserved.
-            </span>
-            <span class="version">
-                farmstory ver1.0.1
-            </span>
-        </p>
-    </div>
-</footer>
+	<%-- 분리해둔 Footer 불러오기 --%>
+	<%@ include file="/WEB-INF/views/user/_tail.jsp" %>
     </div>
     
 </body>

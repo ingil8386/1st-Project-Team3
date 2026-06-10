@@ -93,7 +93,7 @@ public class MemberDAO extends DBHelper {
 				dto.setRdate(rs.getString("rdate"));
 				dto.setLeavedate(rs.getString("leavedate"));
 				closeAll();
-			}
+			} 
 
 		} catch (Exception e) {
 			e.printStackTrace();
