@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -45,33 +47,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox" name=""></td>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item1.jpg" class="thumb" alt="사과 500g"></a>
-                                </td>
-                                <td>과일</td>
-                                <td><a href="/farmstory/market/detail.do">사과 500g</a></td>
-                                <td>1</td>
-                                <td>10%</td>
-                                <td>40P</td>
-                                <td>4,000</td>
-                                <td><strong>3,600</strong>원</td>    
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name=""></td>
-                                <td>
-                                    <a href="/farmstory/market/detail.do"><img src="/farmstory/images/market_item1.jpg" class="thumb" alt="사과 500g"></a>
-                                </td>
-                                <td>과일</td>
-                                <td><a href="/farmstory/market/detail.do">사과 500g</a></td>
-                                <td>1</td>
-                                <td>10%</td>
-                                <td>40P</td>
-                                <td>4,000</td>
-                                <td><strong>3,600</strong>원</td>    
-                            </tr>
-                        </tbody>        
+					        <c:forEach var="cart" items="${cartList}">
+					        <tr>
+					            <td><input type="checkbox" name="cartno" value="${cart.cartno}"></td>
+					            <td>
+					                <a href="/farmstory/market/detail.do?productno=${cart.productno}">
+					                    <img src="/farmstory/images/${cart.productimg}" class="thumb" alt="${cart.productname}">
+					                </a>
+					            </td>
+					            <td>${cart.productcate}</td>
+					            <td><a href="/farmstory/market/detail.do?productno=${cart.productno}">${cart.productname}</a></td>
+					            <td>${cart.cartcount}</td>
+					            <td>-</td>
+					            <td>-</td>
+					            <td><fmt:formatNumber value="${cart.productprice}" pattern="#,###"/>원</td>
+					            <td><strong><fmt:formatNumber value="${cart.totalprice}" pattern="#,###"/></strong>원</td>
+					        </tr>
+					        </c:forEach>
+    					</tbody>     
                     </table>
                     
                     <input type="button" name="del" value="선택삭제" class="btnDel">
