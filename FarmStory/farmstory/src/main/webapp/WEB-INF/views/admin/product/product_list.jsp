@@ -103,67 +103,71 @@
 						action="<%= request.getContextPath() %>/admin/product/product_list.do"
 						method="post" onsubmit="return checkDelete();">
 
-						<table>
-							<thead>
-								<tr>
-									<th><input type="checkbox" onclick="toggleAll(this)">
-									</th>
-									<th>사진</th>
-									<th>상품번호</th>
-									<th>상품명</th>
-									<th>구분</th>
-									<th>가격</th>
-									<th>할인</th>
-									<th>포인트</th>
-									<th>최종가격</th>
-									<th>재고</th>
-									<th>등록일</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<%
-                                if (products != null && !products.isEmpty()) {
-                                    for (ProductDTO product : products) {
-
-                                        String img = product.getProductimg();
-
-                                        if (img == null || img.trim().isEmpty()) {
-                                            img = request.getContextPath() + "/images/market_item1.jpg";
-                                        } else {
-                                            img = request.getContextPath() + img;
-                                        }
-                            %>
-								<tr>
-									<td><input type="checkbox" name="productno"
-										value="<%= product.getProductno() %>"></td>
-
-									<td><img src="<%= img %>"
-										alt="<%= product.getProductname() %>"
-										style="width: 60px; height: 60px; object-fit: cover;"></td>
-
-									<td><%= product.getProductno() %></td>
-									<td><%= product.getProductname() %></td>
-									<td><%= product.getProductcate() %></td>
-									<td><%= df.format(product.getProductprice()) %>원</td>
-									<td><%= product.getProductdiscount() %>%</td>
-									<td><%= df.format(product.getProductpoint()) %>P</td>
-									<td><%= df.format(product.getProductfinalprice()) %>원</td>
-									<td><%= product.getProductstock() %></td>
-									<td><%= product.getRdate() %></td>
-								</tr>
-								<%
-                                    }
-                                } else {
-                            %>
-								<tr>
-									<td colspan="11">등록된 상품이 없습니다.</td>
-								</tr>
-								<%
-                                }
-                            %>
-							</tbody>
-						</table>
+					<table>
+					    <thead>
+					        <tr>
+					            <th><input type="checkbox" onclick="toggleAll(this)"></th>
+					            <th>사진</th>
+					            <th>상품번호</th>
+					            <th>상품명</th>
+					            <th>구분</th>
+					            <th>가격</th>
+					            <th>할인</th>
+					            <th>포인트</th>
+					            <th>최종가격</th>
+					            <th>재고</th>
+					            <th>등록일</th>
+					        </tr>
+					    </thead>
+					
+					    <tbody>
+					        <%
+					            if (products != null && !products.isEmpty()) {
+					                for (ProductDTO product : products) {
+					                    String imgPath = product.getProductimg();
+					
+					                    // 이미지 경로 처리 로직
+					                    // DB에 저장된 값이 null이거나 비어있으면 기본 이미지, 아니면 DB 값을 그대로 사용
+					                    if (imgPath == null || imgPath.trim().isEmpty()) {
+					                        imgPath = request.getContextPath() + "/images/market_item1.jpg";
+					                    } else {
+					                        // 중요: 톰캣 모듈 설정에서 /images를 외부 경로로 매핑했으므로 
+					                        // DB에 저장된 값(/images/product/파일명.jpg)을 그대로 사용해야 함
+					                        imgPath = imgPath; 
+					                    }
+					        %>
+					        <tr>
+					            <td><input type="checkbox" name="productno" value="<%= product.getProductno() %>"></td>
+					            
+					            <%-- 수정된 부분: 변수명을 imgPath로 통일 --%>
+					            <td>
+					                <img src="<%= imgPath %>" 
+					                     alt="<%= product.getProductname() %>" 
+					                     style="width: 60px; height: 60px; object-fit: cover;">
+					            </td>
+					
+					            <td><%= product.getProductno() %></td>
+					            <td><%= product.getProductname() %></td>
+					            <td><%= product.getProductcate() %></td>
+					            <td><%= df.format(product.getProductprice()) %>원</td>
+					            <td><%= product.getProductdiscount() %>%</td>
+					            <td><%= df.format(product.getProductpoint()) %>P</td>
+					            <td><%= df.format(product.getProductfinalprice()) %>원</td>
+					            <td><%= product.getProductstock() %></td>
+					            <td><%= product.getRdate() %></td>
+					        </tr>
+					        <%
+					                }
+					            } else {
+					        %>
+					        <tr>
+					            <td colspan="11">등록된 상품이 없습니다.</td>
+					        </tr>
+					        <%
+					            }
+					        %>
+					    </tbody>
+					</table>
 
 						<div class="register_buttons">
 							<button type="submit" class="cancel_btn">선택삭제</button>

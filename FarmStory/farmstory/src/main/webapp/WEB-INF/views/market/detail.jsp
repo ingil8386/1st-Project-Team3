@@ -12,20 +12,21 @@
     }
 
     String img = product.getProductimg();
-
+    
+    // 1. 이미지가 없으면 기본 이미지
     if (img == null || img.trim().isEmpty()) {
-        img = request.getContextPath() + "/images/market_item1.jpg";
+    	img = request.getContextPath() + "/images/market_item1.jpg";
     } else {
-        img = request.getContextPath() + img;
+        // 2. 이미지가 있으면 DB에 저장된 경로를 그대로 사용 (ContextPath는 이미지 태그에서 처리하거나, 서버 설정에 따라 그대로 사용)
+        // 만약 DB에 '/images/...' 처럼 저장되어 있다면 이대로 두면 됩니다.
+        img = img; 
     }
 
     int finalPrice = product.getProductfinalprice();
-
     if (finalPrice <= 0) {
         finalPrice = product.getProductprice() - (product.getProductprice() * product.getProductdiscount() / 100);
     }
 %>
-
 <!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
 <html lang="ko">

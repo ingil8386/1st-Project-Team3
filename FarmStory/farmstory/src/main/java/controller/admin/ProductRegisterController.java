@@ -85,6 +85,8 @@ public class ProductRegisterController extends HttpServlet {
 
         // 상품목록 이미지 input name
         Part thumb120 = req.getPart("thumb120");
+        
+        
 
         if (thumb120 != null && thumb120.getSize() > 0) {
 
@@ -101,15 +103,22 @@ public class ProductRegisterController extends HttpServlet {
 
                 String saveFileName = "product_list_" + System.currentTimeMillis() + ext;
 
-                String uploadPath = req.getServletContext().getRealPath("/images/product");
-                File uploadDir = new File(uploadPath);
+                
+                String uploadPath = "C:/Users/GGG/Desktop/workspace/uploads/product";
 
+                File uploadDir = new File(uploadPath);
                 if (!uploadDir.exists()) {
                     uploadDir.mkdirs();
                 }
 
                 thumb120.write(uploadPath + File.separator + saveFileName);
 
+                System.out.println("=== 상품 이미지 업로드 경로 확인 ===");
+                System.out.println("업로드 디렉토리 경로: " + uploadPath);
+                System.out.println("저장된 최종 파일명: " + saveFileName);
+                System.out.println("실제 저장된 위치: " + uploadPath + File.separator + saveFileName);
+                System.out.println("================================");
+                
                 // DB에는 컨텍스트 경로 제외하고 저장
                 productimg = "/images/product/" + saveFileName;
                 }
