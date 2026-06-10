@@ -1,9 +1,8 @@
 package controller.market;
-
 import java.io.IOException;
 import java.util.List;
-
 import DTO.CartDTO;
+import DTO.MemberDTO;
 import service.Cartservice;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,14 +23,18 @@ public class CartController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
         
-        
         HttpSession session = req.getSession();
-        String memberid = (String) session.getAttribute("memberid");
+        MemberDTO sessMember = (MemberDTO) session.getAttribute("sessMember");
+        String memberid = sessMember != null ? sessMember.getMemberid() : null;
         
-        // 장바구니 목록 조회
+        // 로그인 체크
+        if (memberid == null) {
+            resp.sendRedirect(req.getContextPath() + "/user/login.do");
+            return;
+        }
+        
         List<CartDTO> cartList = cartservice.getCartList(memberid);
         req.setAttribute("cartList", cartList);
-
         req.getRequestDispatcher("/WEB-INF/views/market/cart.jsp").forward(req, resp);
     }
 
@@ -43,17 +46,18 @@ public class CartController extends HttpServlet {
 
         String action = req.getParameter("action");
         HttpSession session = req.getSession();
-        String memberid = (String) session.getAttribute("memberid");
+        MemberDTO sessMember = (MemberDTO) session.getAttribute("sessMember");
+        String memberid = sessMember != null ? sessMember.getMemberid() : null;
+        
 
         switch (action) {
             case "add": {
-                // 장바구니 추가
                 CartDTO dto = new CartDTO();
                 dto.setMemberid(memberid);
                 dto.setProductno(Integer.parseInt(req.getParameter("productno")));
                 dto.setCartcount(Integer.parseInt(req.getParameter("cartcount")));
                 cartservice.addCart(dto);
-                resp.sendRedirect("/market/cart.do");
+                resp.sendRedirect(req.getContextPath() + "/market/cart.do");
                 break;
             }
             case "update": {
@@ -61,13 +65,13 @@ public class CartController extends HttpServlet {
                 dto.setCartno(Integer.parseInt(req.getParameter("cartno")));
                 dto.setCartcount(Integer.parseInt(req.getParameter("cartcount")));
                 cartservice.modifyCart(dto);
-                resp.sendRedirect("/market/cart.do?update=success&cartno=" + dto.getCartno());
+                resp.sendRedirect(req.getContextPath() + "/market/cart.do?update=success&cartno=" + dto.getCartno());
                 break;
             }
             case "delete": {
                 int cartno = Integer.parseInt(req.getParameter("cartno"));
                 cartservice.removeCart(cartno);
-                resp.sendRedirect("/market/cart.do?delete=success&cartno=" + cartno);
+                resp.sendRedirect(req.getContextPath() + "/market/cart.do?delete=success&cartno=" + cartno);
                 break;
             }
         }
