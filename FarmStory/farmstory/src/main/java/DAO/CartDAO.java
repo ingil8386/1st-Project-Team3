@@ -26,11 +26,15 @@ public class CartDAO extends DBHelper {
             rs = psmt.executeQuery();
             while (rs.next()) {
                 CartDTO dto = new CartDTO();
-                dto.setProductimg(rs.getString("상품이미지"));
-                dto.setProductcate(rs.getString("상품종류"));
-                dto.setProductname(rs.getString("상품명"));
-                dto.setCartcount(rs.getInt("주문수량"));
-                dto.setTotalprice(rs.getInt("가격합계"));
+                dto.setCartno(rs.getInt("cartno"));
+                dto.setMemberid(rs.getString("memberid"));
+                dto.setMembername(rs.getString("membername"));
+                dto.setProductno(rs.getInt("productno"));
+                dto.setProductname(rs.getString("productname"));
+                dto.setProductcate(rs.getString("productcate"));
+                dto.setProductprice(rs.getInt("productprice"));
+                dto.setCartcount(rs.getInt("cartcount"));
+                dto.setTotalprice(rs.getInt("totalprice"));
                 dto.setRdate(rs.getString("rdate"));
                 carts.add(dto);
             }
