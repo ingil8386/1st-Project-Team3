@@ -44,6 +44,16 @@
 					<h3>주요기능</h3>
 
 					<div class="menu">
+						<strong>관리자</strong>
+						<ul>
+							<li><a href="<%= request.getContextPath() %>/admin/admin.do">
+									메인목록</a></li>
+						</ul>
+					</div>
+
+
+
+					<div class="menu">
 						<h4>상품관리</h4>
 						<ul>
 							<li><a href="/farmstory/admin/product/product_list.do">상품목록</a></li>
@@ -93,7 +103,7 @@
 								<td><%= member.getMemberemail() %></td>
 								<td><%= member.getMemberhp() %></td>
 
-								
+
 								<td>
 									<form
 										action="<%= request.getContextPath() %>/admin/user/update_role.do"
