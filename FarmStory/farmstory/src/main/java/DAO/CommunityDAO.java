@@ -1,6 +1,6 @@
 package DAO;
 
-import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,38 +16,84 @@ public class CommunityDAO extends DBHelper {
         return INSTANCE;
     }
 
-    private CommunityDAO() {}
+    private CommunityDAO() {
+    }
 
-    public int insertCommunity(CommunityDTO dto) {
-        int commno = 0;
+    public List<CommunityDTO> selectCommunities(int boardno, String search) {
+        List<CommunityDTO> communities = new ArrayList<>();
 
         try {
             conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.INSERT_COMMUNITY, Statement.RETURN_GENERATED_KEYS);
+
+            if (search == null || search.trim().isEmpty()) {
+                psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD);
+                psmt.setInt(1, boardno);
+            } else {
+                psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD_SEARCH);
+                psmt.setInt(1, boardno);
+                psmt.setString(2, "%" + search + "%");
+                psmt.setString(3, "%" + search + "%");
+            }
+
+            rs = psmt.executeQuery();
+
+            while (rs.next()) {
+                CommunityDTO dto = new CommunityDTO();
+
+                dto.setCommno(rs.getInt("commno"));
+                dto.setBoardno(rs.getInt("boardno"));
+                dto.setTitle(rs.getString("title"));
+                dto.setContent(rs.getString("content"));
+                dto.setCommentcount(rs.getInt("commentcount"));
+                dto.setFilecheck(rs.getInt("filecheck"));
+                dto.setHit(rs.getInt("hit"));
+                dto.setWriter(rs.getString("writer"));
+                dto.setRegip(rs.getString("regip"));
+                dto.setWdate(rs.getString("wdate"));
+
+                communities.add(dto);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return communities;
+    }
+    
+    public void insertCommunity(CommunityDTO dto) {
+
+        try {
+            conn = getConnection();
+            psmt = conn.prepareStatement(SQL2.INSERT_COMMUNITY);
 
             psmt.setInt(1, dto.getBoardno());
             psmt.setString(2, dto.getTitle());
             psmt.setString(3, dto.getContent());
-            psmt.setInt(4, dto.getFilecheck());
-            psmt.setString(5, dto.getWriter());
-            psmt.setString(6, dto.getRegip());
+            psmt.setString(4, dto.getWriter());
+            psmt.setString(5, dto.getRegip());
 
             psmt.executeUpdate();
 
-            rs = psmt.getGeneratedKeys();
-
-            if (rs.next()) {
-                commno = rs.getInt(1);
-            }
-            closeAll();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
-        return commno;
     }
-
+    
+    
+ // 게시글 1개 조회
     public CommunityDTO selectCommunity(int commno) {
         CommunityDTO dto = null;
 
@@ -59,79 +105,57 @@ public class CommunityDAO extends DBHelper {
             rs = psmt.executeQuery();
 
             if (rs.next()) {
-                dto = setCommunityDTO(rs);
+                dto = new CommunityDTO();
+
+                dto.setCommno(rs.getInt("commno"));
+                dto.setBoardno(rs.getInt("boardno"));
+                dto.setTitle(rs.getString("title"));
+                dto.setContent(rs.getString("content"));
+                dto.setCommentcount(rs.getInt("commentcount"));
+                dto.setFilecheck(rs.getInt("filecheck"));
+                dto.setHit(rs.getInt("hit"));
+                dto.setWriter(rs.getString("writer"));
+                dto.setRegip(rs.getString("regip"));
+                dto.setWdate(rs.getString("wdate"));
             }
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return dto;
     }
 
-    public List<CommunityDTO> selectCommunities(int boardno) {
-        List<CommunityDTO> communities = new ArrayList<>();
+    // 조회수 증가
+    public void updateCommunityHit(int commno) {
 
         try {
             conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES);
-            psmt.setInt(1, boardno);
-
-            rs = psmt.executeQuery();
-
-            while (rs.next()) {
-                CommunityDTO dto = setCommunityDTO(rs);
-                communities.add(dto);
-            }
-            closeAll();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return communities;
-    }
-
-    public List<CommunityDTO> searchCommunities(int boardno, String keyword) {
-        List<CommunityDTO> communities = new ArrayList<>();
-
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.SEARCH_COMMUNITIES);
-            psmt.setInt(1, boardno);
-            psmt.setString(2, "%" + keyword + "%");
-
-            rs = psmt.executeQuery();
-
-            while (rs.next()) {
-                CommunityDTO dto = setCommunityDTO(rs);
-                communities.add(dto);
-            }
-            closeAll();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return communities;
-    }
-
-    public void updateHit(int commno) {
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.UPDATE_HIT);
+            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_HIT);
             psmt.setInt(1, commno);
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-
+    
+ // 게시글 수정
     public void updateCommunity(CommunityDTO dto) {
+
         try {
             conn = getConnection();
             psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY);
@@ -141,42 +165,88 @@ public class CommunityDAO extends DBHelper {
             psmt.setInt(3, dto.getCommno());
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-
+    
+    
+ // 게시글 삭제
     public void deleteCommunity(int commno) {
+
         try {
             conn = getConnection();
             psmt = conn.prepareStatement(SQL2.DELETE_COMMUNITY);
+
             psmt.setInt(1, commno);
 
             psmt.executeUpdate();
-            closeAll();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    
+    
+ // 댓글 수 증가
+    public void updateCommunityCommentCountPlus(int commno) {
+
+        try {
+            conn = getConnection();
+            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT_COUNT_PLUS);
+            psmt.setInt(1, commno);
+
+            psmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    private CommunityDTO setCommunityDTO(java.sql.ResultSet rs) throws Exception {
-        CommunityDTO dto = new CommunityDTO();
+    // 댓글 수 감소
+    public void updateCommunityCommentCountMinus(int commno) {
 
-        dto.setCommno(rs.getInt("commno"));
-        dto.setBoardno(rs.getInt("boardno"));
-        dto.setTitle(rs.getString("title"));
-        dto.setContent(rs.getString("content"));
-        dto.setCommentcount(rs.getInt("commentcount"));
-        dto.setFilecheck(rs.getInt("filecheck"));
-        dto.setHit(rs.getInt("hit"));
-        dto.setWriter(rs.getString("writer"));
-        dto.setRegip(rs.getString("regip"));
-        dto.setWdate(rs.getString("wdate"));
-        dto.setMembernick(rs.getString("membernick"));
+        try {
+            conn = getConnection();
+            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT_COUNT_MINUS);
+            psmt.setInt(1, commno);
 
-        return dto;
+            psmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
+    
+    
+    
+    
+    
+    
 }

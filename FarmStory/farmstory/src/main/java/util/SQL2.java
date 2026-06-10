@@ -132,13 +132,9 @@ public class SQL2 {
 
     // community
     public static final String INSERT_COMMUNITY =
-            "INSERT INTO community SET "
-            + "boardno=?, "
-            + "title=?, "
-            + "content=?, "
-            + "filecheck=?, "
-            + "writer=?, "
-            + "regip=?";
+            "INSERT INTO community "
+          + "(boardno, title, content, writer, regip) "
+          + "VALUES (?, ?, ?, ?, ?)";
 
     public static final String SELECT_COMMUNITY =
             "SELECT c.*, m.membernick "
@@ -233,7 +229,76 @@ public class SQL2 {
     public static final String DELETE_EVENT =
             "DELETE FROM event_calendar WHERE eventno = ?";
     
+ // =========================
+ // Community 게시판
+ // =========================
+
+ // 게시판별 글목록 조회
+ public static final String SELECT_COMMUNITIES_BY_BOARD =
+         "SELECT * FROM community WHERE boardno = ? ORDER BY commno DESC";
+
+ // 게시판별 글목록 검색
+ public static final String SELECT_COMMUNITIES_BY_BOARD_SEARCH =
+         "SELECT * FROM community "
+       + "WHERE boardno = ? "
+       + "AND (title LIKE ? OR writer LIKE ?) "
+       + "ORDER BY commno DESC";
     
     
+//=========================
+//Community 글쓰기
+//=========================
+ 
+//게시글 1개 조회
+
+//조회수 증가
+public static final String UPDATE_COMMUNITY_HIT =
+      "UPDATE community SET hit = hit + 1 WHERE commno = ?";
+
+
+
+
+//=========================
+//Community 글수정 / 글삭제
+//=========================
+
+//게시글 수정
+
+
+
+//=========================
+//Community 댓글
+//=========================
+
+//댓글 목록 조회
+public static final String SELECT_COMMUNITY_COMMENTS =
+"SELECT * FROM communitycomment WHERE commno = ? ORDER BY commentno ASC";
+
+
+//댓글 작성
+public static final String INSERT_COMMUNITY_COMMENT =
+     "INSERT INTO communitycomment "
+   + "(commno, content, writer, regip) "
+   + "VALUES (?, ?, ?, ?)";
+
+//댓글 삭제
+public static final String DELETE_COMMUNITY_COMMENT =
+     "DELETE FROM communitycomment WHERE commentno = ?";
+
+//댓글 수 증가
+public static final String UPDATE_COMMUNITY_COMMENT_COUNT_PLUS =
+     "UPDATE community SET commentcount = commentcount + 1 WHERE commno = ?";
+
+//댓글 수 감소
+public static final String UPDATE_COMMUNITY_COMMENT_COUNT_MINUS =
+     "UPDATE community "
+   + "SET commentcount = CASE WHEN commentcount > 0 THEN commentcount - 1 ELSE 0 END "
+   + "WHERE commno = ?";
+
+//댓글 1개 조회
+public static final String SELECT_COMMUNITY_COMMENT =
+     "SELECT * FROM communitycomment WHERE commentno = ?";
+
+
     
 }

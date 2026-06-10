@@ -9,9 +9,6 @@ public class CommentDTO {
     private String regip;
     private String wdate;
 
-    // member 조인 출력용
-    private String membernick;
-
     public int getCommentno() {
         return commentno;
     }
@@ -35,7 +32,7 @@ public class CommentDTO {
     public void setContent(String content) {
         this.content = content;
     }
-    
+
     public String getWriter() {
         return writer;
     }
@@ -58,13 +55,5 @@ public class CommentDTO {
 
     public void setWdate(String wdate) {
         this.wdate = wdate;
-    }
-
-    public String getMembernick() {
-        return membernick;
-    }
-
-    public void setMembernick(String membernick) {
-        this.membernick = membernick;
     }
 }
