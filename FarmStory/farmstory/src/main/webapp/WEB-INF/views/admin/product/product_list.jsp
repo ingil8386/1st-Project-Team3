@@ -1,7 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ page import="java.util.List" %>
-<%@ page import="DTO.ProductDTO" %>
-<%@ page import="java.text.DecimalFormat" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="DTO.ProductDTO"%>
+<%@ page import="java.text.DecimalFormat"%>
 
 <%
     List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
@@ -12,11 +13,12 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <title>관리자::상품목록</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin.css">
+<meta charset="UTF-8">
+<title>관리자::상품목록</title>
+<link rel="stylesheet"
+	href="<%= request.getContextPath() %>/css/admin.css">
 
-    <script>
+<script>
         function toggleAll(source) {
             const checkboxes = document.querySelectorAll('input[name="productno"]');
 
@@ -40,78 +42,87 @@
 
 <body>
 
-    <div id="wrapper">
+	<div id="wrapper">
 
-        <!-- 헤더 -->
-        <header>
-            <div class="header_inner">
-                <a href="<%= request.getContextPath() %>/index.do">
-                    <img src="https://farmstory.vercel.app/admin/images/admin_logo.jpg" alt="관리자 로고">
-                </a>
+		<!-- 헤더 -->
+		<header>
+			<div class="header_inner">
+				<a href="<%= request.getContextPath() %>/index.do"> <img
+					src="https://farmstory.vercel.app/admin/images/admin_logo.jpg"
+					alt="관리자 로고">
+				</a>
 
-                <div class="top_menu">
-                    <a href="<%= request.getContextPath() %>/index.do">HOME</a>
-                    <span>|</span>
-                    <a href="#">로그아웃</a>
-                    <span>|</span>
-                    <a href="#">고객센터</a>
-                </div>
-            </div>
-        </header>
+				<div class="top_menu">
+					<a href="<%= request.getContextPath() %>/index.do">HOME</a> <span>|</span>
+					<a href="#">로그아웃</a> <span>|</span> <a href="#">고객센터</a>
+				</div>
+			</div>
+		</header>
 
-        <!-- 메인 -->
-        <main>
-            <div class="main_inner">
+		<!-- 메인 -->
+		<main>
+			<div class="main_inner">
 
-                <!-- 좌측 메뉴 -->
-                <aside>
-                    <h3>주요기능</h3>
+				<!-- 좌측 메뉴 -->
+				<aside>
+					<h3>주요기능</h3>
 
-                    <div class="menu">
-                        <strong>상품관리</strong>
-                        <ul>
-                            <li><a href="<%= request.getContextPath() %>/admin/product/product_list.do">상품목록</a></li>
-                            <li><a href="<%= request.getContextPath() %>/admin/product/product_register.do">상품등록</a></li>
-                        </ul>
-                    </div>
+					<div class="menu">
+						<strong>관리자</strong>
+						<ul>
+							<li><a href="<%= request.getContextPath() %>/admin/admin.do">
+									메인목록</a></li>
+						</ul>
+					</div>
 
-                    <div class="menu">
-                        <strong>회원관리</strong>
-                        <ul>
-                            <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
-                        </ul>
-                    </div>
-                </aside>
 
-                <!-- 콘텐츠 -->
-                <section class="content">
-                    <h3>상품목록</h3>
+					<div class="menu">
+						<strong>상품관리</strong>
+						<ul>
+							<li><a
+								href="<%= request.getContextPath() %>/admin/product/product_list.do">상품목록</a></li>
+							<li><a
+								href="<%= request.getContextPath() %>/admin/product/product_register.do">상품등록</a></li>
+						</ul>
+					</div>
 
-                    <form action="<%= request.getContextPath() %>/admin/product/product_list.do"
-                          method="post"
-                          onsubmit="return checkDelete();">
+					<div class="menu">
+						<strong>회원관리</strong>
+						<ul>
+							<li><a
+								href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
+						</ul>
+					</div>
+				</aside>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <input type="checkbox" onclick="toggleAll(this)">
-                                    </th>
-                                    <th>사진</th>
-                                    <th>상품번호</th>
-                                    <th>상품명</th>
-                                    <th>구분</th>
-                                    <th>가격</th>
-                                    <th>할인</th>
-                                    <th>포인트</th>
-                                    <th>최종가격</th>
-                                    <th>재고</th>
-                                    <th>등록일</th>
-                                </tr>
-                            </thead>
+				<!-- 콘텐츠 -->
+				<section class="content">
+					<h3>상품목록</h3>
 
-                            <tbody>
-                            <%
+					<form
+						action="<%= request.getContextPath() %>/admin/product/product_list.do"
+						method="post" onsubmit="return checkDelete();">
+
+						<table>
+							<thead>
+								<tr>
+									<th><input type="checkbox" onclick="toggleAll(this)">
+									</th>
+									<th>사진</th>
+									<th>상품번호</th>
+									<th>상품명</th>
+									<th>구분</th>
+									<th>가격</th>
+									<th>할인</th>
+									<th>포인트</th>
+									<th>최종가격</th>
+									<th>재고</th>
+									<th>등록일</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<%
                                 if (products != null && !products.isEmpty()) {
                                     for (ProductDTO product : products) {
 
@@ -123,69 +134,63 @@
                                             img = request.getContextPath() + img;
                                         }
                             %>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" name="productno" value="<%= product.getProductno() %>">
-                                            </td>
+								<tr>
+									<td><input type="checkbox" name="productno"
+										value="<%= product.getProductno() %>"></td>
 
-                                            <td>
-                                                <img src="<%= img %>"
-                                                     alt="<%= product.getProductname() %>"
-                                                     style="width:60px; height:60px; object-fit:cover;">
-                                            </td>
+									<td><img src="<%= img %>"
+										alt="<%= product.getProductname() %>"
+										style="width: 60px; height: 60px; object-fit: cover;"></td>
 
-                                            <td><%= product.getProductno() %></td>
-                                            <td><%= product.getProductname() %></td>
-                                            <td><%= product.getProductcate() %></td>
-                                            <td><%= df.format(product.getProductprice()) %>원</td>
-                                            <td><%= product.getProductdiscount() %>%</td>
-                                            <td><%= df.format(product.getProductpoint()) %>P</td>
-                                            <td><%= df.format(product.getProductfinalprice()) %>원</td>
-                                            <td><%= product.getProductstock() %></td>
-                                            <td><%= product.getRdate() %></td>
-                                        </tr>
-                            <%
+									<td><%= product.getProductno() %></td>
+									<td><%= product.getProductname() %></td>
+									<td><%= product.getProductcate() %></td>
+									<td><%= df.format(product.getProductprice()) %>원</td>
+									<td><%= product.getProductdiscount() %>%</td>
+									<td><%= df.format(product.getProductpoint()) %>P</td>
+									<td><%= df.format(product.getProductfinalprice()) %>원</td>
+									<td><%= product.getProductstock() %></td>
+									<td><%= product.getRdate() %></td>
+								</tr>
+								<%
                                     }
                                 } else {
                             %>
-                                    <tr>
-                                        <td colspan="11">등록된 상품이 없습니다.</td>
-                                    </tr>
-                            <%
+								<tr>
+									<td colspan="11">등록된 상품이 없습니다.</td>
+								</tr>
+								<%
                                 }
                             %>
-                            </tbody>
-                        </table>
+							</tbody>
+						</table>
 
-                        <div class="register_buttons">
-                            <button type="submit" class="cancel_btn">선택삭제</button>
-                            <a href="<%= request.getContextPath() %>/admin/product/product_register.do" class="submit_btn">상품등록</a>
-                        </div>
+						<div class="register_buttons">
+							<button type="submit" class="cancel_btn">선택삭제</button>
+							<a
+								href="<%= request.getContextPath() %>/admin/product/product_register.do"
+								class="submit_btn">상품등록</a>
+						</div>
 
-                    </form>
+					</form>
 
-                    <!-- 페이지 번호 -->
-                    <div class="pagination">
-                        <a href="#">&lt;</a>
-                        <a href="#" class="on">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">&gt;</a>
-                    </div>
-                </section>
+					<!-- 페이지 번호 -->
+					<div class="pagination">
+						<a href="#">&lt;</a> <a href="#" class="on">1</a> <a href="#">2</a>
+						<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">&gt;</a>
+					</div>
+				</section>
 
-            </div>
-        </main>
+			</div>
+		</main>
 
-        <!-- 푸터 -->
-        <footer>
-            <p>Copyright(C)Farmstory All rights reserved.</p>
-            <p>FARMSTORY ADMINISTRATOR Version 1.0.1</p>
-        </footer>
+		<!-- 푸터 -->
+		<footer>
+			<p>Copyright(C)Farmstory All rights reserved.</p>
+			<p>FARMSTORY ADMINISTRATOR Version 1.0.1</p>
+		</footer>
 
-    </div>
+	</div>
 
 </body>
 
