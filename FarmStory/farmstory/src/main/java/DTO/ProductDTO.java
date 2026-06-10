@@ -6,6 +6,11 @@ public class ProductDTO {
     private String productcate;
     private String productname;
     private int productprice;
+
+    private int productdiscount;
+    private int productpoint;
+    private int productfinalprice;
+
     private String productcontent;
     private String productimg;
     private int productstock;
@@ -41,6 +46,30 @@ public class ProductDTO {
 
     public void setProductprice(int productprice) {
         this.productprice = productprice;
+    }
+
+    public int getProductdiscount() {
+        return productdiscount;
+    }
+
+    public void setProductdiscount(int productdiscount) {
+        this.productdiscount = productdiscount;
+    }
+
+    public int getProductpoint() {
+        return productpoint;
+    }
+
+    public void setProductpoint(int productpoint) {
+        this.productpoint = productpoint;
+    }
+
+    public int getProductfinalprice() {
+        return productfinalprice;
+    }
+
+    public void setProductfinalprice(int productfinalprice) {
+        this.productfinalprice = productfinalprice;
     }
 
     public String getProductcontent() {
