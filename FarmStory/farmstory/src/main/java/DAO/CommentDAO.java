@@ -136,4 +136,28 @@ public class CommentDAO extends DBHelper {
             }
         }
     }
+    
+    
+ // 댓글 수정
+    public void updateComment(CommentDTO dto) {
+
+        try {
+            conn = getConnection();
+            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT);
+
+            psmt.setString(1, dto.getContent());
+            psmt.setInt(2, dto.getCommentno());
+
+            psmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

@@ -133,8 +133,15 @@ public class SQL2 {
     // community
     public static final String INSERT_COMMUNITY =
             "INSERT INTO community "
-          + "(boardno, title, content, writer, regip) "
-          + "VALUES (?, ?, ?, ?, ?)";
+          + "(boardno, boardpostno, title, content, writer, regip) "
+          + "VALUES (?, ?, ?, ?, ?, ?)";
+    
+    public static final String SELECT_NEXT_BOARD_POST_NO =
+            "SELECT IFNULL(MAX(boardpostno), 0) + 1 AS nextNo "
+          + "FROM community "
+          + "WHERE boardno = ?";
+    
+    
 
     public static final String SELECT_COMMUNITY =
             "SELECT c.*, m.membernick "
@@ -196,38 +203,40 @@ public class SQL2 {
             + "WHERE commno=? AND commentcount > 0";
 
 
-    // file
-    public static final String INSERT_FILE =
-            "INSERT INTO `file` SET "
-            + "commno=?, "
-            + "ofname=?, "
-            + "sfname=?";
+ // =========================
+ // 첨부파일
+ // =========================
 
-    public static final String SELECT_FILES =
-            "SELECT * FROM `file` WHERE commno=?";
+ // 첨부파일 저장
+ public static final String INSERT_FILE =
+         "INSERT INTO `file` "
+       + "(commno, ofname, sfname) "
+       + "VALUES (?, ?, ?)";
 
-    public static final String SELECT_FILE =
-            "SELECT * FROM `file` WHERE fileno=?";
+ // 게시글 첨부파일 목록 조회
+ public static final String SELECT_FILES_BY_COMMNO =
+         "SELECT * FROM `file` WHERE commno = ? ORDER BY fileno ASC";
 
-    public static final String UPDATE_DOWNLOAD =
-            "UPDATE `file` SET download = download + 1 WHERE fileno=?";
+ // 첨부파일 1개 조회
+ public static final String SELECT_FILE =
+         "SELECT * FROM `file` WHERE fileno = ?";
 
-    public static final String DELETE_FILE =
-            "DELETE FROM `file` WHERE fileno=?";
-    
-    
-    public static final String UPDATE_MEMBER_ROLE =
-            "UPDATE member SET memberrole = ? WHERE memberid = ?";
-    
-    public static final String INSERT_EVENT =
-            "INSERT INTO event_calendar (title, startdate) VALUES (?, ?)";
+ // 다운로드 수 증가
+ public static final String UPDATE_FILE_DOWNLOAD =
+         "UPDATE `file` SET download = download + 1 WHERE fileno = ?";
 
-    public static final String SELECT_EVENTS =
-            "SELECT * FROM event_calendar ORDER BY startdate ASC, eventno ASC";
+ // 첨부파일 삭제
+ public static final String DELETE_FILE =
+         "DELETE FROM `file` WHERE fileno = ?";
+
+ // 게시글 첨부파일 개수 조회
+ public static final String SELECT_FILE_COUNT_BY_COMMNO =
+         "SELECT COUNT(*) AS cnt FROM `file` WHERE commno = ?";
+
+ // 게시글 파일 여부 수정
+ public static final String UPDATE_COMMUNITY_FILECHECK =
+         "UPDATE community SET filecheck = ? WHERE commno = ?";
     
-    
-    public static final String DELETE_EVENT =
-            "DELETE FROM event_calendar WHERE eventno = ?";
     
  // =========================
  // Community 게시판
@@ -298,6 +307,10 @@ public static final String UPDATE_COMMUNITY_COMMENT_COUNT_MINUS =
 //댓글 1개 조회
 public static final String SELECT_COMMUNITY_COMMENT =
      "SELECT * FROM communitycomment WHERE commentno = ?";
+
+//댓글 수정
+public static final String UPDATE_COMMUNITY_COMMENT =
+     "UPDATE communitycomment SET content = ? WHERE commentno = ?";
 
 
     
