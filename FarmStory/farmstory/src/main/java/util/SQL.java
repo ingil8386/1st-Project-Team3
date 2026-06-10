@@ -16,6 +16,14 @@ public class SQL {
 	public static final String WHERE_NICK = "WHERE membernick=?";
 	public static final String WHERE_EMAIL = "WHERE memberemail=?";
 	public static final String WHERE_HP = "WHERE memberhp=?";
+	// 1. 아이디 찾기 (이름과 이메일이 일치하는 회원의 아이디 조회)
+	public static final String SELECT_MEMBER_ID = "SELECT memberid FROM member WHERE membername=? AND memberemail=?";
+
+	// 2. 비밀번호 찾기 1단계 (아이디와 이메일이 일치하는 회원 존재 여부 확인)
+	public static final String SELECT_MEMBER_FOR_PASS = "SELECT COUNT(*) FROM member WHERE memberid=? AND memberemail=?";
+
+	// 3. 비밀번호 찾기 2단계 (회원이 맞다면 새 비밀번호로 업데이트)
+	public static final String UPDATE_MEMBER_PASS = "UPDATE member SET memberpass=SHA2(?, 256) WHERE memberid=?";
 
 	// ==========================================
 	// Community (게시판 공통 - 농작물, 텃밭, 공지사항 등)
