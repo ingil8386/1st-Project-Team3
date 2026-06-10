@@ -27,6 +27,7 @@
 %>
 
 <!DOCTYPE html>
+<jsp:include page="/WEB-INF/views/common/_head.jsp" />
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -62,32 +63,6 @@
 </head>
 <body>
     <div id="container">
-        <header>
-            <a href="<%= request.getContextPath() %>/index.do" class="logo">
-                <img src="<%= request.getContextPath() %>/images/logo.png" alt="로고">
-            </a>
-
-            <p>
-                <a href="<%= request.getContextPath() %>/index.do">HOME |</a>
-                <a href="<%= request.getContextPath() %>/user/login.do">로그인</a>|
-                <a href="<%= request.getContextPath() %>/user/terms.do">회원가입</a>|               
-                <a href="#">나의정보 </a>|
-                <a href="#">로그아웃 </a>|
-                <a href="<%= request.getContextPath() %>/admin/admin.do">관리자 |</a>
-                <a href="#">고객센터</a>
-            </p>
-
-            <img src="<%= request.getContextPath() %>/images/head_txt_img.png" alt="3만원 이상 무료배송" class="text">
-            
-            <ul class="gnb">
-                <li><a href="<%= request.getContextPath() %>/about/greeting.do">팜스토리소개</a></li>
-                <li><a href="<%= request.getContextPath() %>/market/list.do">장보기</a></li>
-                <li><a href="<%= request.getContextPath() %>/story/intro.do">농작물이야기</a></li>
-                <li><a href="<%= request.getContextPath() %>/event/calendar.do">이벤트</a></li>
-                <li><a href="<%= request.getContextPath() %>/community/notice.do">커뮤니티</a></li>
-            </ul>
-        </header>
-
         <div id="sub">
             <div>
                 <img src="<%= request.getContextPath() %>/images/sub_top_tit2.png" alt="MARKET">
@@ -244,19 +219,7 @@
                 </article>
             </section>
         </div>
-        
-        <footer>
-            <img src="<%= request.getContextPath() %>/images/footer_logo.png" alt="로고">
-            <div>
-                <p>
-                    (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                    등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br>
-                    대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345
-                </p>
-
-                <span class="copyright">Copyright(C)홍길동 All rights reserved.</span>
-            </div>
-        </footer>
+<jsp:include page="/WEB-INF/views/common/_tail.jsp" />
     </div>    
 </body>
 </html>
