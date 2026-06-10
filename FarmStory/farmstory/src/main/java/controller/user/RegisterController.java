@@ -66,6 +66,6 @@ public class RegisterController extends HttpServlet {
 		service.register(dto);
 		
 		// 로그인 이동
-		resp.sendRedirect("/user/login.do?register=success");
+		resp.sendRedirect("/farmstory/user/login.do?register=success");
     }
 }
