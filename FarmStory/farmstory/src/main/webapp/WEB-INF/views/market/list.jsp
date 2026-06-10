@@ -64,60 +64,49 @@
                         </thead>
 
                         <tbody>
-                        <%
-                            if (products != null && !products.isEmpty()) {
-                                for (ProductDTO product : products) {
-
-                                    String img = product.getProductimg();
-
-                                    if (img == null || img.trim().isEmpty()) {
-                                        img = request.getContextPath() + "/images/market_item1.jpg";
-                                    } else {
-                                        img = request.getContextPath() + img;
-                                    }
-                        %>
-                                    <tr>
-                                        <td>
-                                            <a href="<%= request.getContextPath() %>/market/detail.do?productno=<%= product.getProductno() %>">
-                                                <img src="<%= img %>"
-                                                     class="thumbnail"
-                                                     alt="<%= product.getProductname() %>">
-                                            </a>
-                                        </td>
-
-                                        <td class="type">
-                                            <%= product.getProductcate() %>
-                                        </td>
-
-                                        <td class="title">
-                                            <a href="<%= request.getContextPath() %>/market/detail.do?productno=<%= product.getProductno() %>">
-                                                <%= product.getProductname() %>
-                                            </a>
-                                        </td>
-
-                                        <td class="discount">
-                                            <%= product.getProductdiscount() %>%
-                                        </td>
-
-                                        <td class="point">
-                                            <%= df.format(product.getProductpoint()) %>P
-                                        </td>
-
-                                        <td class="price">
-                                            <strong><%= df.format(product.getProductfinalprice()) %></strong>
-                                            <del><%= df.format(product.getProductprice()) %></del>
-                                        </td>
-                                    </tr>
-                        <%
-                                }
-                            } else {
-                        %>
-                                <tr>
-                                    <td colspan="6">등록된 상품이 없습니다.</td>
-                                </tr>
-                        <%
-                            }
-                        %>
+						 <%
+						    if (products != null && !products.isEmpty()) {
+						        for (ProductDTO product : products) {
+						            String img = product.getProductimg();
+						
+						            // 1. 이미지가 없으면 기본 이미지
+						            if (img == null || img.trim().isEmpty()) {
+						                img = request.getContextPath() + "/images/market_item1.jpg";
+						            } else {
+						                // 2. 이미지가 있으면 매핑한 외부 경로(/images)를 직접 사용
+						                img = img; 
+						            }
+						%>
+						    <tr>
+						        <td>
+						            <a href="<%= request.getContextPath() %>/market/detail.do?productno=<%= product.getProductno() %>">
+						                <img src="<%= img %>" class="thumbnail" alt="<%= product.getProductname() %>">
+						            </a>
+						        </td>
+						        
+						        <td class="type"><%= product.getProductcate() %></td>
+						        <td class="title">
+						            <a href="<%= request.getContextPath() %>/market/detail.do?productno=<%= product.getProductno() %>">
+						                <%= product.getProductname() %>
+						            </a>
+						        </td>
+						        <td class="discount"><%= product.getProductdiscount() %>%</td>
+						        <td class="point"><%= df.format(product.getProductpoint()) %>P</td>
+						        <td class="price">
+						            <strong><%= df.format(product.getProductfinalprice()) %></strong>
+						            <del><%= df.format(product.getProductprice()) %></del>
+						        </td>
+						    </tr>
+						<%
+						        }
+						    } else {
+						%>
+						    <tr>
+						        <td colspan="6">등록된 상품이 없습니다.</td>
+						    </tr>
+						<%
+						    }
+						%>
                         </tbody>
                     </table>
 
