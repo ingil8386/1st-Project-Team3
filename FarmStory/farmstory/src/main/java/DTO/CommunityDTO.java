@@ -13,9 +13,6 @@ public class CommunityDTO {
     private String regip;
     private String wdate;
 
-    // member 조인 출력용
-    private String membernick;
-
     public int getCommno() {
         return commno;
     }
@@ -47,7 +44,7 @@ public class CommunityDTO {
     public void setContent(String content) {
         this.content = content;
     }
-    
+
     public int getCommentcount() {
         return commentcount;
     }
@@ -94,13 +91,5 @@ public class CommunityDTO {
 
     public void setWdate(String wdate) {
         this.wdate = wdate;
-    }
-
-    public String getMembernick() {
-        return membernick;
-    }
-
-    public void setMembernick(String membernick) {
-        this.membernick = membernick;
     }
 }
