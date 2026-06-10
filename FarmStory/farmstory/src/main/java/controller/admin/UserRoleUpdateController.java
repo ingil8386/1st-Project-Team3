@@ -1,9 +1,7 @@
 package controller.admin;
 
 import java.io.IOException;
-import java.util.List;
 
-import DTO.MemberDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,25 +9,24 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.Memberservice;
 
-@WebServlet("/admin/user/user_list.do")
-public class UserListController extends HttpServlet {
+@WebServlet("/admin/user/update_role.do")
+public class UserRoleUpdateController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     private Memberservice service = Memberservice.INSTANCE;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
 
-        List<MemberDTO> members = service.findAll();
+        String memberid = req.getParameter("memberid");
+        String memberrole = req.getParameter("memberrole");
 
-        req.setAttribute("members", members);
+        service.updateMemberRole(memberid, memberrole);
 
-        req.getRequestDispatcher("/WEB-INF/views/admin/user/user_list.jsp")
-           .forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/admin/user/user_list.do");
     }
 }
