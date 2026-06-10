@@ -86,12 +86,24 @@ public class SQL2 {
 
 
     // cart
-    public static final String INSERT_CART =
-            "INSERT INTO cart SET "
-            + "memberid=?, "
-            + "productno=?, "
-            + "cartcount=?";
-
+ // MySQL
+    public static final String INSERT_CART = "INSERT INTO cart (memberid, productno, cartcount, rdate) " +
+                         "VALUES (?, ?, ?, NOW()) " +
+                         "ON DUPLICATE KEY UPDATE cartcount = VALUES(cartcount), rdate = VALUES(rdate)";
+    
+    public static final String SELECT_CART_LIST =
+    	    "SELECT " +
+    	    "p.productimg AS 상품이미지, " +
+    	    "p.productcate AS 상품종류, " +
+    	    "p.productname AS 상품명, " +
+    	    "c.cartcount AS 주문수량, " +
+    	    "(c.cartcount * p.productprice) AS 가격합계, " +
+    	    "SUM(c.cartcount) OVER() AS 전체물건수량, " +
+    	    "c.rdate " +
+    	    "FROM cart c " +
+    	    "JOIN product p " +
+    	    "ON c.productno = p.productno " +
+    	    "WHERE c.memberid = ?";
     public static final String SELECT_CARTS =
             "SELECT "
             + "c.cartno, "
