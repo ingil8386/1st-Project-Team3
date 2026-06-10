@@ -52,13 +52,6 @@
 					</div>
 
 					<div class="menu">
-						<h4>주문관리</h4>
-						<ul>
-							<li><a href="/farmstory/admin/order/order_list.do">주문목록</a></li>
-						</ul>
-					</div>
-
-					<div class="menu">
 						<h4>회원관리</h4>
 						<ul>
 							<li><a href="/farmstory/admin/user/user_list.do">회원목록</a></li>

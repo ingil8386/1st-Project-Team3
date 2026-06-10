@@ -55,13 +55,6 @@
                     </div>
 
                     <div class="menu">
-                        <strong>주문관리</strong>
-                        <ul>
-                            <li><a href="<%= request.getContextPath() %>/admin/order/order_list.do">주문목록</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="menu">
                         <strong>회원관리</strong>
                         <ul>
                             <li><a href="<%= request.getContextPath() %>/admin/user/user_list.do">회원목록</a></li>
