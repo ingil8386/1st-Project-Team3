@@ -12,6 +12,7 @@ public class CommunityDTO {
     private String writer;
     private String regip;
     private String wdate;
+    private int boardpostno;
 
     public int getCommno() {
         return commno;
@@ -92,4 +93,14 @@ public class CommunityDTO {
     public void setWdate(String wdate) {
         this.wdate = wdate;
     }
+    
+    public int getBoardpostno() {
+        return boardpostno;
+    }
+
+    public void setBoardpostno(int boardpostno) {
+        this.boardpostno = boardpostno;
+    }
+    
+    
 }

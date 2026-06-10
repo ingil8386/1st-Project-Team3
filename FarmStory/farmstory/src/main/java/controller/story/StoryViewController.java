@@ -5,8 +5,10 @@ import java.util.List;
 
 import DAO.CommentDAO;
 import DAO.CommunityDAO;
+import DAO.FileDAO;
 import DTO.CommentDTO;
 import DTO.CommunityDTO;
+import DTO.FileDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,6 +22,7 @@ public class StoryViewController extends HttpServlet {
 
     private CommunityDAO communityDAO = CommunityDAO.getInstance();
     private CommentDAO commentDAO = CommentDAO.getInstance();
+    private FileDAO fileDAO = FileDAO.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -44,10 +47,8 @@ public class StoryViewController extends HttpServlet {
             return;
         }
 
-        // 조회수 증가
         communityDAO.updateCommunityHit(commno);
 
-        // 게시글 조회
         CommunityDTO community = communityDAO.selectCommunity(commno);
 
         if (community == null) {
@@ -55,11 +56,12 @@ public class StoryViewController extends HttpServlet {
             return;
         }
 
-        // 댓글 목록 조회
         List<CommentDTO> comments = commentDAO.selectComments(commno);
+        List<FileDTO> files = fileDAO.selectFilesByCommno(commno);
 
         req.setAttribute("community", community);
         req.setAttribute("comments", comments);
+        req.setAttribute("files", files);
 
         req.getRequestDispatcher("/WEB-INF/views/story/view.jsp")
            .forward(req, resp);

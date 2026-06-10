@@ -1,5 +1,7 @@
 package DAO;
 
+import java.sql.Statement;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,243 +12,300 @@ import util.SQL2;
 
 public class CommunityDAO extends DBHelper {
 
-    private static final CommunityDAO INSTANCE = new CommunityDAO();
+	private static final CommunityDAO INSTANCE = new CommunityDAO();
 
-    public static CommunityDAO getInstance() {
-        return INSTANCE;
-    }
+	public static CommunityDAO getInstance() {
+		return INSTANCE;
+	}
 
-    private CommunityDAO() {
-    }
+	private CommunityDAO() {
+	}
 
-    public List<CommunityDTO> selectCommunities(int boardno, String search) {
-        List<CommunityDTO> communities = new ArrayList<>();
+	public List<CommunityDTO> selectCommunities(int boardno, String search) {
+		List<CommunityDTO> communities = new ArrayList<>();
 
-        try {
-            conn = getConnection();
+		try {
+			conn = getConnection();
 
-            if (search == null || search.trim().isEmpty()) {
-                psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD);
-                psmt.setInt(1, boardno);
-            } else {
-                psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD_SEARCH);
-                psmt.setInt(1, boardno);
-                psmt.setString(2, "%" + search + "%");
-                psmt.setString(3, "%" + search + "%");
-            }
+			if (search == null || search.trim().isEmpty()) {
+				psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD);
+				psmt.setInt(1, boardno);
+			} else {
+				psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD_SEARCH);
+				psmt.setInt(1, boardno);
+				psmt.setString(2, "%" + search + "%");
+				psmt.setString(3, "%" + search + "%");
+			}
 
-            rs = psmt.executeQuery();
+			rs = psmt.executeQuery();
 
-            while (rs.next()) {
-                CommunityDTO dto = new CommunityDTO();
+			while (rs.next()) {
+				CommunityDTO dto = new CommunityDTO();
 
-                dto.setCommno(rs.getInt("commno"));
-                dto.setBoardno(rs.getInt("boardno"));
-                dto.setTitle(rs.getString("title"));
-                dto.setContent(rs.getString("content"));
-                dto.setCommentcount(rs.getInt("commentcount"));
-                dto.setFilecheck(rs.getInt("filecheck"));
-                dto.setHit(rs.getInt("hit"));
-                dto.setWriter(rs.getString("writer"));
-                dto.setRegip(rs.getString("regip"));
-                dto.setWdate(rs.getString("wdate"));
+				dto.setCommno(rs.getInt("commno"));
+				dto.setBoardno(rs.getInt("boardno"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setCommentcount(rs.getInt("commentcount"));
+				dto.setFilecheck(rs.getInt("filecheck"));
+				dto.setHit(rs.getInt("hit"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setRegip(rs.getString("regip"));
+				dto.setWdate(rs.getString("wdate"));
+				dto.setBoardpostno(rs.getInt("boardpostno"));
 
-                communities.add(dto);
-            }
+				communities.add(dto);
+			}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
-        return communities;
-    }
-    
-    public void insertCommunity(CommunityDTO dto) {
+		return communities;
+	}
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.INSERT_COMMUNITY);
+// 게시글 작성
+	public int insertCommunity(CommunityDTO dto) {
+		int commno = 0;
 
-            psmt.setInt(1, dto.getBoardno());
-            psmt.setString(2, dto.getTitle());
-            psmt.setString(3, dto.getContent());
-            psmt.setString(4, dto.getWriter());
-            psmt.setString(5, dto.getRegip());
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.INSERT_COMMUNITY, Statement.RETURN_GENERATED_KEYS);
 
-            psmt.executeUpdate();
+			psmt.setInt(1, dto.getBoardno());
+			psmt.setInt(2, dto.getBoardpostno());
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getContent());
+			psmt.setString(5, dto.getWriter());
+			psmt.setString(6, dto.getRegip());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    
- // 게시글 1개 조회
-    public CommunityDTO selectCommunity(int commno) {
-        CommunityDTO dto = null;
+			psmt.executeUpdate();
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITY);
-            psmt.setInt(1, commno);
+			rs = psmt.getGeneratedKeys();
 
-            rs = psmt.executeQuery();
+			if (rs.next()) {
+				commno = rs.getInt(1);
+			}
 
-            if (rs.next()) {
-                dto = new CommunityDTO();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
-                dto.setCommno(rs.getInt("commno"));
-                dto.setBoardno(rs.getInt("boardno"));
-                dto.setTitle(rs.getString("title"));
-                dto.setContent(rs.getString("content"));
-                dto.setCommentcount(rs.getInt("commentcount"));
-                dto.setFilecheck(rs.getInt("filecheck"));
-                dto.setHit(rs.getInt("hit"));
-                dto.setWriter(rs.getString("writer"));
-                dto.setRegip(rs.getString("regip"));
-                dto.setWdate(rs.getString("wdate"));
-            }
+		return commno;
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+	// 게시글 1개 조회
+	public CommunityDTO selectCommunity(int commno) {
+		CommunityDTO dto = null;
 
-        return dto;
-    }
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITY);
+			psmt.setInt(1, commno);
 
-    // 조회수 증가
-    public void updateCommunityHit(int commno) {
+			rs = psmt.executeQuery();
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_HIT);
-            psmt.setInt(1, commno);
+			if (rs.next()) {
+				dto = new CommunityDTO();
 
-            psmt.executeUpdate();
+				dto.setCommno(rs.getInt("commno"));
+				dto.setBoardno(rs.getInt("boardno"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setCommentcount(rs.getInt("commentcount"));
+				dto.setFilecheck(rs.getInt("filecheck"));
+				dto.setHit(rs.getInt("hit"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setRegip(rs.getString("regip"));
+				dto.setWdate(rs.getString("wdate"));
+				dto.setBoardpostno(rs.getInt("boardpostno"));
+			}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
- // 게시글 수정
-    public void updateCommunity(CommunityDTO dto) {
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY);
+		return dto;
+	}
 
-            psmt.setString(1, dto.getTitle());
-            psmt.setString(2, dto.getContent());
-            psmt.setInt(3, dto.getCommno());
+	// 조회수 증가
+	public void updateCommunityHit(int commno) {
 
-            psmt.executeUpdate();
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_HIT);
+			psmt.setInt(1, commno);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    
- // 게시글 삭제
-    public void deleteCommunity(int commno) {
+			psmt.executeUpdate();
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.DELETE_COMMUNITY);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-            psmt.setInt(1, commno);
+	// 게시글 수정
+	public void updateCommunity(CommunityDTO dto) {
 
-            psmt.executeUpdate();
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    
-    
- // 댓글 수 증가
-    public void updateCommunityCommentCountPlus(int commno) {
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setInt(3, dto.getCommno());
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT_COUNT_PLUS);
-            psmt.setInt(1, commno);
+			psmt.executeUpdate();
 
-            psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+	// 게시글 삭제
+	public void deleteCommunity(int commno) {
 
-    // 댓글 수 감소
-    public void updateCommunityCommentCountMinus(int commno) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.DELETE_COMMUNITY);
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT_COUNT_MINUS);
-            psmt.setInt(1, commno);
+			psmt.setInt(1, commno);
 
-            psmt.executeUpdate();
+			psmt.executeUpdate();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                closeAll();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 댓글 수 증가
+	public void updateCommunityCommentCountPlus(int commno) {
+
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT_COUNT_PLUS);
+			psmt.setInt(1, commno);
+
+			psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 댓글 수 감소
+	public void updateCommunityCommentCountMinus(int commno) {
+
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_COMMENT_COUNT_MINUS);
+			psmt.setInt(1, commno);
+
+			psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 게시판별 다음 글번호 조회
+	public int selectNextBoardPostNo(int boardno) {
+		int nextNo = 1;
+
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.SELECT_NEXT_BOARD_POST_NO);
+			psmt.setInt(1, boardno);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				nextNo = rs.getInt("nextNo");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return nextNo;
+	}
+
+	
+	// 게시글 첨부파일 여부 수정
+	public void updateCommunityFilecheck(int commno, int filecheck) {
+
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_FILECHECK);
+
+	        psmt.setInt(1, filecheck);
+	        psmt.setInt(2, commno);
+
+	        psmt.executeUpdate();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            closeAll();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
+	
 }
