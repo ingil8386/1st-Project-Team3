@@ -25,9 +25,7 @@ public class ProductListController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
 
-        String productcate = req.getParameter("productcate");
-
-        List<ProductDTO> products = dao.selectProducts(productcate);
+        List<ProductDTO> products = dao.selectProducts();
 
         req.setAttribute("products", products);
 

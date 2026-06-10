@@ -54,14 +54,10 @@ public class SQL2 {
 
     // product
     public static final String INSERT_PRODUCT =
-            "INSERT INTO product SET "
-            + "productcate=?, "
-            + "productname=?, "
-            + "productprice=?, "
-            + "productcontent=?, "
-            + "productimg=?, "
-            + "productstock=?";
-
+            "INSERT INTO product "
+          + "(productcate, productname, productprice, productdiscount, productpoint, productfinalprice, productcontent, productimg, productstock) "
+          + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
     public static final String SELECT_PRODUCT =
             "SELECT * FROM product WHERE productno=?";
 

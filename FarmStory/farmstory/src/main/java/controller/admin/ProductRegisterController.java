@@ -44,9 +44,40 @@ public class ProductRegisterController extends HttpServlet {
         String productprice = req.getParameter("productprice");
         String productstock = req.getParameter("productstock");
         String productcontent = req.getParameter("productcontent");
+        String productdiscount = req.getParameter("productdiscount");
+        String productpoint = req.getParameter("productpoint");
 
         if (productcontent == null || productcontent.trim().isEmpty()) {
             productcontent = "";
+        }
+
+        int price = 0;
+        int stock = 0;
+        int discount = 0;
+        int point = 0;
+        int finalprice = 0;
+
+        try {
+            price = Integer.parseInt(productprice.replace(",", "").trim());
+            stock = Integer.parseInt(productstock.replace(",", "").trim());
+
+            if (productdiscount == null || productdiscount.trim().isEmpty()) {
+                productdiscount = "0";
+            }
+
+            if (productpoint == null || productpoint.trim().isEmpty()) {
+                productpoint = "0";
+            }
+
+            discount = Integer.parseInt(productdiscount.replace(",", "").trim());
+            point = Integer.parseInt(productpoint.replace(",", "").trim());
+
+            finalprice = price - (price * discount / 100);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp.sendRedirect(req.getContextPath() + "/admin/product/product_register.do?result=numberError");
+            return;
         }
 
         // 기본 이미지
@@ -89,8 +120,11 @@ public class ProductRegisterController extends HttpServlet {
 
         dto.setProductname(productname);
         dto.setProductcate(productcate);
-        dto.setProductprice(Integer.parseInt(productprice));
-        dto.setProductstock(Integer.parseInt(productstock));
+        dto.setProductprice(price);
+        dto.setProductdiscount(discount);
+        dto.setProductpoint(point);
+        dto.setProductfinalprice(finalprice);
+        dto.setProductstock(stock);
         dto.setProductcontent(productcontent);
         dto.setProductimg(productimg);
 

@@ -1,20 +1,70 @@
-# 1. Eclipse 관련 설정 파일 및 폴더
+# =========================
+# Git 내부 폴더
+# =========================
+.git/
+
+# =========================
+# Eclipse Workspace
+# =========================
 .metadata/
+**/.metadata/
 Servers/
 Servers2/
-.settings/
-.classpath
-.project
+**/Servers/
+*.launch
+*.prefs
+*.snap
+*.index
+*.dat
+*.lock
+*.lock_info
 
-# 2. Java 컴파일된 파일 및 빌드 폴더
+# =========================
+# Eclipse Project Setting
+# =========================
+.settings/
+**/.settings/
+.project
+.classpath
+.factorypath
+
+# =========================
+# Java Build Output
+# =========================
 *.class
 bin/
 build/
 target/
+out/
+**/build/
+**/bin/
+**/target/
 
-# 3. 로그 파일
+# =========================
+# Tomcat / WTP
+# =========================
+.metadata/.plugins/org.eclipse.wst.server.core/
+**/.plugins/org.eclipse.wst.server.core/
+wtpwebapps/
+work/
+tmp/
+
+# =========================
+# Log
+# =========================
 *.log
+LOG
+LOG.old
 
-# 4. OS (운영체제) 임시 파일
+# =========================
+# OS
+# =========================
 .DS_Store
 Thumbs.db
+
+# =========================
+# IDE / Cache
+# =========================
+.cache/
+*.ser
+*.xmi

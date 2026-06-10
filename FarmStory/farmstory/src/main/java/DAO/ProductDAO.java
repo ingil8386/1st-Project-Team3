@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,140 +11,170 @@ import util.SQL2;
 
 public class ProductDAO extends DBHelper {
 
-    private static final ProductDAO INSTANCE = new ProductDAO();
+	private static final ProductDAO INSTANCE = new ProductDAO();
 
-    public static ProductDAO getInstance() {
-        return INSTANCE;
-    }
+	public static ProductDAO getInstance() {
+		return INSTANCE;
+	}
 
-    private ProductDAO() {}
+	private ProductDAO() {
+	}
 
-    public void insertProduct(ProductDTO dto) {
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL.INSERT_PRODUCT);
+	public void insertProduct(ProductDTO dto) {
 
-            psmt.setString(1, dto.getProductcate());
-            psmt.setString(2, dto.getProductname());
-            psmt.setInt(3, dto.getProductprice());
-            psmt.setString(4, dto.getProductcontent());
-            psmt.setString(5, dto.getProductimg());
-            psmt.setInt(6, dto.getProductstock());
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.INSERT_PRODUCT);
 
-            psmt.executeUpdate();
+			psmt.setString(1, dto.getProductcate());
+			psmt.setString(2, dto.getProductname());
+			psmt.setInt(3, dto.getProductprice());
+			psmt.setInt(4, dto.getProductdiscount());
+			psmt.setInt(5, dto.getProductpoint());
+			psmt.setInt(6, dto.getProductfinalprice());
+			psmt.setString(7, dto.getProductcontent());
+			psmt.setString(8, dto.getProductimg());
+			psmt.setInt(9, dto.getProductstock());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll();
-        }
-    }
+			psmt.executeUpdate();
 
-    public ProductDTO selectProduct(int productno) {
-        ProductDTO dto = null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
-            psmt.setInt(1, productno);
+	public ProductDTO selectProduct(int productno) {
+		ProductDTO dto = null;
 
-            rs = psmt.executeQuery();
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
+			psmt.setInt(1, productno);
 
-            if (rs.next()) {
-                dto = new ProductDTO();
+			rs = psmt.executeQuery();
 
-                dto.setProductno(rs.getInt("productno"));
-                dto.setProductcate(rs.getString("productcate"));
-                dto.setProductname(rs.getString("productname"));
-                dto.setProductprice(rs.getInt("productprice"));
-                dto.setProductcontent(rs.getString("productcontent"));
-                dto.setProductimg(rs.getString("productimg"));
-                dto.setProductstock(rs.getInt("productstock"));
-                dto.setRdate(rs.getString("rdate"));
-            }
+			if (rs.next()) {
+				dto = new ProductDTO();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll();
-        }
+				dto.setProductno(rs.getInt("productno"));
+				dto.setProductcate(rs.getString("productcate"));
+				dto.setProductname(rs.getString("productname"));
+				dto.setProductprice(rs.getInt("productprice"));
+				dto.setProductcontent(rs.getString("productcontent"));
+				dto.setProductimg(rs.getString("productimg"));
+				dto.setProductstock(rs.getInt("productstock"));
+				dto.setRdate(rs.getString("rdate"));
 
-        return dto;
-    }
+			}
 
-    public List<ProductDTO> selectProducts(String productcate) {
-        List<ProductDTO> products = new ArrayList<>();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
-        try {
-            conn = getConnection();
+		return dto;
+	}
 
-            if (productcate == null || productcate.trim().isEmpty()) {
-                psmt = conn.prepareStatement(SQL2.SELECT_PRODUCTS);
-            } else {
-                psmt = conn.prepareStatement(SQL2.SELECT_PRODUCTS_BY_CATE);
-                psmt.setString(1, productcate);
-            }
+	public List<ProductDTO> selectProducts() {
+		List<ProductDTO> products = new ArrayList<>();
 
-            rs = psmt.executeQuery();
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.SELECT_PRODUCTS);
+			rs = psmt.executeQuery();
 
-            while (rs.next()) {
-                ProductDTO dto = new ProductDTO();
+			while (rs.next()) {
+				ProductDTO dto = new ProductDTO();
 
-                dto.setProductno(rs.getInt("productno"));
-                dto.setProductcate(rs.getString("productcate"));
-                dto.setProductname(rs.getString("productname"));
-                dto.setProductprice(rs.getInt("productprice"));
-                dto.setProductcontent(rs.getString("productcontent"));
-                dto.setProductimg(rs.getString("productimg"));
-                dto.setProductstock(rs.getInt("productstock"));
-                dto.setRdate(rs.getString("rdate"));
+				dto.setProductno(rs.getInt("productno"));
+				dto.setProductcate(rs.getString("productcate"));
+				dto.setProductname(rs.getString("productname"));
+				dto.setProductprice(rs.getInt("productprice"));
+				dto.setProductdiscount(rs.getInt("productdiscount"));
+				dto.setProductpoint(rs.getInt("productpoint"));
+				dto.setProductfinalprice(rs.getInt("productfinalprice"));
+				dto.setProductcontent(rs.getString("productcontent"));
+				dto.setProductimg(rs.getString("productimg"));
+				dto.setProductstock(rs.getInt("productstock"));
+				dto.setRdate(rs.getString("rdate"));
 
-                products.add(dto);
-            }
+				products.add(dto);
+			}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll();
-        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
-        return products;
-    }
+		return products;
+	}
 
-    public void updateProduct(ProductDTO dto) {
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.UPDATE_PRODUCT);
+	public void updateProduct(ProductDTO dto) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.UPDATE_PRODUCT);
 
-            psmt.setString(1, dto.getProductcate());
-            psmt.setString(2, dto.getProductname());
-            psmt.setInt(3, dto.getProductprice());
-            psmt.setString(4, dto.getProductcontent());
-            psmt.setString(5, dto.getProductimg());
-            psmt.setInt(6, dto.getProductstock());
-            psmt.setInt(7, dto.getProductno());
+			psmt.setString(1, dto.getProductcate());
+			psmt.setString(2, dto.getProductname());
+			psmt.setInt(3, dto.getProductprice());
+			psmt.setString(4, dto.getProductcontent());
+			psmt.setString(5, dto.getProductimg());
+			psmt.setInt(6, dto.getProductstock());
+			psmt.setInt(7, dto.getProductno());
 
-            psmt.executeUpdate();
+			psmt.executeUpdate();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll();
-        }
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void deleteProduct(int productno) {
 
-    public void deleteProduct(int productno) {
-        try {
-            conn = getConnection();
-            psmt = conn.prepareStatement(SQL2.DELETE_PRODUCT);
-            psmt.setInt(1, productno);
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL2.DELETE_PRODUCT);
+	        psmt.setInt(1, productno);
 
-            psmt.executeUpdate();
+	        psmt.executeUpdate();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeAll();
-        }
-    }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+				closeAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+	}
+
+
 }
