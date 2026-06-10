@@ -101,8 +101,7 @@ public class ProductRegisterController extends HttpServlet {
 
                 String saveFileName = "product_list_" + System.currentTimeMillis() + ext;
 
-                String uploadPath = req.getServletContext().getRealPath("/images");
-
+                String uploadPath = req.getServletContext().getRealPath("/images/product");
                 File uploadDir = new File(uploadPath);
 
                 if (!uploadDir.exists()) {
@@ -112,8 +111,8 @@ public class ProductRegisterController extends HttpServlet {
                 thumb120.write(uploadPath + File.separator + saveFileName);
 
                 // DB에는 컨텍스트 경로 제외하고 저장
-                productimg = "/images/" + saveFileName;
-            }
+                productimg = "/images/product/" + saveFileName;
+                }
         }
 
         ProductDTO dto = new ProductDTO();
