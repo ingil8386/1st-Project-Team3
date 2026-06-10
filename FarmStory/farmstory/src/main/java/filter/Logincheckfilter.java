@@ -22,9 +22,9 @@ public class Logincheckfilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		
 		HttpSession session = request.getSession();
-		MemberDTO sessUser = (MemberDTO) session.getAttribute("sessUser");
+		MemberDTO sessMember = (MemberDTO) session.getAttribute("sessMember");
 	
-		if(sessUser == null) {
+		if(sessMember == null) {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			response.sendRedirect("/farmstory/user/login.do?login=required");
 		}else {

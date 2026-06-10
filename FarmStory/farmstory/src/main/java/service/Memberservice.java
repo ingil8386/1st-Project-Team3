@@ -71,16 +71,7 @@ public enum Memberservice {
 		}
 
     public MemberDTO login(String memberid, String memberpass) {
-
-        if (memberid == null || memberid.trim().isEmpty()) {
-            return null;
-        }
-
-        if (memberpass == null || memberpass.trim().isEmpty()) {
-            return null;
-        }
-
-        return dao.selectMember(memberid.trim(), memberpass);
+        return dao.selectMember(memberid, memberpass);
     }
     
 	public int getCount(String type, String value) {

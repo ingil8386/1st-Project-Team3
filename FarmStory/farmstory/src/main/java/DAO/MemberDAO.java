@@ -66,7 +66,7 @@ public class MemberDAO extends DBHelper {
 
     public MemberDTO selectMember(String memberid, String memberpass) {
         MemberDTO dto = null;
-
+        
         try {
             conn = getConnection();
             psmt = conn.prepareStatement(SQL.SELECT_MEMBER_WITH_PASS);
@@ -90,10 +90,12 @@ public class MemberDAO extends DBHelper {
                 dto.setRegip(rs.getString("regip"));
                 dto.setRdate(rs.getString("rdate"));
                 dto.setLeavedate(rs.getString("leavedate"));
+                
                 closeAll();
             }
 
         } catch (Exception e) {
+        	System.out.println("❌ DB 조회 중 에러 발생!");
             e.printStackTrace();
         } finally {
 			
