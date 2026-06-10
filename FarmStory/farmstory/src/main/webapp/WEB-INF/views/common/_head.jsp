@@ -5,7 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>farmstory</title>
-    <link rel="stylesheet" href="/farmstory/css/main.css">
+
+ <link rel="stylesheet" href="/farmstory/css/main.css">
+<link rel="stylesheet" href="/farmstory/css/detail.css">
+<link rel="stylesheet" href="/farmstory/css/list.css">
 </head>
 <body>  
     <div id="container">
