@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import DTO.CartDTO;
 import DTO.MemberDTO;
+import DTO.ProductDTO;
 import service.Cartservice;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,15 +30,28 @@ public class CartController extends HttpServlet {
         MemberDTO sessMember = (MemberDTO) session.getAttribute("sessMember");
         String memberid = sessMember != null ? sessMember.getMemberid() : null;
         
-        // 로그인 체크
         if (memberid == null) {
             resp.sendRedirect(req.getContextPath() + "/user/login.do");
             return;
         }
         
         List<CartDTO> cartList = cartservice.getCartList(memberid);
-        req.setAttribute("cartList", cartList);
-        req.getRequestDispatcher("/WEB-INF/views/market/cart.jsp").forward(req, resp);
+
+     // CartDTO → ProductDTO 변환
+     List<ProductDTO> products = new ArrayList<>();
+     for (CartDTO cart : cartList) {
+         ProductDTO product = new ProductDTO();
+         product.setProductno(cart.getProductno());
+         product.setProductname(cart.getProductname());
+         product.setProductimg(cart.getProductimg());
+         product.setProductcate(cart.getProductcate());
+         product.setProductprice(cart.getProductprice());
+         products.add(product);
+     }
+
+     req.setAttribute("cartList", cartList);
+     req.setAttribute("products", products);  // 추가
+     req.getRequestDispatcher("/WEB-INF/views/market/cart.jsp").forward(req, resp);
     }
 
     @Override

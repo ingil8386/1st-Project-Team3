@@ -91,8 +91,6 @@
 						                img = img; 
 						            }
 						%>
-								<c:choose>
-									<c:when test="${not empty cartList}">
 										<c:forEach var="cart" items="${cartList}">
 											<tr>
 												<td><input type="checkbox" class="cartCheck"
@@ -115,18 +113,18 @@
 															value="${cart.totalprice}" pattern="#,###" /></strong>원</td>
 											</tr>
 										</c:forEach>
-									</c:when>
+								
 									<%
 						        }
-						    }
-						%>
-									<c:otherwise>
-										<tr>
-											<td colspan="9" style="text-align: center;">등록된 상품이
-												없습니다.</td>
-										</tr>
-									</c:otherwise>
-								</c:choose>
+						    }else {
+								%>
+							    <tr>
+							        <td colspan="6">등록된 상품이 없습니다.</td>
+							    </tr>
+							<%
+							    }
+							%>
+									
 							</tbody>
 						</table>
 
