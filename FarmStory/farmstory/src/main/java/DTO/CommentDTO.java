@@ -13,7 +13,7 @@ public class CommentDTO {
     
     
 
-    public int getCommentno() {
+	public int getCommentno() {
         return commentno;
     }
 

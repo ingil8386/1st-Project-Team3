@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
 <html lang="en">
@@ -32,37 +34,47 @@
                         </p>
                     </nav>
 
-                     <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
+                    <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
                     <section class="list">
                         <nav>                            
-                            <form action="">
+                            <form action="#">
                                 <input type="text" name="search" placeholder="제목 키워드, 글쓴이 검색">
                                 <input type="submit" value="검색">
                             </form>
                         </nav>
                         <h1>글목록</h1>                                                                
-                        <table border="0">                    
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>글쓴이</th>
-                                <th>날짜</th>
-                                <th>조회</th>
-                            </tr>                    
-                            <c:forEach var="article" items="${articles}">
-						    <tr>
-						        <td>${article.commno}</td>
-						        <td>
-						            <a href="/farmstory/community/view.do?commno=${article.commno}">
-						                ${article.title}
-						            </a>
-						        </td>
-						        <td>${article.membernick}</td>
-						        <td>${article.wdate}</td>
-						        <td>${article.hit}</td>
-						     </tr>
-							</c:forEach>
-                        </table>
+							<table border="0">
+							    <tr>
+							        <th>번호</th>
+							        <th>제목</th>
+							        <th>글쓴이</th>
+							        <th>날짜</th>
+							        <th>조회</th>
+							    </tr>
+							
+							    <c:forEach var="community" items="${communities}">
+							        <tr>
+							            <td>${community.commno}</td>
+							
+							            <td>
+							                <a href="/farmstory/community/view.do?commno=${community.commno}&boardno=${community.boardno}">
+							                    ${community.title}
+							
+							                    <c:if test="${community.commentcount > 0}">
+							                        [${community.commentcount}]
+							                    </c:if>
+							                </a>
+							            </td>
+							
+							            <td>${community.writer}</td>
+							
+							            <td>${community.wdate}</td>
+							
+							            <td>${community.hit}</td>
+							        </tr>
+							    </c:forEach>
+							
+							</table>
         
                         <div class="page">
                             <a href="#" class="prev">이전</a>
@@ -72,11 +84,13 @@
                             <a href="#" class="next">다음</a>
                         </div>
         
-                        <a href="/farmstory/community/write.do?boardno=7"
-						   class="btn btnWrite">
-						    글쓰기
-						</a>                         
+                        <a href="./write.jsp" class="btn btnWrite">글쓰기</a>                        
                     </section>
+                    <!-- 내용 끝 -->
+
+                </article>
+            </section>
+
                     <!-- 내용 끝 -->
 
                 </article>
