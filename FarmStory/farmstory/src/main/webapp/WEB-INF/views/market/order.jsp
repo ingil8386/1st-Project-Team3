@@ -1,8 +1,8 @@
+<%@page import="DTO.ProductDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ page import="java.util.List" %>
-<%@ page import="DTO.https://github.com/ingil8386/1st-Project-Team3/pull/93/conflict?name=FarmStory%252Ffarmstory%252Fsrc%252Fmain%252Fwebapp%252FWEB-INF%252Fviews%252Fmarket%252Fcart.jsp&ancestor_oid=6ceb97c9c94622884a480113787a1372328412bb&base_oid=b805089666d0cf11b2847aa2b520129b245608b6&head_oid=11f2a13c86264fc7985470064b6cdc68d1cdcfbaProductDTO" %>
 <%@ page import="java.text.DecimalFormat" %>
 
 <%
@@ -72,8 +72,6 @@
 						                img = img; 
 						            }
 						%>
-							<c:choose>
-								<c:when test="${not empty orderList}">
 									<c:forEach var="cart" items="${orderList}">
 										<tr>
 											<td><a
@@ -94,17 +92,16 @@
 														value="${cart.totalprice}" pattern="#,###" /></strong>원</td>
 										</tr>
 									</c:forEach>
-								</c:when>
 								<%
 						        }
-						    }
-						%>
-								<c:otherwise>
-									<tr>
-										<td colspan="8" style="text-align: center;">선택된 상품이 없습니다.</td>
-									</tr>
-								</c:otherwise>
-							</c:choose>
+						    } else {
+								%>
+							    <tr>
+							        <td colspan="6">등록된 상품이 없습니다.</td>
+							    </tr>
+							<%
+							    }
+							%>
 						</tbody>
 					</table>
 

@@ -1,11 +1,10 @@
 package controller.market;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import DTO.CartDTO;
+import DTO.ProductDTO;
 import DTO.MemberDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,7 +18,6 @@ import service.Cartservice;
 public class OrderController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final Cartservice cartservice = Cartservice.INSTANCE;
-    
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -31,22 +29,20 @@ public class OrderController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-
         HttpSession session = req.getSession();
         MemberDTO sessMember = (MemberDTO) session.getAttribute("sessMember");
         String memberid = sessMember != null ? sessMember.getMemberid() : null;
-        String[] cartnos = req.getParameterValues("cartno");
 
+        String[] cartnos = req.getParameterValues("cartno");
         if (cartnos == null || cartnos.length == 0) {
             resp.sendRedirect(req.getContextPath() + "/market/cart.do");
             return;
         }
 
-        // 기존 getCartList 재사용 - 체크된 cartno만 필터링
         List<CartDTO> allCartList = cartservice.getCartList(memberid);
         List<CartDTO> orderList = new ArrayList<>();
         int totalAmount = 0;
-      
+
         List<String> cartnoList = Arrays.asList(cartnos);
         for (CartDTO cart : allCartList) {
             if (cartnoList.contains(String.valueOf(cart.getCartno()))) {
@@ -55,7 +51,20 @@ public class OrderController extends HttpServlet {
             }
         }
 
+        // CartDTO → ProductDTO 변환
+        List<ProductDTO> products = new ArrayList<>();
+        for (CartDTO cart : orderList) {
+            ProductDTO product = new ProductDTO();
+            product.setProductno(cart.getProductno());
+            product.setProductname(cart.getProductname());
+            product.setProductimg(cart.getProductimg());
+            product.setProductcate(cart.getProductcate());
+            product.setProductprice(cart.getProductprice());
+            products.add(product);
+        }
+
         req.setAttribute("orderList", orderList);
+        req.setAttribute("products", products);  // 추가
         req.setAttribute("totalAmount", totalAmount);
         req.setAttribute("totalCount", orderList.size());
 
