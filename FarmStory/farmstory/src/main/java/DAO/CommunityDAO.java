@@ -346,5 +346,50 @@ public class CommunityDAO extends DBHelper {
 			}
 		}
 	}
+	
+	
+	// 내가 쓴 글 목록
+	public List<CommunityDTO> selectMyArticles(String writer) {
+	    List<CommunityDTO> articles = new ArrayList<>();
+
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL2.SELECT_MY_ARTICLES);
+	        psmt.setString(1, writer);
+
+	        rs = psmt.executeQuery();
+
+	        while (rs.next()) {
+	            CommunityDTO dto = new CommunityDTO();
+
+	            dto.setCommno(rs.getInt("commno"));
+	            dto.setBoardno(rs.getInt("boardno"));
+	            dto.setBoardpostno(rs.getInt("boardpostno"));
+	            dto.setTitle(rs.getString("title"));
+	            dto.setContent(rs.getString("content"));
+	            dto.setCommentcount(rs.getInt("commentcount"));
+	            dto.setFilecheck(rs.getInt("filecheck"));
+	            dto.setHit(rs.getInt("hit"));
+	            dto.setWriter(rs.getString("writer"));
+	            dto.setRegip(rs.getString("regip"));
+	            dto.setWdate(rs.getString("wdate"));
+
+	            articles.add(dto);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            closeAll();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return articles;
+	}
+	
+	
 
 }
