@@ -102,7 +102,7 @@ if (boardno == 4) {
 				%>
 
 				<p>
-					HOME > 농작물이야기 > <em><%=boardTitle%></em>
+					HOME > 커뮤니티 > <em><%=boardTitle%></em>
 				</p>
 			</nav>
 
@@ -141,7 +141,7 @@ if (boardno == 4) {
         %>
 							<p>
 								<a
-									href="<%= request.getContextPath() %>/story/file/download.do?fileno=<%= file.getFileno() %>">
+									href="<%= request.getContextPath() %>/community/file/download.do?fileno=<%= file.getFileno() %>">
 									<%= file.getOfname() %>
 								</a> 다운로드
 								<%= file.getDownload() %>회
@@ -162,9 +162,9 @@ if (boardno == 4) {
 
 				<div class="btnGroup">
 					<a href="<%=listUrl%>" class="btn btnList">목록</a> <a
-						href="<%=request.getContextPath()%>/story/modify.do?commno=<%=community.getCommno()%>"
+						href="<%=request.getContextPath()%>/community/modify.do?commno=<%=community.getCommno()%>"
 						class="btn btnModify">수정</a> <a
-						href="<%=request.getContextPath()%>/story/delete.do?commno=<%=community.getCommno()%>&boardno=<%=boardno%>"
+						href="<%=request.getContextPath()%>/community/delete.do?commno=<%=community.getCommno()%>&boardno=<%=boardno%>"
 						class="btn btnDelete" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
 				</div>
 
@@ -210,14 +210,14 @@ if (boardno == 4) {
 								onclick="showCommentModify(<%= comment.getCommentno() %>)">수정</a>
 
 							<a
-								href="<%= request.getContextPath() %>/story/comment/delete.do?commentno=<%= comment.getCommentno() %>"
+								href="<%= request.getContextPath() %>/community/comment/delete.do?commentno=<%= comment.getCommentno() %>"
 								class="btnCommentDelete"
 								onclick="return confirm('댓글을 삭제하시겠습니까?');">삭제</a>
 						</div>
 
 						<!-- 댓글 수정 폼 -->
 						<form
-							action="<%= request.getContextPath() %>/story/comment/modify.do"
+							action="<%= request.getContextPath() %>/community/comment/modify.do"
 							method="post" class="commentModifyForm"
 							id="commentModifyForm<%= comment.getCommentno() %>"
 							style="display: none;">
@@ -263,7 +263,7 @@ if (boardno == 4) {
 					<%
 					} else {
 					%>
-					<form action="<%=request.getContextPath()%>/story/comment/write.do"
+					<form action="<%=request.getContextPath()%>/community/comment/write.do"
 						method="post">
 						<input type="hidden" name="commno"
 							value="<%=community.getCommno()%>">

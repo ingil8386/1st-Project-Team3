@@ -97,7 +97,7 @@
 				%>
 
 				<p>
-					HOME > 농작물이야기 > <em><%=boardTitle%></em>
+					HOME > 커뮤니티 > <em><%=boardTitle%></em>
 				</p>
 			</nav>
 
