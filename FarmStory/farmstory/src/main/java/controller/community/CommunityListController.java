@@ -66,7 +66,7 @@ public class CommunityListController extends HttpServlet {
 
         String search = req.getParameter("search");
 
-        List<CommunityDTO> communities = communityDAO.selectCommunities(boardno, search, start, pageSize);
+        List<CommunityDTO> communities = communityDAO.selectCommunities(boardno, search, 0, 10);
 
         req.setAttribute("communities", communities);
         req.setAttribute("boardno", boardno);
