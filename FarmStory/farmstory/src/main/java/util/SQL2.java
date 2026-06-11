@@ -423,6 +423,11 @@ public static final String DELETE_COMMUNITY_BY_MEMBER =
 
 
 
+//회원 권한 수정
+public static final String UPDATE_MEMBER_ROLE =
+     "UPDATE member SET memberrole = ? WHERE memberid = ?";
+
+
 
 
     
