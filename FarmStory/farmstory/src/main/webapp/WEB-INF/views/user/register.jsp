@@ -77,8 +77,9 @@
                             <td>주소</td>
                             <td>
                                 <input type="text" name="memberzip" placeholder="우편번호"/>
+                                <input type="text" id="addr1" name="memberaddr1" readonly placeholder="주소 검색"/>
                                 <input type="text" name="memberaddr2" placeholder="상세주소 입력"/>
-                                <button type="button" onclick="DaumPostcode()"><img src="/farmstory/images/user/chk_post.gif" alt="주소 검색"></button>
+                                <button type="button" onclick="DaumPostcode()"><img src="/farmstory/images/user/chk_post.gif" alt="우편번호 찾기"></button>
                             </td>
                         </tr>
                     </table>
