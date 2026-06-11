@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import DAO.ProductDAO;
 import DTO.CartDTO;
 import DTO.MemberDTO;
 import DTO.ProductDTO;
@@ -19,6 +21,7 @@ public class CartController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     Cartservice cartservice = Cartservice.INSTANCE;
+    ProductDAO productDAO = ProductDAO.getInstance();
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -129,37 +132,29 @@ public class CartController extends HttpServlet {
                 break;
             }
             case "addAndOrder": {
-                CartDTO dto = new CartDTO();
-                dto.setMemberid(memberid);
-                dto.setProductno(Integer.parseInt(req.getParameter("productno")));
-                dto.setCartcount(Integer.parseInt(req.getParameter("cartcount")));
-                cartservice.addCart(dto);
-
-                // 전체 목록 조회 후 해당 productno와 일치하는 항목 찾기
-                List<CartDTO> allCartList = cartservice.getCartList(memberid);
-
-                if (allCartList == null || allCartList.isEmpty()) {
-                    resp.sendRedirect(req.getContextPath() + "/market/cart.do");
-                    return;
-                }
-
-                // productno로 방금 담은 항목 찾기
                 int productno = Integer.parseInt(req.getParameter("productno"));
-                CartDTO latestCart = null;
-                for (CartDTO cart : allCartList) {
-                    if (cart.getProductno() == productno) {
-                        latestCart = cart;
-                    }
-                }
+                int cartcount = Integer.parseInt(req.getParameter("cartcount"));
 
-                if (latestCart == null) {
+                // 카트 저장 없이 상품 직접 조회
+                ProductDTO product = productDAO.selectProduct(productno);
+
+                if (product == null) {
                     resp.sendRedirect(req.getContextPath() + "/market/cart.do");
                     return;
                 }
+
+                CartDTO orderItem = new CartDTO();
+                orderItem.setProductno(productno);
+                orderItem.setProductname(product.getProductname());
+                orderItem.setProductimg(product.getProductimg());
+                orderItem.setProductprice(product.getProductprice());
+                orderItem.setProductcate(product.getProductcate());
+                orderItem.setCartcount(cartcount);
+                orderItem.setTotalprice(product.getProductprice() * cartcount);
 
                 List<CartDTO> orderList = new ArrayList<>();
-                orderList.add(latestCart);
-                int totalAmount = latestCart.getTotalprice();
+                orderList.add(orderItem);
+                int totalAmount = orderItem.getTotalprice();
 
                 req.setAttribute("orderList", orderList);
                 req.setAttribute("totalAmount", totalAmount);

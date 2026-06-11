@@ -83,6 +83,7 @@ DecimalFormat df = new DecimalFormat("#,###");
 								if (products != null && !products.isEmpty()) {
 									for (int i = 0; i < products.size(); i++) {
 										ProductDTO product = products.get(i);
+										System.out.println(product.getProductimg());
 										String img = product.getProductimg();
 										if (img == null || img.trim().isEmpty()) {
 									img = request.getContextPath() + "/images/market_item1.jpg";
@@ -116,7 +117,7 @@ DecimalFormat df = new DecimalFormat("#,###");
 									</c:if>
 								</c:forEach>
 								<%
-								}
+									}
 								} else {
 								%>
 								<tr>
