@@ -15,14 +15,14 @@ if (search == null) {
 
 <div id="sub">
 	<div>
-		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
 			alt="COMMUNITY">
 	</div>
 
 	<section class="community">
 		<aside>
 			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
 				alt="커뮤니티" />
 
 			<ul class="lnb">
@@ -98,35 +98,46 @@ if (search == null) {
 					%>
 				</table>
         
-                        <%
-    int pageNum = (Integer) request.getAttribute("page");
-    int lastPage = (Integer) request.getAttribute("lastPage");
-    int startPage = (Integer) request.getAttribute("startPage");
-    int endPage = (Integer) request.getAttribute("endPage");
-    String listUrl = (String) request.getAttribute("listUrl");
-    String searchParam = (String) request.getAttribute("search");
-
-    String queryString = "";
-    if (searchParam != null && !searchParam.trim().isEmpty()) {
-        queryString = "&search=" + java.net.URLEncoder.encode(searchParam, "UTF-8");
-    }
-%>
+                    <%
+				Integer pageNumObj = (Integer) request.getAttribute("page");
+				Integer lastPageObj = (Integer) request.getAttribute("lastPage");
+				Integer startPageObj = (Integer) request.getAttribute("startPage");
+				Integer endPageObj = (Integer) request.getAttribute("endPage");
+				
+				int pageNum = (pageNumObj != null) ? pageNumObj : 1;
+				int lastPage = (lastPageObj != null) ? lastPageObj : 1;
+				int startPage = (startPageObj != null) ? startPageObj : 1;
+				int endPage = (endPageObj != null) ? endPageObj : 1;
+				
+				String listUrl = (String) request.getAttribute("listUrl");
+				String searchParam = (String) request.getAttribute("search");
+				
+				if(listUrl == null){
+				    listUrl = request.getContextPath() + "/community/notice.do";
+				}
+				
+				String queryString = "";
+				
+				if (searchParam != null && !searchParam.trim().isEmpty()) {
+				    queryString = "&search=" + java.net.URLEncoder.encode(searchParam, "UTF-8");
+				}
+				%>
 
 				<div class="page">
 					<% if (pageNum > 1) { %>
-					<a href="<%= listUrl %>?page=<%= pageNum - 1 %><%= queryString %>"
+					<a href="<%= listUrl %>?pg=<%= pageNum - 1 %><%= queryString %>"
 						class="prev">이전</a>
 					<% } else { %>
 					<a href="#" class="prev">이전</a>
 					<% } %>
 
 					<% for (int i = startPage; i <= endPage; i++) { %>
-					<a href="<%= listUrl %>?page=<%= i %><%= queryString %>"
+					<a href="<%= listUrl %>?pg=<%= i %><%= queryString %>"
 						class="num <%= pageNum == i ? "current" : "" %>"><%= i %></a>
 					<% } %>
 
 					<% if (pageNum < lastPage) { %>
-					<a href="<%= listUrl %>?page=<%= pageNum + 1 %><%= queryString %>"
+					<a href="<%= listUrl %>?pg=<%= pageNum + 1 %><%= queryString %>"
 						class="next">다음</a>
 					<% } else { %>
 					<a href="#" class="next">다음</a>
