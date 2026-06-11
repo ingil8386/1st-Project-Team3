@@ -114,6 +114,7 @@ public class SQL2 {
     				"p.productname, " +
     				"p.productcate, " +
     				"p.productprice, " +
+    				"p.productimg, " +
     				"c.cartcount, " +
     				"(p.productprice * c.cartcount) AS totalprice, " +
     				"c.rdate " +

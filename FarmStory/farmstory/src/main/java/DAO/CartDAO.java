@@ -33,6 +33,7 @@ public class CartDAO extends DBHelper {
                 dto.setProductname(rs.getString("productname"));
                 dto.setProductcate(rs.getString("productcate"));
                 dto.setProductprice(rs.getInt("productprice"));
+                dto.setProductimg(rs.getString("productimg"));
                 dto.setCartcount(rs.getInt("cartcount"));
                 dto.setTotalprice(rs.getInt("totalprice"));
                 dto.setRdate(rs.getString("rdate"));

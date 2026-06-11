@@ -4,23 +4,23 @@
 <%@ page import="java.text.DecimalFormat"%>
 
 <%
-    ProductDTO product = (ProductDTO) request.getAttribute("product");
-    DecimalFormat df = new DecimalFormat("#,###");
+ProductDTO product = (ProductDTO) request.getAttribute("product");
+DecimalFormat df = new DecimalFormat("#,###");
 
-    if (product == null) {
-        response.sendRedirect(request.getContextPath() + "/market/list.do");
-        return;
-    }
+if (product == null) {
+	response.sendRedirect(request.getContextPath() + "/market/list.do");
+	return;
+}
 
-    String img = product.getProductimg();
-    if (img == null || img.trim().isEmpty()) {
-        img = request.getContextPath() + "/images/market_item1.jpg";
-    }
+String img = product.getProductimg();
+if (img == null || img.trim().isEmpty()) {
+	img = request.getContextPath() + "/images/market_item1.jpg";
+}
 
-    int finalPrice = product.getProductfinalprice();
-    if (finalPrice <= 0) {
-        finalPrice = product.getProductprice() - (product.getProductprice() * product.getProductdiscount() / 100);
-    }
+int finalPrice = product.getProductfinalprice();
+if (finalPrice <= 0) {
+	finalPrice = product.getProductprice() - (product.getProductprice() * product.getProductdiscount() / 100);
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,69 +29,89 @@
 <meta charset="UTF-8">
 <title>팜스토리::상품상세</title>
 <link rel="stylesheet"
-	href="<%= request.getContextPath() %>/css/detail.css">
+	href="<%=request.getContextPath()%>/css/detail.css">
 <script>
-        function updateTotal() {
-            const countInput = document.querySelector('input[name="count"]');
-            const totalEl = document.querySelector('.total');
-            const price = <%= finalPrice %>;
-            let count = parseInt(countInput.value);
-            if (isNaN(count) || count < 1) {
-                count = 1;
-                countInput.value = 1;
-            }
-            totalEl.innerText = (price * count).toLocaleString() + '원';
-        }
+	function updateTotal() {
+		const countInput = document.querySelector('input[name="count"]');
+		const totalEl = document.querySelector('.total');
+		const price =
+<%=finalPrice%>
+	;
+		let count = parseInt(countInput.value);
+		if (isNaN(count) || count < 1) {
+			count = 1;
+			countInput.value = 1;
+		}
+		totalEl.innerText = (price * count).toLocaleString() + '원';
+	}
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const countInput = document.querySelector('input[name="count"]');
-            if (countInput) {
-                countInput.addEventListener('input', updateTotal);
-                countInput.addEventListener('change', updateTotal);
-            }
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						const countInput = document
+								.querySelector('input[name="count"]');
+						if (countInput) {
+							countInput.addEventListener('input', updateTotal);
+							countInput.addEventListener('change', updateTotal);
+						}
 
-            // 장바구니 버튼
-            document.getElementById('btnCart').addEventListener('click', function (e) {
-                e.preventDefault();
-                const count = parseInt(document.querySelector('input[name="count"]').value) || 1;
-                const form = document.getElementById('cartForm');
-                form.querySelector('input[name="cartcount"]').value = count;
-                form.submit();
-            });
+						// 장바구니 버튼
+						document
+								.getElementById('btnCart')
+								.addEventListener(
+										'click',
+										function(e) {
+											e.preventDefault();
+											const count = parseInt(document
+													.querySelector('input[name="count"]').value) || 1;
+											const form = document
+													.getElementById('cartForm');
+											form
+													.querySelector('input[name="cartcount"]').value = count;
+											form.submit();
+										});
 
-            // 바로구매 버튼
-            document.getElementById('btnOrder').addEventListener('click', function (e) {
-                e.preventDefault();
-                const count = parseInt(document.querySelector('input[name="count"]').value) || 1;
-                const form = document.getElementById('orderDirectForm');
-                form.querySelector('input[name="cartcount"]').value = count;
-                form.submit();
-            });
-        });
-    </script>
+						// 바로구매 버튼
+						document
+								.getElementById('btnOrder')
+								.addEventListener(
+										'click',
+										function(e) {
+											e.preventDefault();
+											const count = parseInt(document
+													.querySelector('input[name="count"]').value) || 1;
+											const form = document
+													.getElementById('orderDirectForm');
+											form
+													.querySelector('input[name="cartcount"]').value = count;
+											form.submit();
+										});
+					});
+</script>
 </head>
 <body>
 	<div id="container">
 		<div id="sub">
 			<div>
-				<img src="<%= request.getContextPath() %>/images/sub_top_tit2.png"
+				<img src="<%=request.getContextPath()%>/images/sub_top_tit2.png"
 					alt="MARKET">
 			</div>
 			<section class="market">
 				<aside>
 					<img
-						src="<%= request.getContextPath() %>/images/sub_aside_cate2_tit.png"
+						src="<%=request.getContextPath()%>/images/sub_aside_cate2_tit.png"
 						alt="장보기">
 					<ul class="lnb">
 						<li class="on"><a
-							href="<%= request.getContextPath() %>/market/list.do">장보기</a></li>
+							href="<%=request.getContextPath()%>/market/list.do">장보기</a></li>
 					</ul>
 				</aside>
 
 				<article class="view">
 					<nav>
 						<img
-							src="<%= request.getContextPath() %>/images/sub_nav_tit_cate2_tit1.png"
+							src="<%=request.getContextPath()%>/images/sub_nav_tit_cate2_tit1.png"
 							alt="장보기">
 						<p>
 							HOME &gt; 장보기 &gt; <em>장보기</em>
@@ -102,22 +122,23 @@
 
 					<div class="basic">
 						<%-- 이미지에 고정 크기 강제 --%>
-						<img src="<%= img %>" alt="<%= product.getProductname() %>"
-							style="float: left; width: 270px; height: auto; border: 1px solid #eee; padding: 8px;  background: #fff;">
+						<img src="<%=img%>" alt="<%=product.getProductname()%>"
+							style="float: left; width: 270px; height: auto; border: 1px solid #eee; padding: 8px; background: #fff;">
 
-						<table border="0" style="float:right; width:454px; table-layout:fixed; word-break:break-all;">
+						<table border="0"
+							style="float: right; width: 454px; table-layout: fixed; word-break: break-all;">
 							<tbody>
 								<tr>
 									<td>상품명</td>
-									<td><%= product.getProductname() %></td>
+									<td><%=product.getProductname()%></td>
 								</tr>
 								<tr>
 									<td>상품코드</td>
-									<td><%= product.getProductno() %></td>
+									<td><%=product.getProductno()%></td>
 								</tr>
 								<tr>
 									<td>상품종류</td>
-									<td><%= product.getProductcate() %></td>
+									<td><%=product.getProductcate()%></td>
 								</tr>
 								<tr>
 									<td>배송비</td>
@@ -125,24 +146,24 @@
 								</tr>
 								<tr>
 									<td>정상가격</td>
-									<td><del><%= df.format(product.getProductprice()) %>원
+									<td><del><%=df.format(product.getProductprice())%>원
 										</del></td>
 								</tr>
 								<tr>
 									<td>할인율</td>
-									<td><%= product.getProductdiscount() %>%</td>
+									<td><%=product.getProductdiscount()%>%</td>
 								</tr>
 								<tr>
 									<td>포인트</td>
-									<td><%= df.format(product.getProductpoint()) %>P</td>
+									<td><%=df.format(product.getProductpoint())%>P</td>
 								</tr>
 								<tr>
 									<td>판매가격</td>
-									<td><%= df.format(finalPrice) %>원</td>
+									<td><%=df.format(finalPrice)%>원</td>
 								</tr>
 								<tr>
 									<td>재고</td>
-									<td><%= product.getProductstock() %>개</td>
+									<td><%=product.getProductstock()%>개</td>
 								</tr>
 								<tr>
 									<td>구매수량</td>
@@ -150,7 +171,7 @@
 								</tr>
 								<tr>
 									<td>합계</td>
-									<td class="total"><%= df.format(finalPrice) %>원</td>
+									<td class="total"><%=df.format(finalPrice)%>원</td>
 								</tr>
 								<tr>
 									<td colspan="2" style="padding-top: 10px; text-align: left;">
@@ -165,19 +186,19 @@
 						<div style="clear: both;"></div>
 
 						<form id="cartForm"
-							action="<%= request.getContextPath() %>/market/cart.do"
+							action="<%=request.getContextPath()%>/market/cart.do"
 							method="post">
 							<input type="hidden" name="action" value="add"> <input
 								type="hidden" name="productno"
-								value="<%= product.getProductno() %>"> <input
+								value="<%=product.getProductno()%>"> <input
 								type="hidden" name="cartcount" value="1">
 						</form>
 						<form id="orderDirectForm"
-							action="<%= request.getContextPath() %>/market/cart.do"
+							action="<%=request.getContextPath()%>/market/cart.do"
 							method="post">
 							<input type="hidden" name="action" value="addAndOrder"> <input
 								type="hidden" name="productno"
-								value="<%= product.getProductno() %>"> <input
+								value="<%=product.getProductno()%>"> <input
 								type="hidden" name="cartcount" value="1">
 						</form>
 					</div>
@@ -185,9 +206,8 @@
 					<h3>상품설명</h3>
 					<div class="detail">
 						<p style="line-height: 1.8;">
-							<%= product.getProductcontent() == null || product.getProductcontent().trim().isEmpty()
-                                ? "등록된 상품설명이 없습니다."
-                                : product.getProductcontent().replace("\n", "<br>") %>
+							<%=product.getProductcontent() == null || product.getProductcontent().trim().isEmpty() ? "등록된 상품설명이 없습니다."
+		: product.getProductcontent().replace("\n", "<br>")%>
 						</p>
 					</div>
 

@@ -6,8 +6,9 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.DecimalFormat"%>
 
+<%@ page import="DTO.CartDTO"%>
 <%
-List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
+List<CartDTO> orderList = (List<CartDTO>) request.getAttribute("orderList");
 DecimalFormat df = new DecimalFormat("#,###");
 %>
 <!DOCTYPE html>
@@ -61,39 +62,30 @@ DecimalFormat df = new DecimalFormat("#,###");
 						</thead>
 						<tbody>
 							<%
-							if (products != null && !products.isEmpty()) {
-								for (int i = 0; i < products.size(); i++) {
-									ProductDTO product = products.get(i);
-									String img = product.getProductimg();
+							if (orderList != null && !orderList.isEmpty()) {
+								for (CartDTO cart : orderList) {
+									String img = cart.getProductimg();
 									if (img == null || img.trim().isEmpty()) {
 								img = request.getContextPath() + "/images/market_item1.jpg";
 									}
-									request.setAttribute("currentImg", img);
-									request.setAttribute("currentIndex", i);
 							%>
-							<c:set var="idx" value="${currentIndex}" />
-							<c:forEach var="cart" items="${orderList}" varStatus="status">
-								<c:if test="${status.index == idx}">
-									<tr>
-										<td><a
-											href="/farmstory/market/detail.do?productno=${cart.productno}">
-												<img src="${currentImg}" class="thumb"
-												alt="${cart.productname}">
-										</a></td>
-										<td>${cart.productcate}</td>
-										<td><a
-											href="/farmstory/market/detail.do?productno=${cart.productno}">
-												${cart.productname} </a></td>
-										<td>${cart.cartcount}</td>
-										<td>-</td>
-										<td>-</td>
-										<td><fmt:formatNumber value="${cart.productprice}"
-												pattern="#,###" />원</td>
-										<td><strong><fmt:formatNumber
-													value="${cart.totalprice}" pattern="#,###" /></strong>원</td>
-									</tr>
-								</c:if>
-							</c:forEach>
+							<tr>
+								<td><a
+									href="/farmstory/market/detail.do?productno=<%=cart.getProductno()%>">
+										<img src="<%=img%>" class="thumb"
+										alt="<%=cart.getProductname()%>">
+								</a></td>
+								<td><%=cart.getProductcate()%></td>
+								<td><a
+									href="/farmstory/market/detail.do?productno=<%=cart.getProductno()%>">
+										<%=cart.getProductname()%>
+								</a></td>
+								<td><%=cart.getCartcount()%></td>
+								<td>-</td>
+								<td>-</td>
+								<td><%=df.format(cart.getProductprice())%>원</td>
+								<td><strong><%=df.format(cart.getTotalprice())%></strong>원</td>
+							</tr>
 							<%
 							}
 							} else {
