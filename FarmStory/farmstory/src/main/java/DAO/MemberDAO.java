@@ -381,38 +381,6 @@ public class MemberDAO extends DBHelper {
 	}
 
 
-	
-	
-	
-	// 회원정보 수정
-	public void updateMemberMyinfo(MemberDTO dto) {
-
-	    try {
-	        conn = getConnection();
-	        psmt = conn.prepareStatement(SQL2.UPDATE_MEMBER_MYINFO);
-
-	        psmt.setString(1, dto.getMemberpass());
-	        psmt.setString(2, dto.getMembernick());
-	        psmt.setString(3, dto.getMemberemail());
-	        psmt.setString(4, dto.getMemberhp());
-	        psmt.setString(5, dto.getMemberzip());
-	        psmt.setString(6, dto.getMemberaddr1());
-	        psmt.setString(7, dto.getMemberaddr2());
-	        psmt.setString(8, dto.getMemberid());
-
-	        psmt.executeUpdate();
-
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            closeAll();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	}
-
 	// 회원 1명 조회
 	public MemberDTO selectMemberById(String memberid) {
 	    MemberDTO dto = null;
