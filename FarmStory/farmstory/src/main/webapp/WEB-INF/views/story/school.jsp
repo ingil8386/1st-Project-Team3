@@ -3,40 +3,40 @@
 <%@ page import="DTO.CommunityDTO"%>
 
 <%
-    List<CommunityDTO> communities = (List<CommunityDTO>) request.getAttribute("communities");
-    String search = (String) request.getAttribute("search");
+List<CommunityDTO> communities = (List<CommunityDTO>) request.getAttribute("communities");
+String search = (String) request.getAttribute("search");
 
-    if (search == null) {
-        search = "";
-    }
+if (search == null) {
+	search = "";
+}
 %>
 
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
 
 <div id="sub">
 	<div>
-		<img src="<%= request.getContextPath() %>/images/sub_top_tit3.png"
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
 			alt="CROP TALK">
 	</div>
 
 	<section class="croptalk">
 		<aside>
 			<img
-				src="<%= request.getContextPath() %>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
 				alt="농작물이야기" />
 
 			<ul class="lnb">
-				<li><a href="<%= request.getContextPath() %>/story/intro.do">농작물이야기</a></li>
-				<li><a href="<%= request.getContextPath() %>/story/garden.do">텃밭가꾸기</a></li>
+				<li><a href="<%=request.getContextPath()%>/story/intro.do">농작물이야기</a></li>
+				<li><a href="<%=request.getContextPath()%>/story/garden.do">텃밭가꾸기</a></li>
 				<li class="on"><a
-					href="<%= request.getContextPath() %>/story/school.do">귀농학교</a></li>
+					href="<%=request.getContextPath()%>/story/school.do">귀농학교</a></li>
 			</ul>
 		</aside>
 
 		<article id="board">
 			<nav>
 				<img
-					src="<%= request.getContextPath() %>/images/sub_nav_tit_cate3_tit3.png"
+					src="<%=request.getContextPath()%>/images/sub_nav_tit_cate3_tit3.png"
 					alt="귀농학교" />
 				<p>
 					HOME > 농작물이야기 > <em>귀농학교</em>
@@ -47,9 +47,9 @@
 				<nav>
 					<h1>글목록</h1>
 
-					<form action="<%= request.getContextPath() %>/story/school.do"
+					<form action="<%=request.getContextPath()%>/story/school.do"
 						method="get">
-						<input type="text" name="search" value="<%= search %>"
+						<input type="text" name="search" value="<%=search%>"
 							placeholder="제목 키워드, 글쓴이 검색"> <input type="submit"
 							value="검색">
 					</form>
@@ -65,38 +65,87 @@
 					</tr>
 
 					<%
-                        if (communities != null && !communities.isEmpty()) {
-                            for (CommunityDTO community : communities) {
-                    %>
+					if (communities != null && !communities.isEmpty()) {
+						for (CommunityDTO community : communities) {
+					%>
 					<tr>
-						<td><%= community.getBoardpostno() %></td>
+						<td><%=community.getBoardpostno()%></td>
 						<td><a
-							href="<%= request.getContextPath() %>/story/view.do?commno=<%= community.getCommno() %>">
-								<%= community.getTitle() %> <% if (community.getCommentcount() > 0) { %>
-								[<%= community.getCommentcount() %>] <% } %>
+							href="<%=request.getContextPath()%>/story/view.do?commno=<%=community.getCommno()%>">
+								<%=community.getTitle()%> <%
+ if (community.getCommentcount() > 0) {
+ %>
+								[<%=community.getCommentcount()%>] <%
+ }
+ %>
 						</a></td>
-						<td><%= community.getWriter() %></td>
-						<td><%= community.getWdate() %></td>
-						<td><%= community.getHit() %></td>
+						<td><%=community.getWriter()%></td>
+						<td><%=community.getWdate()%></td>
+						<td><%=community.getHit()%></td>
 					</tr>
 					<%
-                            }
-                        } else {
-                    %>
+					}
+					} else {
+					%>
 					<tr>
 						<td colspan="5">등록된 게시글이 없습니다.</td>
 					</tr>
 					<%
-                        }
-                    %>
+					}
+					%>
 				</table>
 
-				<div class="page">
-					<a href="#" class="prev">이전</a> <a href="#" class="num current">1</a>
-					<a href="#" class="next">다음</a>
-				</div>
+				<%
+				int pageNum = (Integer) request.getAttribute("page");
+				int lastPage = (Integer) request.getAttribute("lastPage");
+				int startPage = (Integer) request.getAttribute("startPage");
+				int endPage = (Integer) request.getAttribute("endPage");
+				String listUrl = (String) request.getAttribute("listUrl");
+				String searchParam = (String) request.getAttribute("search");
 
-				<a href="<%= request.getContextPath() %>/story/write.do?boardno=3"
+				String queryString = "";
+				if (searchParam != null && !searchParam.trim().isEmpty()) {
+					queryString = "&search=" + java.net.URLEncoder.encode(searchParam, "UTF-8");
+				}
+				%>
+
+				<div class="page">
+					<%
+					if (pageNum > 1) {
+					%>
+					<a href="<%=listUrl%>?page=<%=pageNum - 1%><%=queryString%>"
+						class="prev">이전</a>
+					<%
+					} else {
+					%>
+					<a href="#" class="prev">이전</a>
+					<%
+					}
+					%>
+
+					<%
+					for (int i = startPage; i <= endPage; i++) {
+					%>
+					<a href="<%=listUrl%>?page=<%=i%><%=queryString%>"
+						class="num <%=pageNum == i ? "current" : ""%>"><%=i%></a>
+					<%
+					}
+					%>
+
+					<%
+					if (pageNum < lastPage) {
+					%>
+					<a href="<%=listUrl%>?page=<%=pageNum + 1%><%=queryString%>"
+						class="next">다음</a>
+					<%
+					} else {
+					%>
+					<a href="#" class="next">다음</a>
+					<%
+					}
+					%>
+				</div>
+				<a href="<%=request.getContextPath()%>/story/write.do?boardno=3"
 					class="btn btnWrite">글쓰기</a>
 			</section>
 		</article>

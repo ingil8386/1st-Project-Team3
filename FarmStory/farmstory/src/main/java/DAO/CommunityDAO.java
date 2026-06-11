@@ -21,7 +21,8 @@ public class CommunityDAO extends DBHelper {
 	private CommunityDAO() {
 	}
 
-	public List<CommunityDTO> selectCommunities(int boardno, String search) {
+// 게시글 목록 조회 + 페이징
+	public List<CommunityDTO> selectCommunities(int boardno, String search, int start, int pageSize) {
 		List<CommunityDTO> communities = new ArrayList<>();
 
 		try {
@@ -30,11 +31,15 @@ public class CommunityDAO extends DBHelper {
 			if (search == null || search.trim().isEmpty()) {
 				psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD);
 				psmt.setInt(1, boardno);
+				psmt.setInt(2, start);
+				psmt.setInt(3, pageSize);
 			} else {
 				psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITIES_BY_BOARD_SEARCH);
 				psmt.setInt(1, boardno);
 				psmt.setString(2, "%" + search + "%");
 				psmt.setString(3, "%" + search + "%");
+				psmt.setInt(4, start);
+				psmt.setInt(5, pageSize);
 			}
 
 			rs = psmt.executeQuery();
@@ -44,6 +49,7 @@ public class CommunityDAO extends DBHelper {
 
 				dto.setCommno(rs.getInt("commno"));
 				dto.setBoardno(rs.getInt("boardno"));
+				dto.setBoardpostno(rs.getInt("boardpostno"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setCommentcount(rs.getInt("commentcount"));
@@ -52,7 +58,6 @@ public class CommunityDAO extends DBHelper {
 				dto.setWriter(rs.getString("writer"));
 				dto.setRegip(rs.getString("regip"));
 				dto.setWdate(rs.getString("wdate"));
-				dto.setBoardpostno(rs.getInt("boardpostno"));
 
 				communities.add(dto);
 			}
@@ -68,6 +73,42 @@ public class CommunityDAO extends DBHelper {
 		}
 
 		return communities;
+	}
+
+	// 게시글 개수 조회
+	public int selectCommunityCount(int boardno, String search) {
+		int count = 0;
+
+		try {
+			conn = getConnection();
+
+			if (search == null || search.trim().isEmpty()) {
+				psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITY_COUNT_BY_BOARD);
+				psmt.setInt(1, boardno);
+			} else {
+				psmt = conn.prepareStatement(SQL2.SELECT_COMMUNITY_COUNT_BY_BOARD_SEARCH);
+				psmt.setInt(1, boardno);
+				psmt.setString(2, "%" + search + "%");
+				psmt.setString(3, "%" + search + "%");
+			}
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return count;
 	}
 
 // 게시글 작성
@@ -283,29 +324,27 @@ public class CommunityDAO extends DBHelper {
 		return nextNo;
 	}
 
-	
 	// 게시글 첨부파일 여부 수정
 	public void updateCommunityFilecheck(int commno, int filecheck) {
 
-	    try {
-	        conn = getConnection();
-	        psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_FILECHECK);
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL2.UPDATE_COMMUNITY_FILECHECK);
 
-	        psmt.setInt(1, filecheck);
-	        psmt.setInt(2, commno);
+			psmt.setInt(1, filecheck);
+			psmt.setInt(2, commno);
 
-	        psmt.executeUpdate();
+			psmt.executeUpdate();
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            closeAll();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
-	
-	
+
 }
