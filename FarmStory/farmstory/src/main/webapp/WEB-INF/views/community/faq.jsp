@@ -32,16 +32,15 @@
                         </p>
                     </nav>
 
-                    <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
+                     <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
                     <section class="list">
                         <nav>                            
-                            <form action="#">
+                            <form action="">
                                 <input type="text" name="search" placeholder="제목 키워드, 글쓴이 검색">
                                 <input type="submit" value="검색">
                             </form>
                         </nav>
-                             
-                        <h1>글목록</h1>
+                        <h1>글목록</h1>                                                                
                         <table border="0">                    
                             <tr>
                                 <th>번호</th>
@@ -50,13 +49,19 @@
                                 <th>날짜</th>
                                 <th>조회</th>
                             </tr>                    
-                            <tr>
-                                <td>1</td>
-                                <td><a href="./view.do">반품은 어떻게 해야하나요?</a></td>
-                                <td>관리자</td>
-                                <td>20-05-12</td>
-                                <td>12</td>
-                            </tr>
+                            <c:forEach var="article" items="${articles}">
+						    <tr>
+						        <td>${article.commno}</td>
+						        <td>
+						            <a href="/farmstory/community/view.do?commno=${article.commno}">
+						                ${article.title}
+						            </a>
+						        </td>
+						        <td>${article.membernick}</td>
+						        <td>${article.wdate}</td>
+						        <td>${article.hit}</td>
+						     </tr>
+							</c:forEach>
                         </table>
         
                         <div class="page">
@@ -67,7 +72,10 @@
                             <a href="#" class="next">다음</a>
                         </div>
         
-                        <a href="./write.do" class="btn btnWrite">글쓰기</a>                        
+                        <a href="/farmstory/community/write.do?boardno=8"
+						   class="btn btnWrite">
+						    글쓰기
+						</a>                         
                     </section>
                     <!-- 내용 끝 -->
 
