@@ -32,6 +32,7 @@
                     <c:otherwise>
                         <strong>${sessionScope.sessMember.membernick}</strong>님 환영합니다. | 
                         <a href="<%= request.getContextPath() %>/user/logout.do">로그아웃</a> | 
+                        <a href="<%= request.getContextPath() %>/market/cart.do">장바구니</a> | 
                         <a href="<%= request.getContextPath() %>/user/myinfo.do">마이페이지</a>
 
                         <c:if test="${sessionScope.sessMember.memberrole eq 'admin'}">

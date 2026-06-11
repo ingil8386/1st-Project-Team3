@@ -7,7 +7,7 @@ List<CommunityDTO> communities = (List<CommunityDTO>) request.getAttribute("comm
 String search = (String) request.getAttribute("search");
 
 if (search == null) {
-	search = "";
+   search = "";
 }
 %>
 
@@ -43,57 +43,57 @@ if (search == null) {
                     </nav>
 
                   <section class="list">
-				<nav>
-					<h1>글목록</h1>
+            <nav>
+               <h1>글목록</h1>
 
-					<form class="searchForm"
-						action="<%=request.getContextPath()%>/community/chef.do" method="get">
-						<input type="text" name="search" value="<%=search%>"
-							placeholder="제목 키워드, 글쓴이 검색"> <input type="submit"
-							value="검색">
-					</form>
-				</nav>
-				<h1>글목록</h1>  
-				<table border="0">
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>글쓴이</th>
-						<th>날짜</th>
-						<th>조회</th>
-					</tr>
+               <form class="searchForm"
+                  action="<%=request.getContextPath()%>/community/chef.do" method="get">
+                  <input type="text" name="search" value="<%=search%>"
+                     placeholder="제목 키워드, 글쓴이 검색"> <input type="submit"
+                     value="검색">
+               </form>
+            </nav>
+            <h1>글목록</h1>  
+            <table border="0">
+               <tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>글쓴이</th>
+                  <th>날짜</th>
+                  <th>조회</th>
+               </tr>
 
-					<%
-					if (communities != null && !communities.isEmpty()) {
-						int num = communities.size();
+               <%
+               if (communities != null && !communities.isEmpty()) {
+                  int num = communities.size();
 
-						for (CommunityDTO community : communities) {
-					%>
-					<tr>
-						<td><%=community.getBoardpostno()%></td>
-						<td><a
-							href="<%=request.getContextPath()%>/community/view.do?commno=<%=community.getCommno()%>">
-								<%=community.getTitle()%> <%
+                  for (CommunityDTO community : communities) {
+               %>
+               <tr>
+                  <td><%=community.getBoardpostno()%></td>
+                  <td><a
+                     href="<%=request.getContextPath()%>/community/view.do?commno=<%=community.getCommno()%>">
+                        <%=community.getTitle()%> <%
  if (community.getCommentcount() > 0) {
  %> [<%=community.getCommentcount()%>] <%
  }
  %>
-						</a></td>
-						<td><%=community.getWriter()%></td>
-						<td><%=community.getWdate()%></td>
-						<td><%=community.getHit()%></td>
-					</tr>
-					<%
-					}
-					} else {
-					%>
-					<tr>
-						<td colspan="5">등록된 게시글이 없습니다.</td>
-					</tr>
-					<%
-					}
-					%>
-				</table>
+                  </a></td>
+                  <td><%=community.getWriter()%></td>
+                  <td><%=community.getWdate()%></td>
+                  <td><%=community.getHit()%></td>
+               </tr>
+               <%
+               }
+               } else {
+               %>
+               <tr>
+                  <td colspan="5">등록된 게시글이 없습니다.</td>
+               </tr>
+               <%
+               }
+               %>
+            </table>
         
                         <%
     int pageNum = (Integer) request.getAttribute("page");
@@ -109,32 +109,32 @@ if (search == null) {
     }
 %>
 
-				<div class="page">
-					<% if (pageNum > 1) { %>
-					<a href="<%= listUrl %>?page=<%= pageNum - 1 %><%= queryString %>"
-						class="prev">이전</a>
-					<% } else { %>
-					<a href="#" class="prev">이전</a>
-					<% } %>
+            <div class="page">
+               <% if (pageNum > 1) { %>
+               <a href="<%= listUrl %>?page=<%= pageNum - 1 %><%= queryString %>"
+                  class="prev">이전</a>
+               <% } else { %>
+               <a href="#" class="prev">이전</a>
+               <% } %>
 
-					<% for (int i = startPage; i <= endPage; i++) { %>
-					<a href="<%= listUrl %>?page=<%= i %><%= queryString %>"
-						class="num <%= pageNum == i ? "current" : "" %>"><%= i %></a>
-					<% } %>
+               <% for (int i = startPage; i <= endPage; i++) { %>
+               <a href="<%= listUrl %>?page=<%= i %><%= queryString %>"
+                  class="num <%= pageNum == i ? "current" : "" %>"><%= i %></a>
+               <% } %>
 
-					<% if (pageNum < lastPage) { %>
-					<a href="<%= listUrl %>?page=<%= pageNum + 1 %><%= queryString %>"
-						class="next">다음</a>
-					<% } else { %>
-					<a href="#" class="next">다음</a>
-					<% } %>
-				</div>
+               <% if (pageNum < lastPage) { %>
+               <a href="<%= listUrl %>?page=<%= pageNum + 1 %><%= queryString %>"
+                  class="next">다음</a>
+               <% } else { %>
+               <a href="#" class="next">다음</a>
+               <% } %>
+            </div>
 
         
                         <a href="/farmstory/community/write.do?boardno=6"
-						   class="btn btnWrite">
-						    글쓰기
-						</a>                         
+                     class="btn btnWrite">
+                      글쓰기
+                  </a>                         
                     </section>
                     <!-- 내용 끝 -->
 
@@ -142,7 +142,7 @@ if (search == null) {
             </section>
 
         </div>
-		<jsp:include page="/WEB-INF/views/common/_tail.jsp" />
+      <jsp:include page="/WEB-INF/views/common/_tail.jsp" />
     </div>    
 </body>
 </html>

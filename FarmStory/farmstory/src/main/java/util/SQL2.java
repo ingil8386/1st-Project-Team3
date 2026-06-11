@@ -364,6 +364,70 @@ public static final String SELECT_MY_COMMENTS =
    + "ORDER BY c.commentno DESC";
 
 
+//=========================
+//MyInfo 회원정보 수정
+//=========================
+
+//비밀번호 포함 회원정보 수정
+public static final String UPDATE_MEMBER_MYINFO_WITH_PASS =
+     "UPDATE member SET "
+   + "memberpass = SHA2(?, 256), "
+   + "membernick = ?, "
+   + "memberemail = ?, "
+   + "memberhp = ?, "
+   + "memberzip = ?, "
+   + "memberaddr1 = ?, "
+   + "memberaddr2 = ? "
+   + "WHERE memberid = ?";
+
+
+//비밀번호 제외 회원정보 수정
+public static final String UPDATE_MEMBER_MYINFO_WITHOUT_PASS =
+     "UPDATE member SET "
+   + "membernick = ?, "
+   + "memberemail = ?, "
+   + "memberhp = ?, "
+   + "memberzip = ?, "
+   + "memberaddr1 = ?, "
+   + "memberaddr2 = ? "
+   + "WHERE memberid = ?";
+
+
+
+//회원 1명 조회
+public static final String SELECT_MEMBER_BY_ID =
+     "SELECT * FROM member WHERE memberid = ?";
+
+
+//=========================
+//MyInfo 회원탈퇴
+//=========================
+
+//비밀번호 확인
+public static final String CHECK_MEMBER_PASSWORD =
+     "SELECT COUNT(*) AS cnt "
+   + "FROM member "
+   + "WHERE memberid = ? AND memberpass = SHA2(?, 256)";
+
+
+
+//회원탈퇴 전 관련 데이터 삭제
+public static final String DELETE_CART_BY_MEMBER =
+     "DELETE FROM cart WHERE memberid = ?";
+
+public static final String DELETE_COMMENTS_BY_MEMBER =
+     "DELETE FROM communitycomment WHERE writer = ?";
+
+public static final String DELETE_COMMUNITY_BY_MEMBER =
+     "DELETE FROM community WHERE writer = ?";
+
+
+
+//회원 권한 수정
+public static final String UPDATE_MEMBER_ROLE =
+     "UPDATE member SET memberrole = ? WHERE memberid = ?";
+
+
 
 
     

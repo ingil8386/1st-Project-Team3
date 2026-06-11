@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
-  <display-name>farmstory</display-name>
-  <welcome-file-list>
-    <welcome-file>index.do</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         id="WebApp_ID"
+         version="6.0">
 
-  </welcome-file-list>
+    <display-name>farmstory</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.do</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 404 페이지 없음 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error/error.jsp</location>
+    </error-page>
+
+    <!-- 500 서버 오류 -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/error/error.jsp</location>
+    </error-page>
+
+    <!-- 자바 예외 전체 처리 -->
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/WEB-INF/views/error/error.jsp</location>
+    </error-page>
+
+    <!-- 런타임 예외 처리 -->
+    <error-page>
+        <exception-type>java.lang.RuntimeException</exception-type>
+        <location>/WEB-INF/views/error/error.jsp</location>
+    </error-page>
+
 </web-app>

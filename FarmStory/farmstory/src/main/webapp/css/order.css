@@ -78,7 +78,7 @@ header > .gnb > li:nth-child(5) > a:hover { background-image: url('/farmstory/im
 #sub > .market > .order > table td strong { color: #eb4f4b; font-weight: bold; }
 
 /* 5. 우측 정렬 최종 대금 정산 정보 피드 구역 */
-#sub > .market > .order > .final { width: 762px; margin-top: 20px; margin-bottom: 40px; display: flex; flex-direction: column; align-items: flex-end; }
+#sub > .market > .order > .final { width: 762px; margin-top: 20px; margin-bottom: 40px; display: flex; flex-direction: column; align-items: stretch; }
 #sub > .market > .order > .final > table { width: 320px; border-collapse: collapse; border: 1px solid #ccc; background: #fff; }
 #sub > .market > .order > .final > table caption { font-size: 14px; font-weight: bold; text-align: left; padding-bottom: 8px; color: #333; border-bottom: 2px solid #91ba15; margin-bottom: 5px; }
 #sub > .market > .order > .final > table th { width: 120px; text-align: left; padding: 8px 15px; background: #f9f9f9; border-bottom: 1px solid #ddd; color: #666; }

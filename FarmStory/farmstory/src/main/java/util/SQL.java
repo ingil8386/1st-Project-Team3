@@ -9,8 +9,11 @@ public class SQL {
 			+ "membername=?," + "membernick=?," + "memberemail=?," + "memberhp=?," + "memberzip=?," + "memberaddr1=?,"
 			+ "memberaddr2=?," + "regip=?," + "rdate=NOW()";
 
-	public static final String SELECT_MEMBER_WITH_PASS = "SELECT * FROM member WHERE memberid=? AND memberpass=SHA2(?, 256)";
-	public static final String SELECT_COUNT_MEMBER = "SELECT COUNT(*) FROM member ";
+	public static final String SELECT_MEMBER_WITH_PASS =
+	        "SELECT * FROM member "
+	      + "WHERE memberid=? "
+	      + "AND memberpass=SHA2(?, 256) "
+	      + "AND leavedate IS NULL";	public static final String SELECT_COUNT_MEMBER = "SELECT COUNT(*) FROM member ";
 	public static final String WHERE_MEMBER = "SELECT COUNT(*) FROM member ";
 	public static final String WHERE_MEMBERID = "WHERE memberid=?";
 	public static final String WHERE_NICK = "WHERE membernick=?";
