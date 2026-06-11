@@ -9,7 +9,7 @@ public class CommentDTO {
     private String regip;
     private String wdate;
 
-    public int getCommentno() {
+	public int getCommentno() {
         return commentno;
     }
 

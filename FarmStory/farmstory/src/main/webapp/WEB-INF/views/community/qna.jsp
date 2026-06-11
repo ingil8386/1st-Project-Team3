@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
 <html lang="en">
@@ -33,40 +35,61 @@
                     </nav>
 
                     <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
-                    <section class="modify">
-            
-                        <h1>글수정</h1>
-                        <form action="#">                            
-                            <table border="0">                                
-                                <tr>
-                                    <th>제목</th>
-                                    <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
-                                </tr>
-                                <tr>
-                                    <th>내용</th>
-                                    <td>
-                                        <textarea name="content"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>파일</th>
-                                    <td>
-                                        <p>
-                                            최대 2개 파일 첨부 가능, 각 파일당 최대 10MB까지 가능
-                                        </p>
-                                        <input type="file" name="file1"/>
-                                        <input type="file" name="file2"/>
-                                    </td>
-                                </tr>
-                            </table>
-                            
-                            <div>
-                                <a href="./view.jsp" class="btn btnCancel">취소</a>
-                                <input type="submit" value="수정완료" class="btn btnComplete"/>
-                            </div>
-                        </form>
+                    <section class="list">
+                        <nav>                            
+                            <form action="#">
+                                <input type="text" name="search" placeholder="제목 키워드, 글쓴이 검색">
+                                <input type="submit" value="검색">
+                            </form>
+                        </nav>
+                        <h1>글목록</h1>                                                                
+							<table border="0">
+							    <tr>
+							        <th>번호</th>
+							        <th>제목</th>
+							        <th>글쓴이</th>
+							        <th>날짜</th>
+							        <th>조회</th>
+							    </tr>
+							
+							    <c:forEach var="community" items="${communities}">
+							        <tr>
+							            <td>${community.commno}</td>
+							
+							            <td>
+							                <a href="/farmstory/community/view.do?commno=${community.commno}&boardno=${community.boardno}">
+							                    ${community.title}
+							
+							                    <c:if test="${community.commentcount > 0}">
+							                        [${community.commentcount}]
+							                    </c:if>
+							                </a>
+							            </td>
+							
+							            <td>${community.writer}</td>
+							
+							            <td>${community.wdate}</td>
+							
+							            <td>${community.hit}</td>
+							        </tr>
+							    </c:forEach>
+							
+							</table>
         
+                        <div class="page">
+                            <a href="#" class="prev">이전</a>
+                            <a href="#" class="num current">1</a>
+                            <a href="#" class="num">2</a>
+                            <a href="#" class="num">3</a>
+                            <a href="#" class="next">다음</a>
+                        </div>
+        
+                        <a href="./write.jsp" class="btn btnWrite">글쓰기</a>                        
                     </section>
+                    <!-- 내용 끝 -->
+
+                </article>
+            </section>
 
                     <!-- 내용 끝 -->
 
