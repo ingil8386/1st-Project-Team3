@@ -36,14 +36,14 @@
 
 <div id="sub">
 	<div>
-		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
 			alt="COMMUNITY">
 	</div>
 
 	<section class="community">
 		<aside>
 			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
 				alt="커뮤니티" />
 
 			<ul class="lnb">
@@ -78,14 +78,14 @@
 				} else if ("6".equals(boardno)) {
 					%>
 					<img
-						src="<%=request.getContextPath()%>/images/sub_nav_tit_cate3_tit2.png"
-						alt="나도요리사" />
+					src="<%=request.getContextPath()%>/images/sub_nav_tit_cate5_tit3.png"
+					alt="나도요리사" />
 					<%
 				} else if ("7".equals(boardno)) {
 					%>
 					<img
-						src="<%=request.getContextPath()%>/images/sub_nav_tit_cate5_tit4.png"
-						alt="1:1고객문의" />
+					src="<%=request.getContextPath()%>/images/sub_nav_tit_cate5_tit4.png"
+					alt="1:1고객문의" />
 					<%
 				} else {
 				%>

@@ -1,143 +1,82 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
-<%@ page import="DTO.CommunityDTO"%>
-
-<%
-List<CommunityDTO> communities = (List<CommunityDTO>) request.getAttribute("communities");
-String search = (String) request.getAttribute("search");
-
-if (search == null) {
-	search = "";
-}
-%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>팜스토리::공지사항</title>
+    <link rel="stylesheet" href="/farmstory/css/community.css"/>
+</head>
+<body>
+    <div id="container">
+        <div id="sub">
+            <div><img src="/farmstory/images/sub_top_tit5.png"COMMUNITY"></div>
+            <section class="community">
+                <aside>
+                    <img src="/farmstory/images/sub_aside_cate5_tit.png" alt="커뮤니티"/>
 
-<div id="sub">
-	<div>
-		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
-			alt="COMMUNITY">
-	</div>
+                    <ul class="lnb">
+                        <li class="on"><a href="/farmstory/community/notice.do">공지사항</a></li>
+                        <li><a href="/farmstory/community/meal.do">오늘의식단</a></li>
+                        <li><a href="/farmstory/community/chef.do">나도요리사</a></li>
+                        <li><a href="/farmstory/community/qna.do">1:1고객문의</a></li>
+                        <li><a href="/farmstory/community/faq.do">자주묻는질문</a></li>
+                    </ul>
 
-	<section class="community">
-		<aside>
-			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
-				alt="커뮤니티" />
+                </aside>
+                <article id="board">
+                    <nav>
+                        <img src="/farmstory/images/sub_nav_tit_cate5_tit1.png" alt="공지사항"/>
+                        <p>
+                            HOME > 커뮤니티 > <em>공지사항</em>
+                        </p>
+                    </nav>
 
-			<ul class="lnb">
-				<li class="on"><a
-					href="<%=request.getContextPath()%>/community/notice.do">공지사항</a></li>
-				<li><a href="<%=request.getContextPath()%>/community/meal.do">오늘의식단</a></li>
-				<li><a href="<%=request.getContextPath()%>/community/chef.do">나도요리사</a></li>
-				<li><a href="<%=request.getContextPath()%>/community/qna.do">1:1고객문의</a></li>
-				<li><a href="<%=request.getContextPath()%>/community/faq.do">자주묻는질문</a></li>
-			</ul>
-		</aside>
-
-		<article id="board">
-			<nav>
-				<img
-					src="<%=request.getContextPath()%>/images/sub_nav_tit_cate5_tit1.png"
-					alt="공지사항" />
-				<p>
-					HOME > 커뮤니티 > <em>공지사항</em>
-				</p>
-			</nav>
-
-			<section class="list">
-				<nav>
-					<h1>글목록</h1>
-
-					<form class="searchForm"
-						action="<%=request.getContextPath()%>/community/notice.do" method="get">
-						<input type="text" name="search" value="<%=search%>"
-							placeholder="제목 키워드, 글쓴이 검색"> <input type="submit"
-							value="검색">
-					</form>
-				</nav>
-
-				<table border="0">
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>글쓴이</th>
-						<th>날짜</th>
-						<th>조회</th>
-					</tr>
-
-					<%
-					if (communities != null && !communities.isEmpty()) {
-						int num = communities.size();
-
-						for (CommunityDTO community : communities) {
-					%>
-					<tr>
-						<td><%=community.getBoardpostno()%></td>
-						<td><a
-							href="<%=request.getContextPath()%>/community/view.do?commno=<%=community.getCommno()%>">
-								<%=community.getTitle()%> <%
- if (community.getCommentcount() > 0) {
- %> [<%=community.getCommentcount()%>] <%
- }
- %>
-						</a></td>
-						<td><%=community.getWriter()%></td>
-						<td><%=community.getWdate()%></td>
-						<td><%=community.getHit()%></td>
-					</tr>
-					<%
-					}
-					} else {
-					%>
-					<tr>
-						<td colspan="5">등록된 게시글이 없습니다.</td>
-					</tr>
-					<%
-					}
-					%>
-				</table>
+                    <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
+                    <section class="list">
+                        <nav>                            
+                            <form action="#">
+                                <input type="text" name="search" placeholder="제목 키워드, 글쓴이 검색">
+                                <input type="submit" value="검색">
+                            </form>
+                        </nav>
+                        <h1>글목록</h1>                                                                
+                        <table border="0">                    
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>글쓴이</th>
+                                <th>날짜</th>
+                                <th>조회</th>
+                            </tr>                    
+                           <c:forEach var="article" items="${articles}">
+						    <tr>
+						        <td>${article.commno}</td>
+						        <td>
+						            <a href="/farmstory/community/view.do?commno=${article.commno}">
+						                ${article.title}
+						            </a>
+						        </td>
+						        <td>${article.membernick}</td>
+						        <td>${article.wdate}</td>
+						        <td>${article.hit}</td>
+						     </tr>
+							</c:forEach>
+                        </table>
         
-                        <%
-    int pageNum = (Integer) request.getAttribute("page");
-    int lastPage = (Integer) request.getAttribute("lastPage");
-    int startPage = (Integer) request.getAttribute("startPage");
-    int endPage = (Integer) request.getAttribute("endPage");
-    String listUrl = (String) request.getAttribute("listUrl");
-    String searchParam = (String) request.getAttribute("search");
-
-    String queryString = "";
-    if (searchParam != null && !searchParam.trim().isEmpty()) {
-        queryString = "&search=" + java.net.URLEncoder.encode(searchParam, "UTF-8");
-    }
-%>
-
-				<div class="page">
-					<% if (pageNum > 1) { %>
-					<a href="<%= listUrl %>?page=<%= pageNum - 1 %><%= queryString %>"
-						class="prev">이전</a>
-					<% } else { %>
-					<a href="#" class="prev">이전</a>
-					<% } %>
-
-					<% for (int i = startPage; i <= endPage; i++) { %>
-					<a href="<%= listUrl %>?page=<%= i %><%= queryString %>"
-						class="num <%= pageNum == i ? "current" : "" %>"><%= i %></a>
-					<% } %>
-
-					<% if (pageNum < lastPage) { %>
-					<a href="<%= listUrl %>?page=<%= pageNum + 1 %><%= queryString %>"
-						class="next">다음</a>
-					<% } else { %>
-					<a href="#" class="next">다음</a>
-					<% } %>
-				</div>
-
+                        <div class="page">
+                            <a href="#" class="prev">이전</a>
+                            <a href="#" class="num current">1</a>
+                            <a href="#" class="num">2</a>
+                            <a href="#" class="num">3</a>
+                            <a href="#" class="next">다음</a>
+                        </div>
         
                         <a href="/farmstory/community/write.do?boardno=4"
 						   class="btn btnWrite">
 						    글쓰기
-						</a>                         
+						</a>                        
                     </section>
                     <!-- 내용 끝 -->
 

@@ -37,41 +37,82 @@ public class CommunityListController extends HttpServlet {
         String view = "/WEB-INF/views/community/notice.jsp";
 
         if (uri.endsWith("/notice.do")) {
-            boardno = 4; // 공지사항
+            boardno = 4;
             view = "/WEB-INF/views/community/notice.jsp";
         } else if (uri.endsWith("/meal.do")) {
-            boardno = 5; // 오늘의 식단
+            boardno = 5;
             view = "/WEB-INF/views/community/meal.jsp";
         } else if (uri.endsWith("/chef.do")) {
-            boardno = 6; // 나도요리사
+            boardno = 6;
             view = "/WEB-INF/views/community/chef.jsp";
         } else if (uri.endsWith("/qna.do")) {
-            boardno = 7; // 1:1고객문의
+            boardno = 7;
             view = "/WEB-INF/views/community/qna.jsp";
         } else if (uri.endsWith("/faq.do")) {
-            boardno = 8; // 자주묻는질문
+            boardno = 8;
             view = "/WEB-INF/views/community/faq.jsp";
-        } 
-        
-        String pg = req.getParameter("pg");
-
-        int currentPage = 1;
-
-        if (pg != null && !pg.isEmpty()) {
-            currentPage = Integer.parseInt(pg);
         }
 
+        // =========================
+        // 1. 페이지 처리
+        // =========================
         int pageSize = 10;
+        int currentPage = 1;
+
+        String pg = req.getParameter("page");
+        if (pg != null && !pg.isEmpty()) {
+            try {
+                currentPage = Integer.parseInt(pg);
+            } catch (NumberFormatException e) {
+                currentPage = 1;
+            }
+        }
+
         int start = (currentPage - 1) * pageSize;
 
+        // =========================
+        // 2. 검색
+        // =========================
         String search = req.getParameter("search");
 
-        List<CommunityDTO> communities = communityDAO.selectCommunities(boardno, search, start, pageSize);
+        // =========================
+        // 3. 리스트 조회
+        // =========================
+        List<CommunityDTO> communities =
+                communityDAO.selectCommunities(boardno, search, start, pageSize);
 
+        // =========================
+        // 4. 전체 개수 (페이징 핵심)
+        // =========================
+        int totalCount = communityDAO.countCommunities(boardno, search);
+
+        int lastPage = (int) Math.ceil(totalCount / (double) pageSize);
+
+        int pageGroup = 5;
+
+        int startPage = ((currentPage - 1) / pageGroup) * pageGroup + 1;
+
+        int endPage = startPage + pageGroup - 1;
+
+        if (endPage > lastPage) {
+            endPage = lastPage;
+        }
+
+        // =========================
+        // 5. JSP 전달 (핵심)
+        // =========================
         req.setAttribute("communities", communities);
         req.setAttribute("boardno", boardno);
         req.setAttribute("search", search);
 
+        req.setAttribute("page", currentPage);
+        req.setAttribute("lastPage", lastPage);
+        req.setAttribute("startPage", startPage);
+        req.setAttribute("endPage", endPage);
+
+        // =========================
+        // 6. 이동
+        // =========================
         req.getRequestDispatcher(view).forward(req, resp);
     }
 }

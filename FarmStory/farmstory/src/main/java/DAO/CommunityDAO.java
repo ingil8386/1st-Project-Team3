@@ -1,7 +1,9 @@
 package DAO;
 
 import java.sql.Statement;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -389,7 +391,34 @@ public class CommunityDAO extends DBHelper {
 
 	    return articles;
 	}
-	
-	
 
+	public int countCommunities(int boardno, String search) {
+
+	    String sql = "SELECT COUNT(*) FROM community WHERE boardno = ?";
+
+	    if (search != null && !search.isEmpty()) {
+	        sql += " AND title LIKE ?";
+	    }
+
+	    try (Connection conn = getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setInt(1, boardno);
+
+	        if (search != null && !search.isEmpty()) {
+	            ps.setString(2, "%" + search + "%");
+	        }
+
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            return rs.getInt(1);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return 0;
+	}
 }

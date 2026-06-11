@@ -15,20 +15,19 @@ if (search == null) {
 
 <div id="sub">
 	<div>
-		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
 			alt="COMMUNITY">
 	</div>
 
 	<section class="community">
 		<aside>
 			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
 				alt="커뮤니티" />
 
 			<ul class="lnb">
-				<li class="on"><a
-					href="<%=request.getContextPath()%>/community/notice.do">공지사항</a></li>
-				<li><a href="<%=request.getContextPath()%>/community/meal.do">오늘의식단</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/notice.do">공지사항</a></li>
+				<li class="on"><a href="<%=request.getContextPath()%>/community/meal.do">오늘의식단</a></li>
 				<li><a href="<%=request.getContextPath()%>/community/chef.do">나도요리사</a></li>
 				<li><a href="<%=request.getContextPath()%>/community/qna.do">1:1고객문의</a></li>
 				<li><a href="<%=request.getContextPath()%>/community/faq.do">자주묻는질문</a></li>
@@ -54,7 +53,7 @@ if (search == null) {
 							value="검색">
 					</form>
 				</nav>
-
+				<h1>글목록</h1>  		
 				<table border="0">
 					<tr>
 						<th>번호</th>
