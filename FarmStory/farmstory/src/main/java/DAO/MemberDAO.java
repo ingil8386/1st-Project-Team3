@@ -456,27 +456,27 @@ public class MemberDAO extends DBHelper {
 	
 	
 
+	// 회원 권한 수정
 	public void updateMemberRole(String memberid, String memberrole) {
 
-		try {
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL2.UPDATE_MEMBER_ROLE);
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL2.UPDATE_MEMBER_ROLE);
 
-			psmt.setString(1, memberrole);
-			psmt.setString(2, memberid);
+	        psmt.setString(1, memberrole);
+	        psmt.setString(2, memberid);
 
-			psmt.executeUpdate();
+	        psmt.executeUpdate();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				closeAll();
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-		}
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            closeAll();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 	
 	// 회원 관련 데이터 삭제 후 회원탈퇴
