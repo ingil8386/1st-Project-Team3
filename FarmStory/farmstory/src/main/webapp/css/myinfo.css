@@ -239,3 +239,36 @@
 .myinfo .list table a:hover {
     text-decoration: underline;
 }
+
+
+/* =========================
+   MyInfo Form
+========================= */
+
+.myinfo input[type="text"],
+.myinfo input[type="password"],
+.myinfo input[type="email"] {
+    width: 220px;
+    height: 26px;
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.myinfo input[type="submit"].btn {
+    cursor: pointer;
+}
+
+
+.myinfo input[type="password"] {
+    width: 220px;
+    height: 26px;
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.myinfo input[type="submit"].btn {
+    cursor: pointer;
+}
+
