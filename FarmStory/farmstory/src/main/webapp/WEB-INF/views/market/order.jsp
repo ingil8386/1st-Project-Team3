@@ -1,13 +1,14 @@
 <%@page import="DTO.ProductDTO"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
-<%@ page import="java.util.List" %>
-<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.List"%>
+<%@ page import="java.text.DecimalFormat"%>
 
 <%
-    List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
-    DecimalFormat df = new DecimalFormat("#,###");
+List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
+DecimalFormat df = new DecimalFormat("#,###");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -59,48 +60,49 @@
 							</tr>
 						</thead>
 						<tbody>
-						 <%
-						    if (products != null && !products.isEmpty()) {
-						        for (ProductDTO product : products) {
-						            String img = product.getProductimg();
-						
-						            // 1. 이미지가 없으면 기본 이미지
-						            if (img == null || img.trim().isEmpty()) {
-						                img = request.getContextPath() + "/images/market_item1.jpg";
-						            } else {
-						                // 2. 이미지가 있으면 매핑한 외부 경로(/images)를 직접 사용
-						                img = img; 
-						            }
-						%>
-									<c:forEach var="cart" items="${orderList}">
-										<tr>
-											<td><a
-												href="/farmstory/market/detail.do?productno=${cart.productno}">
-													<img src="${cart.productimg}" class="thumb"
-													alt="${cart.productname}">
-											</a></td>
-											<td>${cart.productcate}</td>
-											<td><a
-												href="/farmstory/market/detail.do?productno=${cart.productno}">
-													${cart.productname} </a></td>
-											<td>${cart.cartcount}</td>
-											<td>-</td>
-											<td>-</td>
-											<td><fmt:formatNumber value="${cart.productprice}"
-													pattern="#,###" /></td>
-											<td><strong><fmt:formatNumber
-														value="${cart.totalprice}" pattern="#,###" /></strong>원</td>
-										</tr>
-									</c:forEach>
-								<%
-						        }
-						    } else {
-								%>
-							    <tr>
-							        <td colspan="6">등록된 상품이 없습니다.</td>
-							    </tr>
 							<%
-							    }
+							if (products != null && !products.isEmpty()) {
+								for (int i = 0; i < products.size(); i++) {
+									ProductDTO product = products.get(i);
+									String img = product.getProductimg();
+									if (img == null || img.trim().isEmpty()) {
+								img = request.getContextPath() + "/images/market_item1.jpg";
+									}
+									request.setAttribute("currentImg", img);
+									request.setAttribute("currentIndex", i);
+							%>
+							<c:set var="idx" value="${currentIndex}" />
+							<c:forEach var="cart" items="${orderList}" varStatus="status">
+								<c:if test="${status.index == idx}">
+									<tr>
+										<td><a
+											href="/farmstory/market/detail.do?productno=${cart.productno}">
+												<img src="${currentImg}" class="thumb"
+												alt="${cart.productname}">
+										</a></td>
+										<td>${cart.productcate}</td>
+										<td><a
+											href="/farmstory/market/detail.do?productno=${cart.productno}">
+												${cart.productname} </a></td>
+										<td>${cart.cartcount}</td>
+										<td>-</td>
+										<td>-</td>
+										<td><fmt:formatNumber value="${cart.productprice}"
+												pattern="#,###" />원</td>
+										<td><strong><fmt:formatNumber
+													value="${cart.totalprice}" pattern="#,###" /></strong>원</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+							<%
+							}
+							} else {
+							%>
+							<tr>
+								<td colspan="8">등록된 상품이 없습니다.</td>
+							</tr>
+							<%
+							}
 							%>
 						</tbody>
 					</table>
@@ -115,7 +117,8 @@
 								</tr>
 								<tr>
 									<th>상품금액</th>
-									<td><fmt:formatNumber value="${totalAmount}" pattern="#,###" />원</td>
+									<td><fmt:formatNumber value="${totalAmount}"
+											pattern="#,###" />원</td>
 								</tr>
 								<tr>
 									<th>할인금액</th>
@@ -135,11 +138,13 @@
 								</tr>
 								<tr class="final-row">
 									<th>전체주문금액</th>
-									<td class="total"><fmt:formatNumber value="${totalAmount}" pattern="#,###" />원</td>
+									<td class="total"><fmt:formatNumber value="${totalAmount}"
+											pattern="#,###" />원</td>
 								</tr>
 							</tbody>
 						</table>
-						<input type="submit" class="btnOrder" value="결제하기" style="width: 320px;">
+						<input type="submit" class="btnOrder" value="결제하기"
+							style="width: 320px;">
 					</div>
 
 					<h3 class="order-title">주문정보 입력</h3>
