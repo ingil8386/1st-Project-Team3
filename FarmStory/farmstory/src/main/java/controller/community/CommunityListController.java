@@ -52,6 +52,17 @@ public class CommunityListController extends HttpServlet {
             boardno = 8; // 자주묻는질문
             view = "/WEB-INF/views/community/faq.jsp";
         } 
+        
+        String pg = req.getParameter("pg");
+
+        int currentPage = 1;
+
+        if (pg != null && !pg.isEmpty()) {
+            currentPage = Integer.parseInt(pg);
+        }
+
+        int pageSize = 10;
+        int start = (currentPage - 1) * pageSize;
 
         String search = req.getParameter("search");
 
