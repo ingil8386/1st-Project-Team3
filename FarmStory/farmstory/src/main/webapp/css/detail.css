@@ -124,7 +124,7 @@ header > .gnb > li:nth-child(5) > a:hover { background-image: url('/farmstory/im
 /* 장보기 레이아웃 컨테이너 */
 .market {
     width: 980px;
-    overflow: hidden;
+    
     margin-top: 20px;
     padding-bottom: 40px;
 }
@@ -172,9 +172,8 @@ header > .gnb > li:nth-child(5) > a:hover { background-image: url('/farmstory/im
 .market > .view {
     float: right;
     width: 802px;
-    min-height: 650px;
     padding-left: 40px;
-    box-sizing: border-box;
+    
 }
 
 /* 상단 현재 네비게이션 경로 */
@@ -220,13 +219,14 @@ header > .gnb > li:nth-child(5) > a:hover { background-image: url('/farmstory/im
    ------------------------------------------ */
 .market > .view > .basic {
     width: 762px;
-    overflow: hidden;
+    overflow: visible;
     margin-bottom: 25px;
 }
 .market > .view > .basic > img {
     float: left;
     width: 280px;
-    height: 280px;
+    height: auto;  /* ← auto로 변경 */
+    min-height: 280px;
     border: 1px solid #eeeeee;
     padding: 8px;
     background: #ffffff;
@@ -292,6 +292,7 @@ header > .gnb > li:nth-child(5) > a:hover { background-image: url('/farmstory/im
     color: #ffffff;
     border: 1px solid #7da210;
 }
+
 
 /* ------------------------------------------
    B. 상품설명 (.detail)

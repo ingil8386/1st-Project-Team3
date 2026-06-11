@@ -602,8 +602,7 @@ main > .info > div > .notice a {
 
 #sub > .market > .view > .basic {
   width: 100%;
-  height: 270px;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 }
 #sub > .market > .view > .basic > img {
@@ -2017,4 +2016,6 @@ input[type="number"]::-webkit-outer-spin-button {
     background: #f7f7f7;
     cursor: pointer;
 }
+
+
 

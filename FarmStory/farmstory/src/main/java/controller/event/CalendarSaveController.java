@@ -38,8 +38,12 @@ public class CalendarSaveController extends HttpServlet {
         dto.setTitle(title);
         dto.setStartdate(startdate);
 
-        eventDAO.insertEvent(dto);
+        int eventno = eventDAO.insertEvent(dto);
 
-        resp.getWriter().write("success");
+        if (eventno > 0) {
+            resp.getWriter().write(String.valueOf(eventno));
+        } else {
+            resp.getWriter().write("fail");
+        }
     }
 }

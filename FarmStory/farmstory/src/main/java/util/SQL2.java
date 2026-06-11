@@ -242,17 +242,30 @@ public class SQL2 {
  // Community 게시판
  // =========================
 
- // 게시판별 글목록 조회
- public static final String SELECT_COMMUNITIES_BY_BOARD =
-         "SELECT * FROM community WHERE boardno = ? ORDER BY commno DESC";
+//게시판별 글목록 조회 + 페이징
+public static final String SELECT_COMMUNITIES_BY_BOARD =
+      "SELECT * FROM community "
+    + "WHERE boardno = ? "
+    + "ORDER BY commno DESC "
+    + "LIMIT ?, ?";
 
- // 게시판별 글목록 검색
- public static final String SELECT_COMMUNITIES_BY_BOARD_SEARCH =
-         "SELECT * FROM community "
-       + "WHERE boardno = ? "
-       + "AND (title LIKE ? OR writer LIKE ?) "
-       + "ORDER BY commno DESC";
-    
+//게시판별 글목록 검색 + 페이징
+public static final String SELECT_COMMUNITIES_BY_BOARD_SEARCH =
+      "SELECT * FROM community "
+    + "WHERE boardno = ? "
+    + "AND (title LIKE ? OR writer LIKE ?) "
+    + "ORDER BY commno DESC "
+    + "LIMIT ?, ?";
+
+//게시판별 전체 글 개수
+public static final String SELECT_COMMUNITY_COUNT_BY_BOARD =
+      "SELECT COUNT(*) AS cnt FROM community WHERE boardno = ?";
+
+//게시판별 검색 글 개수
+public static final String SELECT_COMMUNITY_COUNT_BY_BOARD_SEARCH =
+      "SELECT COUNT(*) AS cnt FROM community "
+    + "WHERE boardno = ? "
+    + "AND (title LIKE ? OR writer LIKE ?)";
     
 //=========================
 //Community 글쓰기
@@ -311,6 +324,110 @@ public static final String SELECT_COMMUNITY_COMMENT =
 //댓글 수정
 public static final String UPDATE_COMMUNITY_COMMENT =
      "UPDATE communitycomment SET content = ? WHERE commentno = ?";
+
+//=========================
+//Event Calendar
+//=========================
+
+//이벤트 저장
+public static final String INSERT_EVENT =
+     "INSERT INTO event_calendar "
+   + "(title, startdate) "
+   + "VALUES (?, ?)";
+
+//이벤트 목록 조회
+public static final String SELECT_EVENTS =
+     "SELECT * FROM event_calendar ORDER BY startdate ASC, eventno ASC";
+
+//이벤트 삭제
+public static final String DELETE_EVENT =
+     "DELETE FROM event_calendar WHERE eventno = ?";
+
+
+
+//=========================
+//MyInfo 내가 쓴 글 / 댓글
+//=========================
+
+//내가 쓴 글 목록
+public static final String SELECT_MY_ARTICLES =
+     "SELECT * FROM community "
+   + "WHERE writer = ? "
+   + "ORDER BY commno DESC";
+
+//내가 쓴 댓글 목록
+public static final String SELECT_MY_COMMENTS =
+     "SELECT c.*, cm.title, cm.boardno "
+   + "FROM communitycomment c "
+   + "JOIN community cm ON c.commno = cm.commno "
+   + "WHERE c.writer = ? "
+   + "ORDER BY c.commentno DESC";
+
+
+//=========================
+//MyInfo 회원정보 수정
+//=========================
+
+//비밀번호 포함 회원정보 수정
+public static final String UPDATE_MEMBER_MYINFO_WITH_PASS =
+     "UPDATE member SET "
+   + "memberpass = SHA2(?, 256), "
+   + "membernick = ?, "
+   + "memberemail = ?, "
+   + "memberhp = ?, "
+   + "memberzip = ?, "
+   + "memberaddr1 = ?, "
+   + "memberaddr2 = ? "
+   + "WHERE memberid = ?";
+
+
+//비밀번호 제외 회원정보 수정
+public static final String UPDATE_MEMBER_MYINFO_WITHOUT_PASS =
+     "UPDATE member SET "
+   + "membernick = ?, "
+   + "memberemail = ?, "
+   + "memberhp = ?, "
+   + "memberzip = ?, "
+   + "memberaddr1 = ?, "
+   + "memberaddr2 = ? "
+   + "WHERE memberid = ?";
+
+
+
+//회원 1명 조회
+public static final String SELECT_MEMBER_BY_ID =
+     "SELECT * FROM member WHERE memberid = ?";
+
+
+//=========================
+//MyInfo 회원탈퇴
+//=========================
+
+//비밀번호 확인
+public static final String CHECK_MEMBER_PASSWORD =
+     "SELECT COUNT(*) AS cnt "
+   + "FROM member "
+   + "WHERE memberid = ? AND memberpass = SHA2(?, 256)";
+
+
+
+//회원탈퇴 전 관련 데이터 삭제
+public static final String DELETE_CART_BY_MEMBER =
+     "DELETE FROM cart WHERE memberid = ?";
+
+public static final String DELETE_COMMENTS_BY_MEMBER =
+     "DELETE FROM communitycomment WHERE writer = ?";
+
+public static final String DELETE_COMMUNITY_BY_MEMBER =
+     "DELETE FROM community WHERE writer = ?";
+
+
+
+//회원 권한 수정
+public static final String UPDATE_MEMBER_ROLE =
+     "UPDATE member SET memberrole = ? WHERE memberid = ?";
+
+
 
 
     
