@@ -1,16 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
-<%@ page import="DTO.CommunityDTO"%>
-
-<%
-List<CommunityDTO> communities = (List<CommunityDTO>) request.getAttribute("communities");
-String search = (String) request.getAttribute("search");
-
-if (search == null) {
-	search = "";
-}
-%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
 
 <div id="sub">
@@ -148,7 +138,7 @@ if (search == null) {
                         <a href="/farmstory/community/write.do?boardno=4"
 						   class="btn btnWrite">
 						    글쓰기
-						</a>                         
+						</a>                        
                     </section>
                     <!-- 내용 끝 -->
 

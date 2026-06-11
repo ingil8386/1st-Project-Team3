@@ -47,7 +47,7 @@ if (boardno == 4) {
 	<section class="community">
 		<aside>
 			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
 				alt="커뮤니티" />
 
 			<ul class="lnb">
@@ -82,7 +82,7 @@ if (boardno == 4) {
 				} else if (boardno == 6) {
 					%>
 					<img
-						src="<%=request.getContextPath()%>/images/sub_nav_tit_cate3_tit2.png"
+						src="<%=request.getContextPath()%>/images/sub_nav_tit_cate5_tit3.png"
 						alt="나도요리사" />
 					<%
 				} else if (boardno == 7) {
@@ -99,7 +99,7 @@ if (boardno == 4) {
 				<%
 				}
 				%>
-
+			</nav>
 			<section class="write">
 				<h1>글수정</h1>
 

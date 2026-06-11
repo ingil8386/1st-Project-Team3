@@ -41,14 +41,14 @@ if (boardno == 4) {
 
 <div id="sub">
 	<div>
-		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
 			alt="COMMUNITY">
 	</div>
 
 	<section class="community">
 		<aside>
 			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
 				alt="커뮤니티" />
 
 			<ul class="lnb">
@@ -83,7 +83,7 @@ if (boardno == 4) {
 				} else if (boardno == 6) {
 					%>
 					<img
-						src="<%=request.getContextPath()%>/images/sub_nav_tit_cate3_tit2.png"
+						src="<%=request.getContextPath()%>/images/sub_nav_tit_cate5_tit3.png"
 						alt="나도요리사" />
 					<%
 				} else if (boardno == 7) {

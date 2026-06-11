@@ -14,26 +14,26 @@ if (search == null) {
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
 
 <div id="sub">
-   <div>
-      <img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
-         alt="COMMUNITY">
-   </div>
+	<div>
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
+			alt="COMMUNITY">
+	</div>
 
-   <section class="community">
-      <aside>
-         <img
-            src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
-            alt="커뮤니티" />
+	<section class="community">
+		<aside>
+			<img
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
+				alt="커뮤니티" />
 
-         <ul class="lnb">
-            <li><a href="<%=request.getContextPath()%>/community/notice.do">공지사항</a></li>
-            <li><a href="<%=request.getContextPath()%>/community/meal.do">오늘의식단</a></li>
-            <li class="on"><a href="<%=request.getContextPath()%>/community/chef.do">나도요리사</a></li>
-            <li><a href="<%=request.getContextPath()%>/community/qna.do">1:1고객문의</a></li>
-            <li><a href="<%=request.getContextPath()%>/community/faq.do">자주묻는질문</a></li>
-         </ul>
-      </aside>
-      
+			<ul class="lnb">
+				<li><a href="<%=request.getContextPath()%>/community/notice.do">공지사항</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/meal.do">오늘의식단</a></li>
+				<li class="on"><a href="<%=request.getContextPath()%>/community/chef.do">나도요리사</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/qna.do">1:1고객문의</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/faq.do">자주묻는질문</a></li>
+			</ul>
+		</aside>
+		
                 <article id="board">
                     <nav>
                         <img src="/farmstory/images/sub_nav_tit_cate5_tit3.png" alt="나도요리사"/>
