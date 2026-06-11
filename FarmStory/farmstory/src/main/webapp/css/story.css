@@ -602,8 +602,7 @@ main > .info > div > .notice a {
 
 #sub > .market > .view > .basic {
   width: 100%;
-  height: 270px;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 }
 #sub > .market > .view > .basic > img {
