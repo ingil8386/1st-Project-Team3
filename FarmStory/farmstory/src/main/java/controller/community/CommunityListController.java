@@ -61,16 +61,44 @@ public class CommunityListController extends HttpServlet {
             currentPage = Integer.parseInt(pg);
         }
 
+        String search = req.getParameter("search");
+
         int pageSize = 10;
         int start = (currentPage - 1) * pageSize;
 
-        String search = req.getParameter("search");
+        /* 전체 게시글 수 */
+        int totalCount = communityDAO.selectCommunityCount(boardno, search);
 
-        List<CommunityDTO> communities = communityDAO.selectCommunities(boardno, search, 0, 10);
+        /* 마지막 페이지 */
+        int lastPage = (int)Math.ceil(totalCount / (double)pageSize);
+
+        /* 페이지 그룹 */
+        int startPage = ((currentPage - 1) / 10) * 10 + 1;
+        int endPage = startPage + 9;
+
+        if(endPage > lastPage){
+            endPage = lastPage;
+        }
+
+        /* 게시글 목록 */
+        List<CommunityDTO> communities =
+                communityDAO.selectCommunities(
+                        boardno,
+                        search,
+                        start,
+                        pageSize
+                );
 
         req.setAttribute("communities", communities);
         req.setAttribute("boardno", boardno);
         req.setAttribute("search", search);
+
+        /* 페이징 */
+        req.setAttribute("page", currentPage);
+        req.setAttribute("lastPage", lastPage);
+        req.setAttribute("startPage", startPage);
+        req.setAttribute("endPage", endPage);
+        req.setAttribute("listUrl", req.getRequestURI());
 
         req.getRequestDispatcher(view).forward(req, resp);
     }
