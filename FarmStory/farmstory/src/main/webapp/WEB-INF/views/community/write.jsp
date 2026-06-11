@@ -36,14 +36,14 @@
 
 <div id="sub">
 	<div>
-		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit5.png"
 			alt="COMMUNITY">
 	</div>
 
 	<section class="community">
 		<aside>
 			<img
-				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				src="<%=request.getContextPath()%>/images/sub_aside_cate5_tit.png"
 				alt="커뮤니티" />
 
 			<ul class="lnb">
