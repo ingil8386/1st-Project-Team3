@@ -2,6 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+<%@ page import="java.util.List" %>
+<%@ page import="DTO.ProductDTO" %>
+<%@ page import="java.text.DecimalFormat" %>
+
+<%
+    List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("products");
+    DecimalFormat df = new DecimalFormat("#,###");
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -70,6 +78,19 @@
 								</tr>
 							</thead>
 							<tbody>
+							 <%
+						    if (products != null && !products.isEmpty()) {
+						        for (ProductDTO product : products) {
+						            String img = product.getProductimg();
+						
+						            // 1. 이미지가 없으면 기본 이미지
+						            if (img == null || img.trim().isEmpty()) {
+						                img = request.getContextPath() + "/images/market_item1.jpg";
+						            } else {
+						                // 2. 이미지가 있으면 매핑한 외부 경로(/images)를 직접 사용
+						                img = img; 
+						            }
+						%>
 								<c:choose>
 									<c:when test="${not empty cartList}">
 										<c:forEach var="cart" items="${cartList}">
@@ -95,6 +116,10 @@
 											</tr>
 										</c:forEach>
 									</c:when>
+									<%
+						        }
+						    }
+						%>
 									<c:otherwise>
 										<tr>
 											<td colspan="9" style="text-align: center;">등록된 상품이
