@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/list.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/story.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/event.css">
-
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/myinfo.css">
 </head>
 <body>
     <div id="container">
