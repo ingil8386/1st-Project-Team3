@@ -150,10 +150,10 @@ if (boardno == 4) {
 					</table>
 
 					<div class="btnGroup">
-						<a
-							href="<%=request.getContextPath()%>/story/view.do?commno=<%=community.getCommno()%>"
-							class="btn btnCancel">취소</a> <input type="submit"
-							class="btn btnComplete" value="수정완료">
+				        <a href="<%=request.getContextPath()%>/community/view.do?boardno=<%=boardno%>&commno=<%=community.getCommno()%>" 
+				           class="btn btnCancel">취소</a> 
+				           
+				        <input type="submit" class="btn btnComplete" value="수정완료">
 					</div>
 				</form>
 			</section>
