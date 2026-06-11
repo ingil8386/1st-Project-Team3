@@ -49,6 +49,7 @@ public class CommunityModifyController extends HttpServlet {
         }
 
         String commnoParam = req.getParameter("commno");
+        String boardnoParam = req.getParameter("boardno"); // 🚨 boardno 파라미터 수신
 
         if (commnoParam == null || commnoParam.trim().isEmpty()) {
             resp.sendRedirect(req.getContextPath() + "/community/notice.do");
@@ -56,9 +57,13 @@ public class CommunityModifyController extends HttpServlet {
         }
 
         int commno = 0;
+        int boardno = 4; // 🚨 기본값은 공지사항(4)으로 설정
 
         try {
             commno = Integer.parseInt(commnoParam);
+            if (boardnoParam != null && !boardnoParam.trim().isEmpty()) {
+                boardno = Integer.parseInt(boardnoParam); // 🚨 boardno가 넘어왔다면 파싱
+            }
         } catch (Exception e) {
             resp.sendRedirect(req.getContextPath() + "/community/notice.do");
             return;
@@ -73,14 +78,16 @@ public class CommunityModifyController extends HttpServlet {
 
         // 작성자 본인만 수정 가능
         if (!sessMember.getMemberid().equals(community.getWriter())) {
-            resp.sendRedirect(req.getContextPath() + "/communtiy/view.do?commno=" + commno);
+            resp.sendRedirect(req.getContextPath() + "/community/view.do?boardno=" + boardno + "&commno=" + commno);
             return;
         }
 
         List<FileDTO> files = fileDAO.selectFilesByCommno(commno);
 
+        // 🚨 JSP 화면에서 사용할 수 있도록 request 객체에 공유 바인딩
         req.setAttribute("community", community);
         req.setAttribute("files", files);
+        req.setAttribute("boardno", boardno); 
 
         req.getRequestDispatcher("/WEB-INF/views/community/modify.jsp")
            .forward(req, resp);
@@ -101,13 +108,18 @@ public class CommunityModifyController extends HttpServlet {
         }
 
         String commnoParam = req.getParameter("commno");
+        String boardnoParam = req.getParameter("boardno"); // 🚨 <form> 태그나 hidden 태그로 넘어온 boardno 수신
         String title = req.getParameter("title");
         String content = req.getParameter("content");
 
         int commno = 0;
+        int boardno = 4; // 기본값
 
         try {
             commno = Integer.parseInt(commnoParam);
+            if (boardnoParam != null && !boardnoParam.trim().isEmpty()) {
+                boardno = Integer.parseInt(boardnoParam); // 🚨 boardno 안전하게 정수형 변환
+            }
         } catch (Exception e) {
             resp.sendRedirect(req.getContextPath() + "/community/notice.do");
             return;
@@ -122,7 +134,7 @@ public class CommunityModifyController extends HttpServlet {
 
         // 작성자 본인만 수정 가능
         if (!sessMember.getMemberid().equals(original.getWriter())) {
-            resp.sendRedirect(req.getContextPath() + "/community/view.do?commno=" + commno);
+            resp.sendRedirect(req.getContextPath() + "/community/view.do?boardno=" + boardno + "&commno=" + commno);
             return;
         }
 
@@ -173,7 +185,7 @@ public class CommunityModifyController extends HttpServlet {
             resp.getWriter().println("<script>");
             resp.getWriter().println("alert('첨부파일은 최대 10MB까지만 업로드 가능합니다.');");
             resp.getWriter().println("history.back();");
-            resp.getWriter().println("</script>");
+            resp.getWriter().println("<//script>");
             return;
         }
 
@@ -214,6 +226,7 @@ public class CommunityModifyController extends HttpServlet {
             communityDAO.updateCommunityFilecheck(commno, 0);
         }
 
-        resp.sendRedirect(req.getContextPath() + "/community/view.do?commno=" + commno);
+        // 🚨 리다이렉트 주소창 뒤에 boardno를 명확히 달아주어 화면이 꼬이지 않게 보호합니다!
+        resp.sendRedirect(req.getContextPath() + "/community/view.do?boardno=" + boardno + "&commno=" + commno);
     }
 }
