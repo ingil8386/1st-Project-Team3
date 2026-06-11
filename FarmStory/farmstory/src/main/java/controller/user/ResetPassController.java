@@ -33,28 +33,36 @@ public class ResetPassController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 1. 파라미터 수집
-        String memberid = req.getParameter("memberid");
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+
+        HttpSession session = req.getSession();
+        String memberid = (String) session.getAttribute("resetId");
+        
+        if (memberid == null || memberid.isEmpty()) {
+            memberid = req.getParameter("memberid");
+        }
+
         String memberpass = req.getParameter("memberpass");
         String memberpass2 = req.getParameter("memberpass2");
 
-        // 2. 유효성 검사
-        if (memberpass != null && memberpass.equals(memberpass2)) {
+        req.setAttribute("memberid", memberid);
+
+        if (memberpass != null && !memberpass.isEmpty() && memberpass.equals(memberpass2)) {
             
-            // 3. Service 호출
             int result = service.updatePass(memberid, memberpass);
             
             if (result > 0) {
+                System.out.println("디버깅 - 비밀번호 변경 성공! memberid: " + memberid);
+                
+                session.invalidate(); 
+                
                 resp.sendRedirect(req.getContextPath() + "/user/login.do?success=200");
-                HttpSession session = req.getSession();
-                session.invalidate(); // 세션 전체 초기화
             } else {
-                System.out.println("디버깅 - 업데이트 행(row)이 0임 (SQL 조건 문제)");
                 req.setAttribute("result", "fail");
                 req.getRequestDispatcher("/WEB-INF/views/user/resetPass.jsp").forward(req, resp);
             }
         } else {
-            System.out.println("디버깅 - 비밀번호 불일치 혹은 null");
             req.setAttribute("result", "passMismatch");
             req.getRequestDispatcher("/WEB-INF/views/user/resetPass.jsp").forward(req, resp);
         }

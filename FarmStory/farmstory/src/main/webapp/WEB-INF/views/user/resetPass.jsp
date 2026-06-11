@@ -38,7 +38,7 @@
                     </div>
                 </c:if>
 
-                <%-- 결과가 성공이 아닐 때만 폼을 보여줌 (성공 시에는 폼 대신 결과 박스만 노출) --%>
+                <%-- 결과가 성공이 아닐 때만 폼을 보여줌 --%>
                 <c:if test="${result ne 'success'}">
                     <form action="<%= request.getContextPath() %>/user/resetPass.do" method="post">
                         <%-- 아이디를 유지하기 위해 hidden 필드 사용 --%>
@@ -46,20 +46,31 @@
                         
                         <table border="0">
                             <tr>
-                                <td colspan="2" style="padding-bottom: 20px; font-weight: bold; font-size: 16px; text-align: center;">
+                                <td colspan="3" style="padding-bottom: 20px; font-weight: bold; font-size: 16px; text-align: center;">
                                     비밀번호 재설정
                                 </td>
                             </tr>
                             <tr>
-                                <td><img src="/farmstory/images/user/login_ico_pw.png" alt="비밀번호" style="width:20px; vertical-align:middle;"></td>
-                                <td><input type="password" name="memberpass" placeholder="새 비밀번호 입력" required></td>
+                                <td style="width: 30px; vertical-align: middle;"><img src="/farmstory/images/user/login_ico_pw.png" alt="비밀번호" style="width:20px; vertical-align:middle;"></td>
+                                <td style="padding-right: 10px; vertical-align: middle;">
+                                    <input type="password" name="memberpass" placeholder="새 비밀번호 입력" required style="width: 100%; height: 25px; box-sizing: border-box;">
+                                </td>
+                                <td rowspan="2" style="width: 120px; vertical-align: middle;">
+                                    <input type="submit" value="비밀번호 변경" class="btnLogin" style="
+                                        box-sizing: border-box;
+                                        width: 80px; 
+                                        height: 60px; /* 두 줄의 높이를 모두 커버하는 세로 크기 */
+                                        text-align: center; 
+                                        padding: 0; 
+                                        cursor: pointer;
+                                     	" />
+                                </td>
                             </tr>
                             <tr>
-                                <td><img src="/farmstory/images/user/login_ico_pw.png" alt="비밀번호 확인" style="width:20px; vertical-align:middle;"></td>
-                                <td><input type="password" name="memberpass2" placeholder="새 비밀번호 확인" required></td>
-                            </tr>
-                            <tr>
-   							 <input type="submit" value="비밀번호 변경" class="btnLogin" style="width: 80px; margin-left: 100px; margin-top: 35px;" />
+                                <td style="vertical-align: middle;"><img src="/farmstory/images/user/login_ico_pw.png" alt="비밀번호 확인" style="width:20px; vertical-align:middle;"></td>
+                                <td style="padding-right: 10px; vertical-align: middle;">
+                                    <input type="password" name="memberpass2" placeholder="새 비밀번호 확인" required style="width: 100%; height: 25px; box-sizing: border-box;">
+                                </td>
                             </tr>
                         </table>
                     </form>
