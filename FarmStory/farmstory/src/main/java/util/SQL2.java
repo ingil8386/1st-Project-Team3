@@ -344,5 +344,27 @@ public static final String DELETE_EVENT =
      "DELETE FROM event_calendar WHERE eventno = ?";
 
 
+
+//=========================
+//MyInfo 내가 쓴 글 / 댓글
+//=========================
+
+//내가 쓴 글 목록
+public static final String SELECT_MY_ARTICLES =
+     "SELECT * FROM community "
+   + "WHERE writer = ? "
+   + "ORDER BY commno DESC";
+
+//내가 쓴 댓글 목록
+public static final String SELECT_MY_COMMENTS =
+     "SELECT c.*, cm.title, cm.boardno "
+   + "FROM communitycomment c "
+   + "JOIN community cm ON c.commno = cm.commno "
+   + "WHERE c.writer = ? "
+   + "ORDER BY c.commentno DESC";
+
+
+
+
     
 }

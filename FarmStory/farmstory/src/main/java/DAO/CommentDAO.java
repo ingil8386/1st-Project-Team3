@@ -160,4 +160,49 @@ public class CommentDAO extends DBHelper {
             }
         }
     }
+    
+    
+    
+ // 내가 쓴 댓글 목록
+    public List<CommentDTO> selectMyComments(String writer) {
+        List<CommentDTO> comments = new ArrayList<>();
+
+        try {
+            conn = getConnection();
+            psmt = conn.prepareStatement(SQL2.SELECT_MY_COMMENTS);
+            psmt.setString(1, writer);
+
+            rs = psmt.executeQuery();
+
+            while (rs.next()) {
+                CommentDTO dto = new CommentDTO();
+
+                dto.setCommentno(rs.getInt("commentno"));
+                dto.setCommno(rs.getInt("commno"));
+                dto.setContent(rs.getString("content"));
+                dto.setWriter(rs.getString("writer"));
+                dto.setRegip(rs.getString("regip"));
+                dto.setWdate(rs.getString("wdate"));
+
+                dto.setTitle(rs.getString("title"));
+                dto.setBoardno(rs.getInt("boardno"));
+
+                comments.add(dto);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                closeAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return comments;
+    }
+    
+    
+    
 }

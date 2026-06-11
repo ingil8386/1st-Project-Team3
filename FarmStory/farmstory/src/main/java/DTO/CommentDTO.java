@@ -8,6 +8,10 @@ public class CommentDTO {
     private String writer;
     private String regip;
     private String wdate;
+    private String title;
+    private int boardno;
+    
+    
 
 	public int getCommentno() {
         return commentno;
@@ -56,4 +60,22 @@ public class CommentDTO {
     public void setWdate(String wdate) {
         this.wdate = wdate;
     }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getBoardno() {
+        return boardno;
+    }
+
+    public void setBoardno(int boardno) {
+        this.boardno = boardno;
+    }
+    
+    
 }

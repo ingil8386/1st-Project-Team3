@@ -1,29 +1,40 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="DTO.CommunityDTO"%>
+
+<%
+List<CommunityDTO> communities = (List<CommunityDTO>) request.getAttribute("communities");
+String search = (String) request.getAttribute("search");
+
+if (search == null) {
+	search = "";
+}
+%>
+
 <jsp:include page="/WEB-INF/views/common/_head.jsp" />
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>팜스토리::나도요리사</title>
-    <link rel="stylesheet" href="/farmstory/css/community.css"/>
-</head>
-<body>
-    <div id="container">
-        <div id="sub">
-            <div><img src="/farmstory/images/sub_top_tit5.png" alt="COMMUNITY"></div>
-            <section class="community">
-                <aside>
-                    <img src="/farmstory/images/sub_aside_cate5_tit.png" alt="커뮤니티"/>
 
-                    <ul class="lnb">
-                        <li><a href="/farmstory/community/notice.do">공지사항</a></li>
-                        <li><a href="/farmstory/community/meal.do">오늘의식단</a></li>
-                        <li class="on"><a href="/farmstory/community/chef.do">나도요리사</a></li>
-                        <li><a href="/farmstory/community/qna.do">1:1고객문의</a></li>
-                        <li><a href="/farmstory/community/faq.do">자주묻는질문</a></li>
-                    </ul>
+<div id="sub">
+	<div>
+		<img src="<%=request.getContextPath()%>/images/sub_top_tit3.png"
+			alt="COMMUNITY">
+	</div>
 
-                </aside>
+	<section class="community">
+		<aside>
+			<img
+				src="<%=request.getContextPath()%>/images/sub_aside_cate3_tit.png"
+				alt="커뮤니티" />
+
+			<ul class="lnb">
+				<li class="on"><a
+					href="<%=request.getContextPath()%>/community/notice.do">공지사항</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/meal.do">오늘의식단</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/chef.do">나도요리사</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/qna.do">1:1고객문의</a></li>
+				<li><a href="<%=request.getContextPath()%>/community/faq.do">자주묻는질문</a></li>
+			</ul>
+		</aside>
+		
                 <article id="board">
                     <nav>
                         <img src="/farmstory/images/sub_nav_tit_cate5_tit3.png" alt="나도요리사"/>
@@ -32,65 +43,100 @@
                         </p>
                     </nav>
 
-                    <!-- 게시판 글목록/글쓰기/글보기/글수정 내용 시작 -->
-                    <section class="view">
-                        <h1>글보기</h1>
-                        <table border="0">                            
-                            <tr>
-                                <th>제목</th>
-                                <td><input type="text" name="title" value="제목입니다." readonly/></td>
-                            </tr>
-                            <tr>
-                                <th>파일</th>
-                                <td>
-                                    <p><a href="#">2021년 상반기 매출현황.xls</a>&nbsp;<span>7</span>회 다운로드</p>
-                                    <p><a href="#">교육 운영 관리자료.hwp</a>&nbsp;<span>7</span>회 다운로드</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>내용</th>
-                                <td>
-                                    <textarea name="content" readonly>내용 샘플입니다.</textarea>
-                                </td>
-                            </tr>                    
-                        </table>
-                        
-                        <div>
-                            <a href="#" class="btn btnRemove">삭제</a>
-                            <a href="./modify.html" class="btn btnModify">수정</a>
-                            <a href="./list.html" class="btn btnList">목록</a>
-                        </div>
+                  <section class="list">
+				<nav>
+					<h1>글목록</h1>
+
+					<form class="searchForm"
+						action="<%=request.getContextPath()%>/community/chef.do" method="get">
+						<input type="text" name="search" value="<%=search%>"
+							placeholder="제목 키워드, 글쓴이 검색"> <input type="submit"
+							value="검색">
+					</form>
+				</nav>
+
+				<table border="0">
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>글쓴이</th>
+						<th>날짜</th>
+						<th>조회</th>
+					</tr>
+
+					<%
+					if (communities != null && !communities.isEmpty()) {
+						int num = communities.size();
+
+						for (CommunityDTO community : communities) {
+					%>
+					<tr>
+						<td><%=community.getBoardpostno()%></td>
+						<td><a
+							href="<%=request.getContextPath()%>/community/view.do?commno=<%=community.getCommno()%>">
+								<%=community.getTitle()%> <%
+ if (community.getCommentcount() > 0) {
+ %> [<%=community.getCommentcount()%>] <%
+ }
+ %>
+						</a></td>
+						<td><%=community.getWriter()%></td>
+						<td><%=community.getWdate()%></td>
+						<td><%=community.getHit()%></td>
+					</tr>
+					<%
+					}
+					} else {
+					%>
+					<tr>
+						<td colspan="5">등록된 게시글이 없습니다.</td>
+					</tr>
+					<%
+					}
+					%>
+				</table>
         
-                        <!-- 댓글목록 -->
-                        <section class="commentList">
-                            <h3>댓글목록</h3>                   
+                        <%
+    int pageNum = (Integer) request.getAttribute("page");
+    int lastPage = (Integer) request.getAttribute("lastPage");
+    int startPage = (Integer) request.getAttribute("startPage");
+    int endPage = (Integer) request.getAttribute("endPage");
+    String listUrl = (String) request.getAttribute("listUrl");
+    String searchParam = (String) request.getAttribute("search");
+
+    String queryString = "";
+    if (searchParam != null && !searchParam.trim().isEmpty()) {
+        queryString = "&search=" + java.net.URLEncoder.encode(searchParam, "UTF-8");
+    }
+%>
+
+				<div class="page">
+					<% if (pageNum > 1) { %>
+					<a href="<%= listUrl %>?page=<%= pageNum - 1 %><%= queryString %>"
+						class="prev">이전</a>
+					<% } else { %>
+					<a href="#" class="prev">이전</a>
+					<% } %>
+
+					<% for (int i = startPage; i <= endPage; i++) { %>
+					<a href="<%= listUrl %>?page=<%= i %><%= queryString %>"
+						class="num <%= pageNum == i ? "current" : "" %>"><%= i %></a>
+					<% } %>
+
+					<% if (pageNum < lastPage) { %>
+					<a href="<%= listUrl %>?page=<%= pageNum + 1 %><%= queryString %>"
+						class="next">다음</a>
+					<% } else { %>
+					<a href="#" class="next">다음</a>
+					<% } %>
+				</div>
+
         
-                            <article>
-                                <span class="date">2024-05-20</span>
-                                <span class="nick">길동이</span>
-                                <p class="content">댓글 샘플 입니다.</p>                        
-                                <div>
-                                    <a href="#" class="remove">삭제</a>
-                                    <a href="#" class="modify">수정</a>
-                                </div>
-                            </article>
-        
-                            <p class="empty">등록된 댓글이 없습니다.</p>
-        
-                        </section>
-        
-                        <!-- 댓글쓰기 -->
-                        <section class="commentForm">
-                            <h3>댓글쓰기</h3>
-                            <form action="#">
-                                <textarea name="content">댓글내용 입력</textarea>
-                                <div>
-                                    <a href="#" class="btn btnCancel">취소</a>
-                                    <input type="submit" value="작성완료" class="btn btnComplete"/>
-                                </div>
-                            </form>
-                        </section>        
-                    </section> 
+                        <a href="/farmstory/community/write.do?boardno=6"
+						   class="btn btnWrite">
+						    글쓰기
+						</a>                         
+                    </section>
                     <!-- 내용 끝 -->
 
                 </article>

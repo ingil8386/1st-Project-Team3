@@ -1,0 +1,241 @@
+/* =========================
+   My Info - FarmStory Sub Layout
+========================= */
+
+.myinfo {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    overflow: hidden;
+}
+
+/* 왼쪽 영역 */
+.myinfo > aside {
+    float: left;
+    width: 176px;
+    min-height: 520px;
+    background: url('../images/sub_aside_bg_line.png') no-repeat right top;
+}
+
+.myinfo > aside > h2 {
+    width: 176px;
+    height: 80px;
+    padding-top: 28px;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.myinfo > aside > h2::after {
+    content: "My Page";
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #999;
+    font-weight: normal;
+}
+
+/* 왼쪽 메뉴 */
+.myinfo .myinfoLnb {
+    width: 175px;
+    margin-top: 5px;
+}
+
+.myinfo .myinfoLnb > li {
+    width: 175px;
+    height: 36px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.myinfo .myinfoLnb > li > a {
+    display: block !important;
+    width: 175px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    padding-left: 22px !important;
+    box-sizing: border-box !important;
+
+    color: #333 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    background-image: none !important;
+    overflow: visible !important;
+}
+
+.myinfo .myinfoLnb > li.on > a {
+    background: #9bcf00 !important;
+    color: #fff !important;
+}
+
+.myinfo .myinfoLnb > li > a:hover {
+    color: #9bcf00 !important;
+}
+
+.myinfo .myinfoLnb > li.on > a:hover {
+    color: #fff !important;
+}
+
+/* 오른쪽 영역 */
+.myinfo > article {
+    float: right;
+    width: 762px;
+    min-height: 520px;
+}
+
+/* 오른쪽 상단 nav */
+.myinfo > article > nav {
+    position: relative;
+    width: 100%;
+    height: 72px;
+    border-bottom: 1px solid #c2c2c2;
+    box-sizing: border-box;
+}
+
+.myinfo > article > nav > h1 {
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+}
+
+.myinfo > article > nav > p {
+    position: absolute;
+    right: 0;
+    bottom: 12px;
+    color: #777;
+    font-size: 11px;
+}
+
+.myinfo > article > nav > p > em {
+    color: #91ba15;
+    font-weight: bold;
+}
+
+/* 본문 */
+.myinfo .view {
+    width: 100%;
+    margin-top: 35px;
+}
+
+.myinfo .view > h3 {
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #111;
+}
+
+/* 회원정보 테이블 */
+.myinfo .view table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid #111;
+}
+
+.myinfo .view table th {
+    width: 120px;
+    height: 42px;
+    padding-left: 12px;
+    background: #f5f8f9;
+    border: 1px solid #ddd;
+    color: #111;
+    font-weight: bold;
+    text-align: left;
+}
+
+.myinfo .view table td {
+    height: 42px;
+    padding-left: 12px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+/* 버튼 */
+.myinfo .btnGroup {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.myinfo .btn {
+    display: inline-block;
+    min-width: 64px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #bebebe;
+    background: #f7f7f7;
+    color: #333;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.myinfo .btnModify {
+    background: #6f9e00;
+    border-color: #5f8900;
+    color: #fff;
+}
+
+.myinfo .btnList {
+    background: #fff;
+    border-color: #bebebe;
+    color: #333;
+}
+
+.myinfo .btnDelete {
+    background: #666;
+    border-color: #555;
+    color: #fff;
+}
+
+/* =========================
+   MyInfo List
+========================= */
+
+.myinfo .list h3 {
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #111;
+}
+
+.myinfo .list table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid #111;
+}
+
+.myinfo .list table th {
+    height: 36px;
+    background: #f5f8f9;
+    border: 1px solid #ddd;
+    color: #111;
+    font-weight: bold;
+    text-align: center;
+}
+
+.myinfo .list table td {
+    height: 36px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    color: #333;
+    text-align: center;
+}
+
+.myinfo .list table td:nth-child(3) {
+    text-align: left;
+}
+
+.myinfo .list table a {
+    color: #111;
+    text-decoration: none;
+}
+
+.myinfo .list table a:hover {
+    text-decoration: underline;
+}
