@@ -44,16 +44,13 @@ if (search == null) {
 
                      <section class="list">
             <nav>
-               <h1>글목록</h1>
-
                <form class="searchForm"
                   action="<%=request.getContextPath()%>/community/faq.do" method="get">
                   <input type="text" name="search" value="<%=search%>"
                      placeholder="제목 키워드, 글쓴이 검색"> <input type="submit"
                      value="검색">
                </form>
-            </nav>
-            <h1>글목록</h1>        
+            </nav>   
             <table border="0">
                <tr>
                   <th>번호</th>
