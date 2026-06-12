@@ -161,11 +161,10 @@ if (boardno == 4) {
 				</table>
 
 				<div class="btnGroup">
-					<a href="<%=listUrl%>" class="btn btnList">목록</a> <a
-						href="<%=request.getContextPath()%>/community/modify.do?commno=<%=community.getCommno()%>"
-						class="btn btnModify">수정</a> <a
-						href="<%=request.getContextPath()%>/community/delete.do?commno=<%=community.getCommno()%>&boardno=<%=boardno%>"
-						class="btn btnDelete" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+					<a href="<%=listUrl%>" class="btn btnList">목록</a> 
+					<a href="<%=request.getContextPath()%>/community/modify.do?commno=<%=community.getCommno()%>&boardno=<%=boardno%>" class="btn btnModify">수정</a>					
+					<a href="<%=request.getContextPath()%>/community/delete.do?commno=<%=community.getCommno()%>&boardno=<%=boardno%>"
+					class="btn btnDelete" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
 				</div>
 
 				<!-- 댓글 목록 -->
