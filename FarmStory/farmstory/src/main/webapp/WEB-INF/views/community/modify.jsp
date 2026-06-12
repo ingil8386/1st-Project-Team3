@@ -106,8 +106,9 @@ if (boardno == 4) {
 				<form action="<%=request.getContextPath()%>/community/modify.do"
 					method="post" enctype="multipart/form-data">
 
-					<input type="hidden" name="commno"
-						value="<%=community.getCommno()%>">
+					<input type="hidden" name="commno" value="<%=community.getCommno()%>">
+
+					<input type="hidden" name="boardno" value="<%=boardno%>">
 					<table border="0">
 						<tr>
 							<th>제목</th>

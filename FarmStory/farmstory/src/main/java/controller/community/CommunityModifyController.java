@@ -113,12 +113,13 @@ public class CommunityModifyController extends HttpServlet {
         String content = req.getParameter("content");
 
         int commno = 0;
-        int boardno = 4; // 기본값
+        int boardno = 4;
 
         try {
             commno = Integer.parseInt(commnoParam);
+
             if (boardnoParam != null && !boardnoParam.trim().isEmpty()) {
-                boardno = Integer.parseInt(boardnoParam); // 🚨 boardno 안전하게 정수형 변환
+                boardno = Integer.parseInt(boardnoParam);
             }
         } catch (Exception e) {
             resp.sendRedirect(req.getContextPath() + "/community/notice.do");
@@ -159,8 +160,12 @@ public class CommunityModifyController extends HttpServlet {
                     if (fileDTO != null && fileDTO.getCommno() == commno) {
                         File realFile = new File(UPLOAD_DIR, fileDTO.getSfname());
 
-                        if (realFile.exists()) {
-                            realFile.delete();
+                        if(realFile.exists()) {
+                            boolean result = realFile.delete();
+
+                            if(!result) {
+                                System.out.println("파일 삭제 실패 : " + realFile.getAbsolutePath());
+                            }
                         }
 
                         fileDAO.deleteFile(fileno);
@@ -185,7 +190,7 @@ public class CommunityModifyController extends HttpServlet {
             resp.getWriter().println("<script>");
             resp.getWriter().println("alert('첨부파일은 최대 10MB까지만 업로드 가능합니다.');");
             resp.getWriter().println("history.back();");
-            resp.getWriter().println("<//script>");
+            resp.getWriter().println("</script>");
             return;
         }
 
