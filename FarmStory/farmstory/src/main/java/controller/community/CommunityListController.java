@@ -56,7 +56,7 @@ public class CommunityListController extends HttpServlet {
         // =========================
         // 1. 페이지 처리
         // =========================
-        int pageSize = 10;
+        int pageSize = 8;
         int currentPage = 1;
 
         String pg = req.getParameter("page");
@@ -109,6 +109,8 @@ public class CommunityListController extends HttpServlet {
         req.setAttribute("lastPage", lastPage);
         req.setAttribute("startPage", startPage);
         req.setAttribute("endPage", endPage);
+        
+        req.setAttribute("listUrl", req.getRequestURI());
 
         // =========================
         // 6. 이동
